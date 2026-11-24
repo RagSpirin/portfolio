@@ -24,30 +24,18 @@
     if (W[w]) el.style.fontWeight = W[w];
   }
 
-  /* ---------- h2. home first screen: visuals first (tools, play records), then a shortened intro ---------- */
+  /* ---------- h3. home: original order; intro shows the first paragraph, rest behind 더 보기 ---------- */
   if (isHome) {
-    const hero = document.querySelector('.circus-hero');
-    const tools = document.querySelector('#career .career-tools');
-    const archive = document.querySelector('.play-archive');
     const intro = document.querySelector('.hero-heading .intro-copy');
-    if (hero && tools && archive && intro) {
-      const band = document.createElement('section');
-      band.className = 'cp-tools frame';
-      band.appendChild(tools);                       // moved, not copied
-      hero.after(band);
-      band.after(archive);                            // play records right after tools
-      const wrap = document.createElement('section');
-      wrap.className = 'cp-intro frame';
-      wrap.appendChild(intro);                        // moved
+    if (intro && intro.children.length > 1) {
       const more = document.createElement('button');
       more.type = 'button'; more.className = 'cp-more'; more.textContent = '더 보기'; more.setAttribute('aria-expanded', 'false');
       more.addEventListener('click', () => {
-        const open = wrap.classList.toggle('open');
+        const open = intro.classList.toggle('cp-open');
         more.textContent = open ? '접기' : '더 보기'; more.setAttribute('aria-expanded', String(open));
       });
-      wrap.appendChild(more);
-      archive.after(wrap);
-      html.classList.add('cp-home2');
+      intro.after(more);
+      html.classList.add('cp-home3');
     }
   }
 
