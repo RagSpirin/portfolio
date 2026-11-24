@@ -24,6 +24,33 @@
     if (W[w]) el.style.fontWeight = W[w];
   }
 
+  /* ---------- h2. home first screen: visuals first (tools, play records), then a shortened intro ---------- */
+  if (isHome) {
+    const hero = document.querySelector('.circus-hero');
+    const tools = document.querySelector('#career .career-tools');
+    const archive = document.querySelector('.play-archive');
+    const intro = document.querySelector('.hero-heading .intro-copy');
+    if (hero && tools && archive && intro) {
+      const band = document.createElement('section');
+      band.className = 'cp-tools frame';
+      band.appendChild(tools);                       // moved, not copied
+      hero.after(band);
+      band.after(archive);                            // play records right after tools
+      const wrap = document.createElement('section');
+      wrap.className = 'cp-intro frame';
+      wrap.appendChild(intro);                        // moved
+      const more = document.createElement('button');
+      more.type = 'button'; more.className = 'cp-more'; more.textContent = '더 보기'; more.setAttribute('aria-expanded', 'false');
+      more.addEventListener('click', () => {
+        const open = wrap.classList.toggle('open');
+        more.textContent = open ? '접기' : '더 보기'; more.setAttribute('aria-expanded', String(open));
+      });
+      wrap.appendChild(more);
+      archive.after(wrap);
+      html.classList.add('cp-home2');
+    }
+  }
+
   /* ---------- c. sizes 1px apart → the more common one; near-identical grey text colours → the most used one ---------- */
   (() => {
     const els = [...document.querySelectorAll('main *, header *, footer *')].filter(el => !el.closest('svg') && el.childNodes.length && [...el.childNodes].some(n => n.nodeType === 3 && n.nodeValue.trim()));
@@ -67,9 +94,19 @@
   }
 
   /* ---------- b. large screens: same proportions as 1920 (zoom, capped at 1.4) ---------- */
+  // content column ≈ 68% of the window on every page; zoom limited to 0.75–1.2.
+  // Content width = the box width (≥ 900px, not full-bleed) that covers the most page height at zoom 1.
   const fit = () => {
-    const z = Math.min(1.4, Math.max(1, innerWidth / 1920));
-    document.body.style.zoom = z === 1 ? '' : String(z);
+    document.body.style.zoom = '';
+    const full = document.documentElement.clientWidth - 4, area = {};
+    for (const el of document.querySelectorAll('main *')) {
+      const r = el.getBoundingClientRect();
+      if (r.height > 40 && r.width >= 900 && r.width < full) { const k = Math.round(r.width); area[k] = (area[k] || 0) + r.height; }
+    }
+    const cw = +(Object.entries(area).sort((x, y) => y[1] - x[1])[0] || [0])[0];
+    if (!cw) return;
+    const z = Math.min(1.2, Math.max(.75, innerWidth * .68 / cw));
+    document.body.style.zoom = Math.abs(z - 1) < .01 ? '' : z.toFixed(3);
   };
   fit(); addEventListener('resize', fit);
 

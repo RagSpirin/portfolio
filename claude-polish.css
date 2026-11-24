@@ -137,3 +137,42 @@ html.cp-cc #case-cannon .two-col > :first-child {grid-column: span 1}
 html.cp-cc #case-cannon .two-col > :last-child {grid-column: span 2}
 html.cp-cc main .case-sidebar .shot figcaption b {font-size: 14px !important}
 html.cp-cc main :is(.region-buttons button, .compare-buttons button, .timeline time, .player button) {font-size: 14px !important}
+/* h1: slightly smaller chapter and cover titles */
+html.cp-cc :is(#case-tightrope, #case-cannon, #case-route > .shell) > .heading h2 {font-size: 64px}
+html.cp-cc .cover h1 {font-size: 96px !important}
+
+/* =====================================================================
+   h2. Home first screen (html.cp-home2): name → tools → play records → short intro → career …
+   ===================================================================== */
+html.cp-home2 .folio .circus-hero {padding-block: 40px 28px; align-items: center}
+html.cp-home2 .folio .circus-hero .hero-heading h1 {margin-bottom: 18px}
+/* tools band right under the name */
+html.cp-home2 .cp-tools {padding-block: 22px 26px; border-top: 1px solid #d7ddd6}
+html.cp-home2 .cp-tools .career-tools {display: grid; grid-template-columns: 170px 1fr; gap: 24px; align-items: start; margin: 0; padding: 0; border: 0}
+html.cp-home2 .cp-tools dt {font-size: 20px; font-weight: 700; color: #202823; padding-top: 4px}
+html.cp-home2 .cp-tools .career-tool-groups {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 28px; margin: 0}
+html.cp-home2 .cp-tools .career-tool-group h3 {font-size: 14px; margin: 0 0 8px; color: #52635b}
+html.cp-home2 .cp-tools .tool-marks {display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0; padding: 0}
+html.cp-home2 .cp-tools .tool-marks li {display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600}
+html.cp-home2 .cp-tools .tool-marks img {width: 28px; height: 28px; object-fit: contain}
+/* play records follow immediately */
+html.cp-home2 .folio .play-archive {padding-block: 28px 36px}
+/* intro: first lines visible, rest behind 더 보기 (text stays in the page) */
+html.cp-home2 .cp-intro {padding-block: 28px 36px; border-top: 1px solid #d7ddd6; position: relative}
+html.cp-home2 .cp-intro .intro-copy {max-width: 62em; max-height: 6.2em; overflow: hidden; font-size: 17px; line-height: 1.75; margin: 0}
+html.cp-home2 .cp-intro .intro-copy p {margin: 0 0 .8em}
+html.cp-home2 .cp-intro.open .intro-copy {max-height: none}
+html.cp-home2 .cp-intro .cp-more {margin-top: 10px; font: inherit; font-size: 14px; font-weight: 600; color: #145c4d; background: transparent; border: 0; padding: 4px 0; text-decoration: underline; text-underline-offset: 4px; cursor: pointer}
+/* tighten the hero so tools and play records reach the first screen */
+html.cp-home2 .folio .circus-hero {padding-block: 28px 18px; min-height: 0}
+html.cp-home2 .folio .profile-portrait {max-width: 230px !important; width: 230px !important}
+html.cp-home2 .folio .profile-portrait img {width: 100%; height: auto}
+html.cp-home2 .cp-tools .career-tool-group {border: 0 !important; padding: 0 !important; margin: 0 !important}
+html.cp-home2 .cp-tools .career-tool-groups {grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px 22px}
+html.cp-home2 .cp-tools .career-tools {grid-template-columns: 1fr; gap: 12px}
+html.cp-home2 .cp-tools .tool-marks {flex-direction: column; gap: 8px}
+html.cp-home2 .cp-tools .tool-marks img {width: 26px; height: 26px}
+html.cp-home2 .cp-tools .tool-marks li {font-size: 15px}
+/* hero: name column and portrait column closer, less empty height */
+html.cp-home2 .folio .circus-hero {padding-block: 20px 8px}
+html.cp-home2 .folio .circus-hero .hero-heading h1 {margin-bottom: 8px}
