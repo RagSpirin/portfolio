@@ -180,3 +180,6 @@ html.cp-home2 .folio .circus-hero .hero-heading h1 {margin-bottom: 8px}
 /* h3: home intro beside the photo — first paragraph only until 더 보기 */
 html.cp-home3 .folio .intro-copy:not(.cp-open) > p:not(:first-child) {display: none}
 html.cp-home3 .cp-more {margin-top: 6px; font: inherit; font-size: 14px; font-weight: 600; color: #145c4d; background: transparent; border: 0; padding: 4px 0; text-decoration: underline; text-underline-offset: 4px; cursor: pointer}
+
+/* h4: hide the print button on the resume home */
+.folio .section-top .print {display: none !important}
