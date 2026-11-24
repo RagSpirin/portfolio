@@ -1,7 +1,8 @@
 (() => {
   const editionNotes = {
     '포켓몬스터 시리즈 (GBA·DS)': 'GBA에서 플레이한 버전은 포켓몬스터 파이어레드로 추정',
-    '리듬 천국 (リズム天国)': '리듬 세상 시리즈의 첫 작품 · GBA'
+    '리듬 천국 (リズム天国)': '리듬 세상 시리즈의 첫 작품 · GBA',
+    '봄 잭 (Bomb Jack)': '아케이드 원작의 스테이지와 조작 규칙을 역기획'
   };
   const archive = {
     playstation: {
@@ -10,7 +11,7 @@
         PS5: [
           'Ratchet & Clank: Rift Apart', 'DEATH STRANDING 2: ON THE BEACH', 'Demon’s Souls',
           '스타워즈 제다이: 오더의 몰락', 'Stellar Blade', 'God of War Ragnarök (발할라 포함)', 'ASTRO’s PLAYROOM',
-          '바이오하자드 빌리지', 'Returnal'
+          '바이오하자드 빌리지', 'Returnal', 'Grand Theft Auto VI (GTA VI)'
         ],
         PS4: [
           'inFAMOUS Second Son', 'God of War III Remastered', 'Patapon Remastered', 'Invector',
@@ -44,12 +45,13 @@
         '스위치': [
           '젤다의 전설 브레스 오브 더 와일드', '젤다의 전설 티어스 오브 더 킹덤', '슈퍼 마리오 오디세이', '피크민 4'
         ],
-        '기타 콘솔': [
+        '그 밖의 고전 게임': [
           '역전재판', 'FINAL FANTASY III',
           '철권 시리즈', '진·삼국무쌍 시리즈', 'Rayman 3: Hoodlum Havoc', '괴혼 시리즈',
           'Michael Jackson’s Moonwalker', 'LEGO Star Wars 시리즈', 'Prince of Persia: The Sands of Time',
           '메탈슬러그 시리즈', 'LEGO Indiana Jones', 'Harry Potter 시리즈', 'SSX Tricky',
-          'Grand Theft Auto: Chinatown Wars', 'Crash Bandicoot', 'Star Wars: The Force Unleashed'
+          'Grand Theft Auto: Chinatown Wars', 'Crash Bandicoot', 'Star Wars: The Force Unleashed',
+          '봄 잭 (Bomb Jack)', '헤일로: 전쟁의 서막', '식물 vs. 좀비', '스타워즈 배틀프론트 II (2005)'
         ]
       }
     }
@@ -117,7 +119,8 @@
         titles.get(name).push(group);
       }
     }
-    button.closest('.device-summary').querySelector('[data-library-count]').textContent = titles.size;
+    const countBand = Math.floor(titles.size / 10) * 10;
+    button.closest('.device-summary').querySelector('[data-library-count]').textContent = countBand;
     button.hidden = false;
     button.addEventListener('click', () => {
       records = [...titles];

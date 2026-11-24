@@ -174,10 +174,28 @@
 .cinema-distribution {display:grid; gap:3px; height:7px;}
 .cinema-distribution > span {border-radius:2px; background:#844365;}
 .cinema-distribution > span:last-child {background:#b99558;}
-.cinema-favorites h4 {margin:0 0 6px; color:#70475c; font-size:.88rem; font-weight:650;}
-.cinema-favorites ul {display:flex; flex-wrap:wrap; gap:5px 0; list-style:none; margin:0; padding:0;}
-.cinema-favorites li {font-size:1rem; font-weight:600; line-height:1.4;}
-.cinema-favorites li:not(:last-child)::after {content:"·" / ""; margin:0 .55em; color:#ac8b9d;}
+.cinema-favorites {
+  grid-column: 1 / -1;
+  padding: clamp(20px,2.5vw,34px) clamp(16px,3.5vw,52px);
+  border-top: 1px solid #e2d3da;
+  background: #fcf9fa;
+}
+.cinema-favorites h4 {margin:0 0 clamp(14px,1.6vw,22px); color:#503345; font-size:clamp(1.05rem,1.4vw,1.28rem); line-height:1.45; letter-spacing:-.035em;}
+.cinema-favorites ul {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(10px,1.35vw,20px);
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.cinema-favorites a {display:block; color:inherit; text-decoration:none;}
+.cinema-favorites img {display:block; width:100%; height:auto; aspect-ratio:2/3; object-fit:contain; background:#262323; border-radius:3px; box-shadow:0 2px 6px #39243028;}
+.cinema-favorites strong {display:block; margin-top:8px; font-size:clamp(.87rem,1.1vw,1rem); line-height:1.45; word-break:keep-all;}
+.cinema-favorites a:is(:hover,:focus-visible) strong {text-decoration:underline; text-underline-offset:3px;}
+@media (max-width:520px) {
+  .cinema-favorites ul {grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px 14px;}
+}
 #watcha-profile-view {
   width:min(680px,91vw);
   max-height:90vh;

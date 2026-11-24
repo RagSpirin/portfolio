@@ -31,3 +31,109 @@ a:is(:hover, :focus-visible) span[aria-hidden="true"] {transform: translateX(4px
 :is(a, button, input, summary, [tabindex]):focus-visible {outline: 2px solid currentColor; outline-offset: 3px}
 
 @media print {.cp-toggle, .cp-view {display: none !important}}
+
+/* =====================================================================
+   Curtaincall page only (html.cp-cc). Denser layout, one grid, one type scale.
+   Grid: every row is repeat(3, 1fr) with the same gap; 2:1 rows span the first child over 2 columns,
+   so the right column starts on the same line everywhere.
+   ===================================================================== */
+html.cp-cc {--g: 32px; --ink: #352323; --sub: #695552; --acc: #9d382a; --band: #f2f0eb}
+/* fill the screen: content ~77% of the viewport */
+html.cp-cc .shell {width: min(1480px, calc(100% - 96px))}
+html.cp-cc .chapter {padding-block: 56px}
+html.cp-cc .route-section, html.cp-cc .test-section {background: var(--band) !important}
+
+/* type scale: 58 / 30 / 20 / 17 / 14 */
+html.cp-cc main h2 {font-size: 58px; line-height: 1.1}
+html.cp-cc main .final-test h2 {font-size: 30px !important; line-height: 1.25}
+html.cp-cc main h3, html.cp-cc main .section-line h3 {font-size: 20px !important; line-height: 1.4}
+html.cp-cc main h4 {font-size: 18px !important}
+html.cp-cc main :is(p, li, dd, td, th, .annotation) {font-size: 17px; line-height: 1.7; color: var(--ink)}
+html.cp-cc main :is(figcaption, figcaption span, figcaption b, small, .fine, caption, .kicker, dt, summary, .doc-link, .doc-thumb span, .scene-key li, .zone-panels p, .spatial-note, .eyebrow, thead th) {font-size: 14px !important; line-height: 1.55}
+html.cp-cc main :is(figcaption, figcaption span, small, .fine, dt, caption) {color: var(--sub) !important}
+html.cp-cc main .kicker {font-size: 15px !important; margin-bottom: 6px}
+html.cp-cc main .heading h2 .serif {font-size: .5em}
+html.cp-cc main figcaption b {color: var(--ink) !important; font-size: 15px !important}
+
+/* section heading: description sits under the title, one column */
+html.cp-cc .heading {display: block; margin-bottom: 28px}
+html.cp-cc .heading > p {max-width: 62em; margin-top: 12px; font-size: 18px !important; color: var(--ink)}
+/* overview / workflow: three bullets line up with the three pictures below */
+html.cp-cc .heading > ul.design-notes {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g); margin: 14px 0 0; padding: 0; list-style: none}
+html.cp-cc .heading > ul.design-notes li {margin: 0; padding-top: 10px; border-top: 1px solid var(--line); font-size: 17px}
+
+/* one grid for every two-up row */
+html.cp-cc :is(.sequence, .process, .archive-grid) {grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: var(--g) !important}
+html.cp-cc :is(.reel-grid, .case-feature, .two-col, .production-grid, .chase-review, .route-gallery, .two-col.test) {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: var(--g) !important; align-items: start}
+html.cp-cc :is(.reel-grid, .case-feature, .two-col, .production-grid, .chase-review, .route-gallery) > :first-child {grid-column: span 2}
+html.cp-cc .two-col.test > :first-child {grid-column: span 2}
+html.cp-cc .spatial-intent {grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: var(--g) !important}
+html.cp-cc .other-findings {grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: var(--g) !important}
+
+/* stage-wire and tightrope: text beside the picture fills its height (no tall empty block) */
+html.cp-cc .reel-grid {align-items: stretch}
+html.cp-cc .reel-grid > :last-child {display: flex; flex-direction: column; justify-content: center; gap: 14px}
+html.cp-cc .reel-grid .mechanic-steps {display: grid; gap: 18px; margin: 0}
+html.cp-cc .reel-grid .mechanic-steps b {font-size: 20px}
+html.cp-cc .reel-grid .mechanic-steps span {font-size: 17px !important}
+html.cp-cc .reel-grid .design-notes li + li {margin-top: 14px}
+html.cp-cc .reel-grid video, html.cp-cc .reel-grid img {width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover}
+
+/* cannon / route: sidebar photos fill the sidebar, stacked */
+html.cp-cc .case-sidebar .case-media {display: grid !important; grid-template-columns: 1fr !important; gap: 14px !important}
+html.cp-cc .case-sidebar .shot img {aspect-ratio: 16/9; height: auto}
+html.cp-cc .case-sidebar .shot figcaption b {font-size: 15px !important}
+html.cp-cc .case-sidebar .shot figcaption span {font-size: 14px !important}
+
+/* workflow: the 3:1 planning drawing is shown whole, centred on a dark mat like the screens */
+html.cp-cc .process figure:first-child img {object-fit: contain !important; background: #211710}
+/* route gallery: no white widget box; sits on the band with a rule */
+html.cp-cc .route-gallery {background: transparent !important; border: 0 !important}
+html.cp-cc .route-scenes {background: transparent !important; border: 0 !important; border-top: 2px solid var(--ink) !important; padding: 12px 0 0 !important}
+html.cp-cc .route-scenes .zone-img img {aspect-ratio: 16/9; object-fit: cover}
+
+/* team log: documents follow the timeline while scrolling */
+html.cp-cc .production-grid .documents {position: sticky; top: 24px}
+
+/* cover: title > role > contribution */
+html.cp-cc .cover {grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) !important; gap: var(--g) !important; padding-block: 36px 28px}
+html.cp-cc .cover-role {font-size: 20px !important; font-weight: 700 !important}
+html.cp-cc .cover-contribution {font-size: 18px !important; font-weight: 500 !important; line-height: 1.7 !important; color: var(--ink) !important}
+html.cp-cc .cover .deck {font-size: 16px !important}
+/* summary under the cover: four equal columns, readable size */
+html.cp-cc .profile dl {grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: var(--g) !important; padding-block: 18px}
+html.cp-cc .profile dt {font-size: 14px !important}
+html.cp-cc .profile dd {font-size: 16px !important; line-height: 1.55}
+
+/* build comparison: picks close to the title */
+html.cp-cc .milestones .heading {margin-bottom: 18px}
+html.cp-cc .milestones .mile-picks {margin-top: 0}
+/* act-m2 dots: brick accent (dark = counted, light = rest) instead of green */
+html.cp-cc .response-plots i {border-color: var(--acc) !important}
+html.cp-cc .response-plots i.on {background: var(--acc) !important}
+html.cp-cc .response-plots figure:first-child i.on {background: #c9877b !important; border-color: #c9877b !important}
+/* folds at the end of the route chapter: one rule each, no underline */
+html.cp-cc details.archive, html.cp-cc details.evidence-scope, html.cp-cc details.fold-exhibit {border-top: 0 !important; border-bottom: 1px solid var(--line) !important; margin: 0 !important}
+html.cp-cc details summary {text-decoration: none !important}
+html.cp-cc .final-test {border-bottom: 0 !important}
+/* curtaincall: big numbers that already exist on the page */
+html.cp-cc .chase-findings dd {font-size: 44px !important; line-height: 1; font-weight: 700}
+html.cp-cc .response-plots figcaption b {font-size: 28px !important; color: var(--acc) !important}
+
+/* ---------- C. chapters and key phrases (curtaincall) ---------- */
+html.cp-cc main h2 {font-size: 48px}
+html.cp-cc :is(#case-tightrope, #case-cannon, #case-route > .shell) {border-top: 2px solid var(--ink); margin-top: 24px}
+html.cp-cc #case-route {padding-top: 0}
+html.cp-cc :is(#case-tightrope, #case-cannon, #case-route > .shell) > .heading h2 {font-size: 72px; letter-spacing: -.06em}
+html.cp-cc :is(#case-tightrope, #case-cannon, #case-route > .shell) > .heading .kicker {color: var(--acc) !important; font-weight: 700}
+html.cp-cc mark.cp-key {background: none; color: inherit; font-weight: 700; text-decoration: underline; text-decoration-color: var(--acc); text-decoration-thickness: 2px; text-underline-offset: .22em}
+
+/* ---------- cc4: last size merges and the cannon tail ---------- */
+html.cp-cc main :is(.mile-picks button, .route-list button, .route-list button *, .switches button, .empty-shot, .concept-heading span) {font-size: 14px !important}
+html.cp-cc main :is(.profile dd, .profile dd a, .cover .deck) {font-size: 17px !important}
+html.cp-cc main h4 {font-size: 20px !important}
+html.cp-cc main figcaption b {font-size: 14px !important; font-weight: 700}
+html.cp-cc #case-cannon .two-col > :first-child {grid-column: span 1}
+html.cp-cc #case-cannon .two-col > :last-child {grid-column: span 2}
+html.cp-cc main .case-sidebar .shot figcaption b {font-size: 14px !important}
+html.cp-cc main :is(.region-buttons button, .compare-buttons button, .timeline time, .player button) {font-size: 14px !important}

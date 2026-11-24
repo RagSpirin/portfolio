@@ -1,3 +1,4 @@
+html { scrollbar-gutter: stable; }
 .resume-navigation,
 .resume-end {
   background: #fff;
@@ -12,29 +13,10 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px;
 }
-.resume-end .resume-navigation-inner { justify-content: flex-end; padding-block: 12px; }
-.resume-navigation .resume-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #192c25;
-  font-size: 17px;
-  font-weight: 750;
-  text-decoration: none;
-}
-.resume-brand i {
-  display: grid;
-  place-items: center;
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  background: #155f4f;
-  color: #fff;
-  font: italic bold 19px/1 Georgia, serif;
-}
+.resume-end .resume-navigation-inner { padding-block: 12px; }
 a.resume-back {
   display: inline-flex;
   align-items: center;
@@ -47,11 +29,11 @@ a.resume-back {
   padding: 8px 15px;
   background: #155f4f;
   color: #fff;
-  font: 700 16px/1.45 Pretendard, "Malgun Gothic", sans-serif;
+  font: 700 16px/1.45 var(--portfolio-font);
   letter-spacing: -.02em;
   white-space: nowrap;
   text-decoration: none;
 }
 a.resume-back:hover { background: #10483c; color: #fff; text-decoration: none; }
-a.resume-back:focus-visible, .resume-brand:focus-visible { outline: 3px solid #0a6556; outline-offset: 3px; }
+a.resume-back:focus-visible { outline: 3px solid #0a6556; outline-offset: 3px; }
 @media print { .resume-navigation, .resume-end { display: none; } }

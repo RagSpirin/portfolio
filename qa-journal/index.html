@@ -1,39 +1,75 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="주형락의 펄어비스 붉은사막 QA 근무 기록. 수첩에 적은 검수 과정과 날짜별 근무일지.">
   <title>펄어비스 QA 근무일지 · 주형락</title>
-  <link rel="stylesheet" href="journal.css">
+  <link rel="stylesheet" href="../typography.css"><link rel="stylesheet" href="journal.css">
   <script defer src="journal.js"></script>
 <link rel="stylesheet" href="../resume-navigation.css"><link rel="stylesheet" href="../claude-polish.css">
 </head>
 <body>
   <a class="skip" href="#main">본문 바로가기</a>
-  <header class="resume-navigation"><div class="resume-navigation-inner"><a class="resume-brand" href="../index.html"><i aria-hidden="true">J</i>주형락</a><a class="resume-back" href="../index.html#career"><span aria-hidden="true">←</span> 이력서로 돌아가기</a></div></header>
+  <header class="resume-navigation"><div class="resume-navigation-inner"><a class="resume-back" href="../index.html#career"><span aria-hidden="true">←</span> 이력서로 돌아가기</a></div></header>
   <main id="main" class="wrap">
     <header class="intro">
       <p><img src="pearlabyss.png" alt="">펄어비스 · 붉은사막 QA</p>
       <h1>QA 근무일지</h1>
       <p class="period"><time datetime="2025-10-28">2025.10.28</time> – <time datetime="2026-01-26">2026.01.26</time></p>
+      <p class="journal-purpose">게임을 제작하는 현장에서 배운 것을 제 것으로 만들어 게임 제작자로서 성장하고 싶었습니다. 그래서 QA 근무를 하며 챕터를 플레이하고 장면을 녹화한 일부터, 동료와 오류를 재현해 Jira에 보고한 과정까지 일지에 남겼습니다. Perforce로 게임 데이터를 살펴보고, 동료가 같은 오류를 확인할 수 있도록 재현 절차를 함께 다듬으며 개발팀이 일하는 방식을 익혔습니다.</p>
     </header>
     <div class="evidence">
       <figure>
-        <figcaption class="index-heading"><h2 id="index-title">노션 근무일지</h2><span>날짜별 기록 53편</span></figcaption>
-        <div class="capture" tabindex="0" role="region" aria-labelledby="index-title" aria-describedby="index-help">
-          <img src="notion-index-full.png" width="494" height="1681" alt="펄어비스 QA 알바 근무일지의 전체 날짜 목록. 2025년 10월 28일 첫 기록부터 2026년 1월 26일 마지막 기록까지 53편.">
+        <figcaption class="index-heading"><h2 id="index-title">노션 근무일지</h2><span>전체 53편 중 첫 19편</span></figcaption>
+        <div class="capture">
+          <img src="notion-index-nov21.png" width="494" height="650" alt="2025년 10월 28일 근무 1일차부터 11월 21일 근무 19일차까지의 노션 근무일지 목록">
         </div>
-        <div class="index-controls"><span id="index-help">스크롤해서 전체 목록 보기</span><a href="notion-index-full.png" target="_blank" rel="noopener">원본 크기로 보기 ↗</a></div>
       </figure>
       <section class="lessons" aria-labelledby="lessons-title">
         <h2 id="lessons-title">일지로 보는 업무의 변화</h2>
         <ol>
-          <li><time datetime="2025-11-04">2025.11.04</time><h3>캐릭터가 펀치 한 번을 날리는 데 필요한 일</h3><p>챕터를 플레이하고 녹화하던 날, 캐릭터가 주먹을 뻗는 동작 하나를 예로 들어 설명을 들었습니다. 모션 캡처와 물리 처리부터 맞는 순간의 효과음, 상대의 피격 동작과 흙먼지까지 한 장면 안에서 맞아야 한다는 걸 배웠습니다.</p></li>
-          <li><time datetime="2025-11-14">2025.11.14</time><h3>오늘 보이지 않은 오류도 다시 확인하기</h3><p>이미 보고된 오류가 제 플레이에서는 나타나지 않았습니다. 간헐적으로 발생하는 문제일 수 있다는 설명을 듣고, 다음 검수 때 다시 확인할 항목으로 적어 뒀습니다.</p></li>
-          <li><time datetime="2025-12-17">2025.12.17</time> – <time datetime="2025-12-18">12.18</time><h3>퀘스트 이슈를 직접 등록하고 재현 절차 줄이기</h3><p>Jira 작성법을 배운 뒤 캠프 퀘스트 이슈 등록을 맡았습니다. 다음 날에는 화면에서 아이콘이 사라지지 않는 현상을 여러 번 재현했습니다. 담당자와 함께 불필요한 조작을 걷어 내고, 같은 현상이 나타나는 짧은 절차로 다시 확인해 Jira에 올렸습니다.</p></li>
-          <li><time datetime="2025-12-22">2025.12.22</time><h3>낚시 버그를 재현하고 게임 데이터 살펴보기</h3><p>낚시 중 발생한 버그를 다시 재현하고 Jira에 보고할 내용을 정리했습니다. 이날은 Perforce와 XML을 이용해 게임에서 제외된 콘텐츠의 데이터를 확인하는 방법도 배웠습니다.</p></li>
-          <li><time datetime="2026-01-08">2026.01.08</time> · <time datetime="2026-01-15">01.15</time><h3>아이템 점검과 시퀀스 더빙 검수</h3><p>1월 8일에는 별도로 요청받은 아이템 점검을 시작했습니다. 15일에는 시퀀스의 더빙을 확인할 수 있도록 해당 장면을 녹화했습니다. 초반에 익힌 챕터 녹화를 개별 콘텐츠와 음성 검수에도 활용했습니다.</p></li>
+          <li>
+            <time datetime="2025-11-04">2025.11.04</time>
+            <h3>캐릭터가 펀치 한 번을 날리는 데 필요한 일</h3>
+            <ul>
+              <li>챕터를 플레이하고 녹화하면서, 주먹을 뻗는 동작에 모션 캡처와 물리 처리가 어떻게 쓰이는지 들었습니다.</li>
+              <li>주먹이 닿는 순간에 효과음과 상대의 피격 동작, 흙먼지가 함께 맞아야 타격이 자연스럽게 보인다는 걸 배웠습니다.</li>
+            </ul>
+          </li>
+          <li>
+            <time datetime="2025-11-14">2025.11.14</time>
+            <h3>오늘 보이지 않은 오류도 다시 확인하기</h3>
+            <ul>
+              <li>이미 보고된 오류가 제 플레이에서는 나타나지 않았습니다.</li>
+              <li>간헐적으로 발생할 수 있다는 설명을 듣고, 다음 검수 때 다시 확인할 항목으로 적어 뒀습니다.</li>
+            </ul>
+          </li>
+          <li>
+            <time datetime="2025-12-17">2025.12.17</time> – <time datetime="2025-12-18">12.18</time>
+            <h3>퀘스트 이슈를 직접 등록하고 재현 절차 줄이기</h3>
+            <ul>
+              <li>Jira에 오류를 기록하는 법을 배운 뒤, 검수 중 발견한 이슈를 직접 등록했습니다.</li>
+              <li>같은 조건에서 오류가 반복되는지 여러 차례 확인했습니다.</li>
+              <li>담당자와 함께 불필요한 조작을 하나씩 빼 보고, 같은 현상을 재현할 수 있는 짧은 절차를 Jira에 올렸습니다.</li>
+            </ul>
+          </li>
+          <li>
+            <time datetime="2025-12-22">2025.12.22</time>
+            <h3>버그를 재현하고 게임 데이터 살펴보기</h3>
+            <ul>
+              <li>플레이 중 발견한 버그를 재현하고 Jira에 보고할 내용을 정리했습니다.</li>
+              <li>Perforce에서 게임 데이터를 찾아 XML 파일의 내용을 확인하는 법을 배웠습니다.</li>
+            </ul>
+          </li>
+          <li>
+            <time datetime="2026-01-08">2026.01.08</time> · <time datetime="2026-01-15">01.15</time>
+            <h3>아이템 점검과 시퀀스 더빙 검수</h3>
+            <ul>
+              <li>1월 8일에는 별도로 요청받은 아이템 점검을 시작했습니다.</li>
+              <li>15일에는 시퀀스의 더빙을 확인할 수 있도록 해당 장면을 녹화했습니다. 초반에 익힌 챕터 녹화 방식을 음성 검수에도 활용했습니다.</li>
+            </ul>
+          </li>
         </ol>
       </section>
     </div>
@@ -42,16 +78,16 @@
         <img class="notebook-cover" src="notes/welcome-kit.webp" alt="파란 글씨로 Into the Abyss가 적힌 펄어비스 웰컴 키트 노트 표지" width="152" height="152">
         <div>
           <h2 id="notebook-title">수기 근무일지</h2>
-          <p>게임을 만드는 현장에서 하나라도 더 배우고 싶어 펄어비스 웰컴 키트로 받은 노트를 근무일지로 썼습니다. 버그가 나기 직전에 했던 조작과 다음 검수 때 다시 확인할 조건을 적었습니다. LOD처럼 낯선 용어는 나중에 다시 읽어도 이해할 수 있게 제 말로 풀어 썼습니다.</p>
+          <p>펄어비스 웰컴 키트로 받은 노트에 일하면서 배운 용어와 새로 익힌 검수 방법을 그때그때 적었습니다. 그렇게 근무 기간 동안 손으로 채운 분량이 최소 100페이지입니다.</p>
           <details>
-            <summary>노트 속 기록 일부 보기</summary>
+            <summary aria-labelledby="notebook-toggle" aria-describedby="notebook-privacy"><span id="notebook-toggle">노트 속 기록</span><small id="notebook-privacy">보안 서약에 따라 민감한 업무 정보는 검은색으로 가렸습니다.</small></summary>
             <ul class="note-gallery">
-              <li><span>업무 준비와 진행 오류</span></li>
-              <li><span>퀘스트 재현과 재검증</span></li>
-              <li><span>LOD와 인게임 표시 점검</span></li>
-              <li><span>Jira 이슈 등록과 확인</span></li>
-              <li><span>Perforce와 퀘스트 점검</span></li>
-              <li><span>챕터 검수와 녹화 기록</span></li>
+              <li><a href="notes/01.webp?v=privacy-9" aria-haspopup="dialog"><img src="notes/thumb-01.webp?v=privacy-9" width="480" height="360" alt="" loading="lazy"><span>업무 준비와 진행 오류</span></a></li>
+              <li><a href="notes/02.webp?v=privacy-7" aria-haspopup="dialog"><img src="notes/thumb-02.webp?v=privacy-7" width="480" height="360" alt="" loading="lazy"><span>퀘스트 재현과 재검증</span></a></li>
+              <li><a href="notes/03.webp?v=privacy-7" aria-haspopup="dialog"><img src="notes/thumb-03.webp?v=privacy-7" width="480" height="360" alt="" loading="lazy"><span>LOD와 인게임 표시 점검</span></a></li>
+              <li><a href="notes/04.webp?v=privacy-7" aria-haspopup="dialog"><img src="notes/thumb-04.webp?v=privacy-7" width="480" height="360" alt="" loading="lazy"><span>Jira 이슈 등록과 확인</span></a></li>
+              <li><a href="notes/05.webp?v=privacy-7" aria-haspopup="dialog"><img src="notes/thumb-05.webp?v=privacy-7" width="480" height="360" alt="" loading="lazy"><span>Perforce와 퀘스트 점검</span></a></li>
+              <li><a href="notes/06.webp?v=privacy-7" aria-haspopup="dialog"><img src="notes/thumb-06.webp?v=privacy-7" width="480" height="360" alt="" loading="lazy"><span>챕터 검수와 녹화 기록</span></a></li>
             </ul>
           </details>
         </div>

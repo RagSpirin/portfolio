@@ -3,6 +3,7 @@
 (() => {
   const html = document.documentElement;
   const isHome = !!document.querySelector('body.folio .circus-hero');
+  if (/\/curtaincall\//.test(location.pathname)) html.classList.add('cp-cc');
   const EASE = 'cubic-bezier(.2,.8,.2,1)';
   let off = false;
   try { off = localStorage.getItem('cp-motion') === 'off'; } catch {}
@@ -46,6 +47,25 @@
     html.dataset.cpMerged = Object.keys(colMap).length + ' colours';
   })();
 
+  /* ---------- C. curtaincall key phrases: wrap existing words only (text unchanged) ---------- */
+  if (html.classList.contains('cp-cc')) {
+    const keys = [
+      ['.cover-contribution', '탈출로 전 구간 단독 설계'],
+      ['#case-tightrope .heading > p', '목마 규칙을 직접 설계'],
+      ['#case-cannon .heading > p', '협동 규칙을 재설계하고 구현'],
+      ['#case-route .heading > p', '탈출로 A 전 구간 단독 설계'],
+    ];
+    for (const [sel, phrase] of keys) {
+      const el = document.querySelector(sel); if (!el) continue;
+      const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let n;
+      while ((n = w.nextNode())) {
+        const i = n.nodeValue.indexOf(phrase); if (i < 0) continue;
+        const r = document.createRange(); r.setStart(n, i); r.setEnd(n, i + phrase.length);
+        const m = document.createElement('mark'); m.className = 'cp-key'; r.surroundContents(m); break;
+      }
+    }
+  }
+
   /* ---------- b. large screens: same proportions as 1920 (zoom, capped at 1.4) ---------- */
   const fit = () => {
     const z = Math.min(1.4, Math.max(1, innerWidth / 1920));
@@ -64,7 +84,7 @@
   });
 
   /* ---------- d. home: click an image or video to view it large (Esc / outside click closes) ---------- */
-  if (isHome) {
+  if (isHome || html.classList.contains('cp-cc')) {
     const box = document.createElement('div');
     box.className = 'cp-view'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.hidden = true;
     document.body.appendChild(box);
@@ -75,7 +95,7 @@
     };
     box.addEventListener('click', e => { if (e.target === box) close(); });
     addEventListener('keydown', e => { if (e.key === 'Escape' && !box.hidden) close(); });
-    document.querySelectorAll('main .resume-project figure img, main .steam-scene img').forEach(img => {
+    if (isHome) document.querySelectorAll('main .resume-project figure img, main .steam-scene img').forEach(img => {
       img.classList.add('cp-zoomable');
       img.addEventListener('click', () => { const c = new Image(); c.src = img.currentSrc || img.src; c.alt = img.alt; open(c); });
     });

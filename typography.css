@@ -1,0 +1,16 @@
+@font-face {
+  font-family: Pretendard;
+  src: url("curtaincall/assets/fonts/PretendardVariable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --portfolio-font: Pretendard, "Malgun Gothic", sans-serif;
+  font-family: var(--portfolio-font);
+}
+
+button, input, select, textarea, option, dialog {
+  font-family: inherit;
+}

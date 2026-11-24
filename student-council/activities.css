@@ -37,18 +37,29 @@
 .hall img,.retreat-photos img,.event-grid img,.map {border-radius:5px}
 .council-page figcaption {font-size:15px;color:#45554c;line-height:1.55}
 .council-page figcaption b {color:var(--ink);margin-right:6px}
-.hall figcaption,.retreat-photos figcaption {padding:9px 0}
-.preparation,.on-site,.other-events,.reflection {margin-top:clamp(32px,4.7vw,70px)}
+.preparation,.cue-sheet,.on-site,.other-events,.reflection {margin-top:clamp(32px,4.7vw,70px)}
 .preparation {display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,4vw,68px);align-items:center}
-.preparation p {margin:12px 0 0;color:#34463b}
+.preparation ul {margin:14px 0 0;padding-left:1.25em;color:#34463b}
+.preparation li+li {margin-top:6px}
+.preparation li::marker {color:var(--accent)}
 .map {padding:14px;background:white;border:1px solid var(--line)}
 .map figcaption {margin-top:8px;font-size:14px}
-.days {margin:18px 0 24px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(15px,2.4vw,36px)}
-.days li {border-top:1px solid #7d9487;padding-top:12px}
-.days time {font-variant-numeric:tabular-nums;color:var(--accent);font-size:15px;font-weight:700}
-.days h4 {font-size:20px;margin:6px 0}.days p,.event-grid p {color:#435249}
-.retreat-photos figure {display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(14px,3vw,40px);align-items:center}
-.retreat-photos figcaption {max-width:34ch}
+.cue-sheet {border-top:2px solid var(--accent);padding-top:clamp(20px,3vw,36px)}
+.cue-sheet .cue-intro,.on-site>p {max-width:74ch;margin:12px 0 22px;color:#34463b;line-height:1.75}
+.cue-preview {position:relative;margin:clamp(24px,3vw,40px) 0 0}
+.cue-preview img {border:1px solid var(--line);background:#fff}
+.cue-preview figcaption {display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:6px 12px;padding-top:8px}
+.cue-preview a {color:var(--accent);font-weight:650;text-decoration:underline;text-underline-offset:.2em}
+.cue-preview a::after {content:"";position:absolute;inset:0;cursor:zoom-in}
+.cue-preview:focus-within {outline:3px solid var(--accent);outline-offset:4px}
+.cue-decisions {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.7vw,40px);margin:clamp(20px,3vw,36px) 0 0}
+.cue-decisions div {border-top:1px solid var(--line);padding-top:12px}
+.cue-decisions dt {font-size:clamp(17px,1.5vw,21px);font-weight:700;line-height:1.45}
+.cue-decisions dd {margin:7px 0 0;color:#34463b;line-height:1.65}
+@media(max-width:800px){.cue-decisions {grid-template-columns:minmax(0,1fr);gap:16px}.cue-decisions dd {margin-top:4px}}
+.event-grid p {color:#435249}
+.retreat-photos figure {width:min(100%,720px);margin-inline:auto}
+.retreat-photos figcaption {padding:9px 0;text-align:center}
 .council-page .retreat-photos img {height:auto}
 .other-events h2 {padding-top:22px;border-top:1px solid var(--line)}
 .event-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,28px);margin-top:20px}
@@ -60,9 +71,9 @@
 .reflection h3 {font-size:22px;margin:22px 0 8px}
 .leadership-lessons h3:first-child {margin-top:0}
 .leadership-lessons p {line-height:1.75}
-@media(max-width:900px){.event-grid {grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px}.days {grid-template-columns:1fr;gap:10px}.days li {display:grid;grid-template-columns:65px 1fr;gap:14px}.days h4 {margin:0 0 4px}}
-@media(max-width:660px){.retreat-head {display:block}.facts {text-align:left;margin-top:10px;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px}.preparation,.reflection-inner {grid-template-columns:1fr}.retreat-photos figure {display:block}.retreat-photos figcaption {max-width:none}.event-grid {gap:20px 15px}.event-grid figcaption {font-size:15px}}
-@media(max-width:450px){.event-grid {grid-template-columns:1fr}.event-grid figure {display:grid;grid-template-columns:minmax(0,.74fr) minmax(0,1fr);align-items:start;gap:13px}.event-grid img {aspect-ratio:1}.event-grid h3 {margin-top:0}.days li {grid-template-columns:50px 1fr;gap:7px}}
+@media(max-width:900px){.event-grid {grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px}}
+@media(max-width:660px){.retreat-head {display:block}.facts {text-align:left;margin-top:10px;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px}.preparation,.reflection-inner {grid-template-columns:1fr}.event-grid {gap:20px 15px}.event-grid figcaption {font-size:15px}}
+@media(max-width:450px){.event-grid {grid-template-columns:1fr}.event-grid figure {display:grid;grid-template-columns:minmax(0,.74fr) minmax(0,1fr);align-items:start;gap:13px}.event-grid img {aspect-ratio:1}.event-grid h3 {margin-top:0}}
 
 
 .council-page .reflection {background:#e6eee8;color:#182c21}

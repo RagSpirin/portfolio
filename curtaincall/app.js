@@ -35,16 +35,33 @@ updateComparison();
 const lightbox = document.querySelector("#lightbox");
 const fullImage = lightbox.querySelector("img");
 const caption = document.querySelector("#light-title");
+const original = document.querySelector("#original");
+const zoom = document.querySelector("#capture-zoom");
+const imagePane = lightbox.querySelector(".light-image");
+
+function setCaptureZoom(enlarged) {
+  lightbox.classList.toggle("capture-enlarged", enlarged);
+  zoom.setAttribute("aria-pressed", String(enlarged));
+  zoom.textContent = enlarged ? "화면에 맞추기" : "글자 확대";
+  imagePane.scrollTo(0, 0);
+}
+
 document.querySelectorAll("[data-expand]").forEach(link => link.addEventListener("click", event => {
-  if (!lightbox.showModal || event.ctrlKey || event.metaKey || event.shiftKey) return;
+  if (!lightbox.showModal || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
-  const image = link.querySelector("img");
-  caption.textContent = image.alt;
+  const isCapture = link.classList.contains("doc-link");
+  const title = isCapture ? link.textContent.trim() : link.querySelector("img").alt;
+  caption.textContent = title;
   fullImage.src = link.href;
-  fullImage.alt = image.alt;
-  document.querySelector("#original").href = link.href;
+  fullImage.alt = link.dataset.description || title;
+  original.href = link.href;
+  original.hidden = isCapture;
+  zoom.hidden = !isCapture;
+  lightbox.classList.toggle("capture-view", isCapture);
+  setCaptureZoom(false);
   lightbox.showModal();
 }));
+zoom.addEventListener("click", () => setCaptureZoom(!lightbox.classList.contains("capture-enlarged")));
 document.querySelector("#close-light").addEventListener("click", () => lightbox.close());
 lightbox.addEventListener("click", event => {
   const rect = lightbox.getBoundingClientRect();
