@@ -1,0 +1,87 @@
+.council-page {--ink:#202923;--line:#ccd6cf;--accent:#15594d;background:#fafaf6;color:var(--ink)}
+.council-page .frame {max-width:1310px}
+.council-page main {font-size:16px;line-height:1.62}
+.council-page main img {display:block;width:100%;height:auto}
+.council-page h1,.council-page h2,.council-page h3,.council-page h4 {letter-spacing:-.055em;line-height:1.18}
+.council-page h1 {font-size:clamp(38px,5.2vw,76px);margin:10px 0 16px}
+.council-page h2 {font-size:clamp(30px,3.4vw,50px);margin:0}
+.council-page h3 {font-size:clamp(23px,2.1vw,31px);margin:0}
+.council-page .term {margin:0;color:var(--accent);font-size:15px;font-weight:650}
+.summary {
+ display:grid;
+ grid-template-columns:minmax(0,1fr) clamp(205px,28vw,350px);
+ grid-template-areas:"heading portrait" "award portrait";
+ align-items:start;
+ column-gap:clamp(24px,5vw,72px);
+ row-gap:20px;
+ padding-block:clamp(32px,4vw,64px);
+}
+.summary-heading {grid-area:heading;align-self:end}
+.council-page .summary h1 {font-size:clamp(36px,4.65vw,65px)}
+.summary .role-summary {max-width:54ch;font-size:clamp(16px,1.5vw,20px);color:#293a30}
+.leader-portrait {grid-area:portrait;align-self:center;margin:0}
+.council-page .leader-portrait img {width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:5px}
+.award {grid-area:award;position:relative;width:min(100%,clamp(300px,31vw,385px))}
+.award img {box-shadow:0 2px 10px #20292322}
+.award figcaption {display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:1px 12px;padding-top:7px}
+.award figcaption strong {color:var(--ink)}
+.award figcaption span {display:flex;align-items:baseline;gap:10px;font-size:13px}
+.award time {font-variant-numeric:tabular-nums}
+.award a {color:var(--accent);font-weight:650;text-decoration:underline;text-underline-offset:.2em}
+.award a::after {content:"";position:absolute;inset:0;cursor:zoom-in}
+.award:focus-within {outline:3px solid var(--accent);outline-offset:4px}
+.retreat-head {display:flex;justify-content:space-between;align-items:end;gap:16px;border-top:2px solid var(--accent);padding:clamp(20px,3vw,38px) 0 18px}
+.retreat-head h2 {margin:3px 0 0}
+.facts {display:grid;gap:2px;text-align:right;color:var(--accent)}
+.facts strong {font-size:clamp(17px,1.7vw,24px)}.facts time {font-size:14px;color:#4c5c53}
+.hall img,.retreat-photos img,.event-grid img,.map {border-radius:5px}
+.council-page figcaption {font-size:15px;color:#45554c;line-height:1.55}
+.council-page figcaption b {color:var(--ink);margin-right:6px}
+.hall figcaption,.retreat-photos figcaption {padding:9px 0}
+.preparation,.on-site,.other-events,.reflection {margin-top:clamp(32px,4.7vw,70px)}
+.preparation {display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,4vw,68px);align-items:center}
+.preparation p {margin:12px 0 0;color:#34463b}
+.map {padding:14px;background:white;border:1px solid var(--line)}
+.map figcaption {margin-top:8px;font-size:14px}
+.days {margin:18px 0 24px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(15px,2.4vw,36px)}
+.days li {border-top:1px solid #7d9487;padding-top:12px}
+.days time {font-variant-numeric:tabular-nums;color:var(--accent);font-size:15px;font-weight:700}
+.days h4 {font-size:20px;margin:6px 0}.days p,.event-grid p {color:#435249}
+.retreat-photos figure {display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(14px,3vw,40px);align-items:center}
+.retreat-photos figcaption {max-width:34ch}
+.council-page .retreat-photos img {height:auto}
+.other-events h2 {padding-top:22px;border-top:1px solid var(--line)}
+.event-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,28px);margin-top:20px}
+.event-grid img {aspect-ratio:4/3;object-fit:cover}.event-grid .santa-photo {object-position:50% 29%}
+.event-grid h3 {font-size:clamp(18px,1.7vw,24px);margin:11px 0 6px}
+.reflection {background:#e7eee8;color:#1e3429;padding-block:clamp(32px,4.7vw,70px)}
+.reflection-inner {display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,5vw,80px)}
+.reflection h2 {font-size:clamp(28px,3vw,44px)}
+.reflection h3 {font-size:22px;margin:22px 0 8px}
+.leadership-lessons h3:first-child {margin-top:0}
+.leadership-lessons p {line-height:1.75}
+@media(max-width:900px){.event-grid {grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px}.days {grid-template-columns:1fr;gap:10px}.days li {display:grid;grid-template-columns:65px 1fr;gap:14px}.days h4 {margin:0 0 4px}}
+@media(max-width:660px){.retreat-head {display:block}.facts {text-align:left;margin-top:10px;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px}.preparation,.reflection-inner {grid-template-columns:1fr}.retreat-photos figure {display:block}.retreat-photos figcaption {max-width:none}.event-grid {gap:20px 15px}.event-grid figcaption {font-size:15px}}
+@media(max-width:450px){.event-grid {grid-template-columns:1fr}.event-grid figure {display:grid;grid-template-columns:minmax(0,.74fr) minmax(0,1fr);align-items:start;gap:13px}.event-grid img {aspect-ratio:1}.event-grid h3 {margin-top:0}.days li {grid-template-columns:50px 1fr;gap:7px}}
+
+
+.council-page .reflection {background:#e6eee8;color:#182c21}
+.council-page .reflection :is(h2,h3) {color:#17281f}
+.council-page .reflection p {color:#273a2f}
+.council-page footer {background:#19241e;color:#fff}
+.council-page footer a {color:#fff;text-decoration:underline;text-underline-offset:.24em;text-decoration-color:#9fb6a7}
+.council-page footer a:focus-visible {outline:2px solid #fff;outline-offset:4px}
+@media(max-width:820px) {
+ .council-page .summary h1 {font-size:clamp(32px,6vw,46px);margin:6px 0 12px}
+ .summary-heading .term {font-size:14px}
+}
+@media(max-width:660px) {
+ .summary {grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);grid-template-areas:"heading heading" "award portrait";gap:20px 16px}
+ .leader-portrait {align-self:start}
+}
+@media(max-width:450px) {
+ .summary {grid-template-columns:minmax(0,1fr);grid-template-areas:"heading" "award" "portrait"}
+ .summary .award {width:100%}
+ .leader-portrait {width:min(100%,260px)}
+}
+

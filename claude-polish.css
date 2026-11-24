@@ -1,0 +1,33 @@
+/* Claude polish layer — loaded last on every page. Only refines what is already there; no new colours, fonts or decoration. */
+
+/* ---------- a. motion the Codex CSS hides behind prefers-reduced-motion: no-preference ---------- */
+html[data-cp-motion=on] .curtains {display: flex}
+html[data-cp-motion=on] .curtains i {animation: opening .84s cubic-bezier(.64, 0, .25, 1) both !important}
+html[data-cp-motion=on] .response-plots.motion-in i.on {animation: plot-rise .4s both !important; animation-delay: calc(var(--i) * 35ms) !important}
+@keyframes opening {from {transform: scaleX(1)} to {transform: scaleX(0)}}
+@keyframes plot-rise {from {opacity: .4; transform: scale(.55)} to {opacity: 1; transform: scale(1)}}
+html[data-cp-motion=on] .folio .featured-project img {transition: transform .45s ease-out}
+/* the polish entry motion replaces the Codex arrival animation so the two never run together */
+html.cp-on .scene-arrival {animation: none !important}
+
+/* toggle: small text, page colours */
+.cp-toggle {position: fixed; right: 14px; bottom: 12px; z-index: 60; font-family: inherit; font-size: 12px; font-weight: 500; line-height: 1; color: inherit; background: transparent; border: 0; padding: 6px 4px; opacity: .55; cursor: pointer; text-decoration: underline; text-underline-offset: 3px}
+.cp-toggle:hover, .cp-toggle:focus-visible {opacity: 1}
+
+/* ---------- d. home: larger game video (text left, video right kept) ---------- */
+.folio .resume-project {grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr)}
+.folio .resume-project .scene-preview video, .folio .resume-project .scene-film {width: 100%; height: auto}
+.cp-zoomable {cursor: zoom-in}
+.cp-view {position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 3vw; background: rgb(17 17 17 / .9); cursor: zoom-out}
+.cp-view[hidden] {display: none}
+.cp-view img, .cp-view video {max-width: 100%; max-height: 100%; width: auto; height: auto; cursor: default; display: block}
+html.cp-lock {overflow: hidden}
+
+/* ---------- h. hover and focus (within the original colours) ---------- */
+a span[aria-hidden="true"] {display: inline-block; transition: transform .2s ease-out}
+a:is(:hover, :focus-visible) span[aria-hidden="true"] {transform: translateX(4px)}
+:is(.clip-choice button, button:not(.cp-toggle), .spec-link, .career-link, .journal-link, .career-more) {transition: filter .15s ease-out}
+:is(.clip-choice button, button:not(.cp-toggle), .spec-link, .career-link, .journal-link, .career-more):hover {filter: brightness(.94)}
+:is(a, button, input, summary, [tabindex]):focus-visible {outline: 2px solid currentColor; outline-offset: 3px}
+
+@media print {.cp-toggle, .cp-view {display: none !important}}

@@ -1,0 +1,1 @@
+document.querySelectorAll('.print').forEach(button=>button.addEventListener('click',()=>window.print()));

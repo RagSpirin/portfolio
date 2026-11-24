@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NHN Game x AI 해커톤 공모전 (DOLL EYE PINBALL) · 주형락</title>
+  <meta name="description" content="주형락이 참여한 3인 팀의 핀볼 로그라이트. 수리부품의 발동 규칙, 첫 웨이브에서 바꾼 브로치 설계, 제출일 플레이 피드백을 소개합니다.">
+  <link rel="stylesheet" href="../resume.css">
+  <link rel="stylesheet" href="../projects.css">
+  <link rel="stylesheet" href="../portfolio-color.css">
+  <link rel="stylesheet" href="../portfolio-finish.css">
+  <link rel="stylesheet" href="pinball.css">
+  <script defer src="brooch.js"></script>
+<link rel="stylesheet" href="../resume-navigation.css"><link rel="stylesheet" href="../claude-polish.css">
+</head>
+<body class="pin-page">
+<a class="skip" href="#main">본문으로 이동</a>
+<header class="resume-navigation"><div class="resume-navigation-inner"><a class="resume-brand" href="../index.html"><i aria-hidden="true">J</i>주형락</a><a class="resume-back" href="../index.html#project-pinball"><span aria-hidden="true">←</span> 이력서로 돌아가기</a></div></header>
+<main id="main">
+  <section class="pin-cover"><div class="frame pin-cover-layout"><div class="pin-cover-copy">
+    <p class="label">NHN Game x AI 해커톤 공모전</p>
+    <h1>DOLL EYE<br><em>PINBALL</em></h1>
+    <p>인형의 유리눈을 공처럼 튕겨 저주받은 장난감을 수리하는 핀볼 로그라이트입니다. 저는 공을 살리는 사이에도 다음에 노릴 곳을 고를 수 있도록, 보드에 끼우는 수리부품과 웨이브별 배치를 설계했습니다.</p>
+    <div class="pin-meta"><span>3인 팀 · PM / 시스템·레벨 기획</span><span>2026.07.14 — 08.10</span><span>Godot · 웹 빌드 제출</span></div>
+    </div>
+    <figure class="pin-cover-film">
+      <video controls playsinline preload="metadata" width="1280" height="720" poster="wave-one.webp" aria-label="일반 웨이브 두 곳과 곰 인형 보스전의 플레이 영상">
+        <source src="gameplay.mp4" type="video/mp4">
+        <a href="gameplay.mp4">게임플레이 영상 열기</a>
+      </video>
+      <figcaption><strong>게임플레이 · 13초 무음</strong><span>첫 웨이브 · 세 번째 웨이브 · 곰 인형 보스전</span></figcaption>
+    </figure>
+  </div></section>
+
+  <nav class="pin-contents frame" aria-label="핀볼 프로젝트 목차">
+    <a href="#overview">플레이 흐름</a><a href="#boards">웨이브와 보스</a><a href="#parts">수리부품</a><a href="#brooch">브로치 설계</a><a href="#production">제작 기록</a>
+  </nav>
+
+  <section class="pin-gallery frame" id="overview" aria-labelledby="overview-title">
+    <div class="pin-gallery-heading">
+      <h2 id="overview-title">한 판의 흐름</h2>
+      <p>핀볼판에 부품을 직접 놓고, 공이 어디로 튈지 예상하며 플리퍼를 고릅니다. 일반 웨이브 세 번을 거쳐 마지막에는 곰 인형을 수리합니다.</p>
+    </div>
+    <div class="pin-loop-photos">
+      <figure>
+        <a href="place-brooch.webp" target="_blank" rel="noopener" aria-label="부품 배치 화면 크게 보기"><img src="place-brooch.webp" width="1280" height="720" loading="lazy" alt="보드 위쪽의 소켓에 별빛 브로치를 끼운 모습과 아래쪽 수리부품 보관함"></a>
+        <figcaption><strong>부품을 놓을 자리 고르기</strong><p>빈 소켓을 골라 브로치를 장착합니다. 단추 근처에 놓을지, 플리퍼에서 바로 노리기 좋은 곳에 놓을지 직접 정합니다.</p></figcaption>
+      </figure>
+      <figure>
+        <a href="ball-selection.webp" target="_blank" rel="noopener" aria-label="공 선택 화면 크게 보기"><img src="ball-selection.webp" width="1280" height="720" loading="lazy" alt="젤 공·보통 공·무거운 공을 고르는 화면에 표시된 무게와 탄성"></a>
+        <figcaption><strong>공을 골라 범퍼 맞히기</strong><p>공마다 무게와 탄성이 다릅니다. 발사 후에는 보드 가장자리의 플리퍼로 공을 살리며 단추와 수리부품을 차례로 노립니다.</p></figcaption>
+      </figure>
+      <figure>
+        <a href="reward-shop.webp" target="_blank" rel="noopener" aria-label="웨이브 보상 화면 크게 보기"><img src="reward-shop.webp" width="1280" height="720" loading="lazy" alt="웨이브 사이에 공이나 수리부품을 선택하는 보상 화면"></a>
+        <figcaption><strong>코인을 어디에 쓸지 결정하기</strong><p>목표 점수를 채우면 보상 상점이 열립니다. 모은 코인으로 공이나 수리부품을 사거나, 코인을 아껴 다음 보드로 넘어갈 수 있습니다.</p></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="pin-gallery frame" id="boards" aria-labelledby="boards-title">
+    <div class="pin-gallery-heading">
+      <h2 id="boards-title">단추에서 대포로, 마지막에는 보스로</h2>
+      <p>첫 보드에서는 단추의 반사각을 익히고, 다음 보드에서는 용수철이 공을 얼마나 밀어내는지 배웁니다. 뒤로 갈수록 때릴 표적과 공을 보낼 방향을 함께 고르게 했습니다.</p>
+    </div>
+    <div class="pin-board-photos">
+      <figure>
+        <a href="wave-three.webp" target="_blank" rel="noopener" aria-label="세 번째 웨이브 화면 크게 보기"><img src="wave-three.webp" width="1280" height="720" loading="lazy" alt="단추와 솜, 용수철에 더해 태엽 대포와 장난감 북이 놓인 세 번째 보드에서 공이 움직이는 장면"></a>
+        <figcaption><strong>세 번째 웨이브 · 방향을 만드는 장난감</strong><p>장난감 북은 공을 빠르게 되돌려 보내고, 태엽 대포는 공을 받아 다시 쏩니다. 익숙한 단추 사이에 새 장치를 두어 같은 플리퍼로도 다른 경로를 노릴 수 있습니다.</p></figcaption>
+      </figure>
+      <figure>
+        <a href="teddy-boss.webp" target="_blank" rel="noopener" aria-label="곰 인형 보스전 화면 크게 보기"><img src="teddy-boss.webp" width="1280" height="720" loading="lazy" alt="보드 위쪽의 곰 인형이 팔을 휘두르고 보라색 궤적이 보이는 보스전"></a>
+        <figcaption><strong>보스전 · 곰 인형의 팔 사이로</strong><p>범퍼를 맞혀 점수를 쌓던 보드에 곰 인형이 들어섭니다. 팔에 맞으면 공의 궤적이 달라져서, 인형을 노리면서도 돌아올 공을 받을 플리퍼를 살펴야 합니다.</p></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="pin-chapter frame" id="parts">
+    <div><p class="eyebrow">SYSTEM DESIGN</p><h2>공이 닿으면 깨어나는 수리부품</h2></div>
+    <div>
+      <p>팀원이 제안한 네 가지 수리 도구를 플레이어의 행동으로 풀었습니다. 톱니는 같은 곳에 여러 번, 방울은 여러 곳에 잇달아 공을 맞히도록 유도합니다. 플레이어는 웨이브를 시작하기 전에 자기가 노리기 좋은 위치에 부품을 놓습니다.</p>
+      <h3>웹 빌드에 담긴 세 가지 부품</h3>
+      <dl class="parts-list">
+        <div><dt><img src="starlight_brooch.webp" alt="" width="64" height="64" loading="lazy">별빛 브로치</dt><dd>브로치에서 출발해 서로 다른 범퍼 두 개를 맞히고 되돌아오면 수리가 완성됩니다.</dd></div>
+        <div><dt><img src="golden_gears.webp" alt="" width="64" height="64" loading="lazy">황금 톱니바퀴</dt><dd>짧은 시간에 세 번 맞히면 감아 둔 태엽이 풀리듯 공이 더 빨라집니다.</dd></div>
+        <div><dt><img src="forgotten_star_bell.webp" alt="" width="64" height="64" loading="lazy">잊혀진 별방울</dt><dd>방울을 친 뒤 쌓은 콤보에 따라, 잠시 뒤 방울의 여운이 추가 콤보로 돌아옵니다.</dd></div>
+      </dl>
+      <p class="case-note">초안에는 다른 부품까지 실을 이어 콤보를 만드는 ‘초승달 바늘’도 설계했습니다.</p>
+      <figure><img src="planning-flow.webp" alt="시작 부품 선택, 웨이브 플레이, 수리함에서 보상 선택, 재배치, 보스 도전으로 이어지는 기획 도식" loading="lazy"><figcaption>「인형사의 수리 부품 시스템 기획서」 v0.2 · 주형락, 2026.08.04</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="pin-chapter frame" id="brooch">
+    <div><p class="eyebrow">LEVEL DESIGN</p><h2>첫 웨이브에서도 완성할 수 있도록</h2></div>
+    <div>
+      <p>별빛 브로치의 초안은 서로 다른 수리부품 두 종류를 거쳐 돌아오는 규칙이었습니다. 그런데 첫 웨이브에는 단추 범퍼만 있어 브로치를 골라도 보상을 받을 길이 없었습니다.</p>
+      <p>제출 버전에서는 같은 종류라도 위치가 다른 범퍼 두 개를 맞히면 되도록 조건을 바꿨습니다. 모서리의 반원 벽은 횟수에서 뺐습니다. 이제 첫 웨이브에서도 두 단추 사이의 경로를 노릴 수 있고, 같은 단추를 두 번 맞히면 진행도는 한 칸만 찹니다.</p>
+      <div class="brooch-demo">
+        <p class="demo-label">시간 제한 없이 타격 순서 체험</p><h3>두 단추를 거쳐 브로치로 돌아오기</h3>
+        <div class="brooch-route" aria-hidden="true"><i>브로치</i><span>›</span><i>단추</i><span>›</span><i>단추</i><span>›</span><i>브로치</i></div>
+        <p class="demo-status" role="status">브로치를 눌러 수리를 시작하세요.</p>
+        <div class="brooch-actions"><button type="button" data-hit="brooch">브로치</button><button type="button" data-hit="a">단추 A</button><button type="button" data-hit="b">단추 B</button><button class="redo" type="button">처음부터</button></div>
+      </div>
+      <a class="case-source" href="https://github.com/MoHoDu/godot-pinball-pjt/commit/61ddafe3" target="_blank" rel="noopener">제출 버전의 브로치 변경 기록 ↗</a>
+    </div>
+  </section>
+
+  <section class="pin-chapter frame" id="production">
+    <div><p class="eyebrow">PRODUCTION</p><h2>프로토타입에서 웹 제출까지</h2></div>
+    <div>
+      <h3>팀의 결정을 어디서 찾을까</h3>
+      <p>PM으로 일정과 Jira 이슈를 관리했습니다. 7월 24일에는 흩어진 기획과 제작 기준을 다시 찾기 쉽도록 팀 위키의 구조를 제안했습니다. 기존 기록을 살리면서 기획, 아트·사운드, 회의록을 나누고, 합의한 결정과 마감 기준을 따로 모으는 방식에 팀원들이 동의했습니다.</p>
+      <h3>남은 열흘의 작업 순서</h3>
+      <p>7월 30일 회의에서 팀은 기능 하나마다 코드와 아트, 시각 효과를 함께 작업하기로 했습니다. 제가 남긴 회의록의 첫 순서는 플리퍼와 공이었습니다. 조작과 공의 움직임을 먼저 확인하고, 그다음에 보드와 범퍼, 보상을 붙이는 순서였습니다.</p>
+      <p>3주간 시험한 프로토타입을 바탕으로 팀과 콘셉트를 다시 정했습니다. 저는 부품을 놓을 자리와 웨이브 밸런스를 직접 플레이하며 조정하고, 핀볼판과 보스의 시각·음향 연출을 제작·검수했습니다. 팀은 마지막 열흘 동안 웹 빌드와 제출 자료를 마무리했습니다.</p>
+      <h3>제출일에 세 명에게서 들은 피드백</h3>
+      <p>8월 10일에는 플레이어 세 명의 의견을 모았습니다. 점수를 높여야 하는지 보스를 잡아야 하는지 헷갈렸다는 사람도 있었고, 수리부품이 일회용인지 궁금해한 사람도 있었습니다. 상단 UI가 보스를 가린다는 지적도 있었습니다.</p>
+      <p>저는 피드백을 공·부품·목표·점수로 나누어 팀에 공유했습니다. 특히 부품 설명은 플레이어가 실제로 어떤 표적을 어떤 순서로 맞혀야 하는지부터 쓰자고 제안했습니다.</p>
+    </div>
+  </section>
+  <section class="pin-chapter frame" id="play"><div><h2>플레이 자료</h2></div><div class="pin-actions">
+    <a href="https://mohodu.github.io/godot-pinball-pjt/" target="_blank" rel="noopener">웹 빌드 플레이 ↗</a>
+    <a href="https://youtu.be/BcirzU4BLig" target="_blank" rel="noopener">플레이 영상 ↗</a>
+  </div></section>
+</main>
+<footer class="resume-end"><div class="resume-navigation-inner"><a class="resume-back" href="../index.html#project-pinball"><span aria-hidden="true">←</span> 이력서로 돌아가기</a></div></footer>
+<script defer src="../claude-polish.js"></script>
+</body>
+</html>

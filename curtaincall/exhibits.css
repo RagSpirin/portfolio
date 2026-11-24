@@ -1,0 +1,38 @@
+.return-nav{display:flex;align-items:center;justify-content:space-between;padding-block:14px;font-size:13px}.return-nav a,.fold-exhibit summary{text-decoration:underline;text-underline-offset:4px}.fold-exhibit{margin-block:18px;border-block:1px solid #bdbdb4;padding:14px 0}.fold-exhibit summary{cursor:pointer;font-weight:700}.fold-exhibit[open]>div{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;margin-top:15px;align-items:center}.fold-exhibit img{width:100%;max-height:340px;object-fit:contain}.fold-exhibit .caption,.fold-exhibit figcaption{display:block;font-size:13px}.fold-exhibit button{padding:9px;margin:3px 3px 6px 0;font:inherit;cursor:pointer;background:transparent;color:inherit;border:1px solid #888;border-radius:4px}.fold-exhibit button[aria-pressed=true]{background:#41483e;color:white}.response-plots{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}.response-plots figure{margin:0;background:#fff;color:#282b24;padding:14px;border:1px solid #bbb}.response-plots figure div{display:flex;flex-wrap:wrap;gap:4px;margin:10px 0}.response-plots i{width:12px;height:12px;border-radius:50%;border:1px solid #65715f}.response-plots i.on{background:#64764f}.response-plots figure:nth-child(2) i.on{background:#b04a28}.response-plots figcaption b{display:inline-block;margin-left:.5em}@media(max-width:720px){.response-plots,.fold-exhibit[open]>div{grid-template-columns:1fr}}@media(prefers-reduced-motion:no-preference){@keyframes plot-rise{from{opacity:.4;transform:scale(.55)}to{opacity:1;transform:scale(1)}}.response-plots.motion-in i.on{animation:plot-rise .4s both;animation-delay:calc(var(--i)*35ms)}}
+
+
+.mechanic-steps {padding-left:1.6em;margin:.8rem 0}
+.mechanic-steps li {margin:.55rem 0;padding-left:.2rem}
+.mechanic-steps b,.mechanic-steps span {display:block}
+.mechanic-steps span {font-size:.93rem;line-height:1.6}
+.role-rules[open]>div {display:block}
+.archive h4 {margin:1.2rem 0 .5rem}
+
+.case-media.case-screen {display:block;max-width:900px;margin-inline:auto}
+
+.case-feature {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: clamp(1.25rem, 3vw, 3rem);
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .case-feature {grid-template-columns: minmax(0, 2.65fr) minmax(15rem, 1fr)}
+}
+.case-film {margin: 0; min-width: 0}
+.case-film video {display: block; width: 100%; aspect-ratio: 16 / 9; background: #181717; object-fit: contain}
+.case-film figcaption {display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4em 1em; padding-top: .7rem; line-height: 1.5}
+.case-film figcaption span {color: var(--muted); font-size: .88rem; white-space: nowrap}
+.case-feature .case-decision {display: block; margin: 0; padding: 0 0 1.15rem; border-block-start: 2px solid currentColor}
+.case-feature .case-decision p {margin: 0; padding-top: 1rem; line-height: 1.6}
+.case-feature .case-decision strong {display: block; margin-bottom: .25em}
+.clip-stills {margin-top: 1.15rem; border-top: 1px solid var(--line)}
+.clip-stills summary {padding-block: .75rem; width: fit-content; font-weight: 650; cursor: pointer; text-underline-offset: .2em}
+.clip-stills summary:hover {text-decoration: underline}
+.clip-stills[open] {padding-bottom: 1rem}
+.case-sidebar {min-width: 0}
+.case-sidebar .case-decision {border-bottom: 0; padding-bottom: 0}
+.case-sidebar .case-media {gap: .8rem}
+.case-sidebar .shot figcaption b {font-size: .9rem}
+.case-sidebar .shot figcaption span {font-size: .78rem}
+.case-sidebar .case-media.case-screen {margin: 0}

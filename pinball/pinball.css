@@ -1,0 +1,122 @@
+.pin-cover p:not(.label) {
+  max-width: 38em;
+  text-wrap: pretty;
+}
+.pin-page .pin-cover {
+  background: linear-gradient(100deg, #291a2ae8, #33202ded), url("title-screen.webp") center / cover;
+}
+.pin-cover-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: clamp(26px, 4vw, 76px);
+}
+.pin-cover-copy .label { font-size: .9rem; }
+.pin-cover-copy p:not(.label) { font-size: clamp(1rem, 1.35vw, 1.28rem); }
+.pin-cover-copy .pin-meta { font-size: .85rem; }
+.pin-cover-film {
+  background: #251c23;
+  border: 1px solid #755a6a;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.pin-cover-film video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: #111820;
+}
+.pin-cover-film figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  padding: 12px 16px;
+  color: #eadde2;
+  font-size: .82rem;
+}
+.pin-cover-film figcaption strong { color: #fff4e7; font-size: .95rem; }
+.pin-contents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px clamp(14px, 2.4vw, 36px);
+  padding-block: 12px;
+  border-bottom: 1px solid #d7c9ce;
+  color: #653853;
+  font-size: .92rem;
+  font-weight: 650;
+}
+.pin-contents a { padding-block: 8px; }
+.pin-contents a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.pin-gallery { padding-block: clamp(34px, 4.3vw, 68px); border-bottom: 1px solid #cdc6c8; }
+.pin-gallery-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 14px clamp(36px, 7vw, 110px);
+  align-items: end;
+  margin-bottom: clamp(20px, 2.4vw, 36px);
+}
+.pin-gallery h2 {
+  color: #68365b;
+  font-size: clamp(1.9rem, 3.4vw, 3.25rem);
+  letter-spacing: -.06em;
+  line-height: 1.18;
+  text-wrap: balance;
+}
+.pin-gallery-heading p, .pin-gallery figcaption p { color: #4d454b; line-height: 1.65; }
+.pin-loop-photos, .pin-board-photos { display: grid; gap: clamp(20px, 2vw, 34px); align-items: start; }
+.pin-loop-photos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pin-board-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pin-gallery figure a {
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #192129;
+  cursor: zoom-in;
+}
+.pin-gallery img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+.pin-gallery figcaption { padding-top: 12px; }
+.pin-gallery figcaption strong { color: #352432; font-size: 1.05rem; }
+.pin-gallery figcaption p { font-size: .94rem; margin-top: 5px; }
+@media (max-width: 820px) {
+  .pin-cover-layout, .pin-gallery-heading { grid-template-columns: minmax(0, 1fr); }
+  .pin-cover-copy p:not(.label), .pin-gallery-heading p { max-width: 42em; }
+  .pin-cover-copy h1 br { display: none; }
+  .pin-cover-copy h1 em::before { content: " "; }
+}
+@media (max-width: 620px) {
+  .pin-loop-photos, .pin-board-photos { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .pin-cover-copy h1 br { display: inline; }
+  .pin-cover-copy h1 em::before { content: none; }
+}
+.pin-page .pin-chapter > div { min-width: 0; }
+.pin-chapter h2 { text-wrap: balance; }
+.pin-chapter p + p { margin-top: .8em; }
+.pin-chapter .parts-list { margin: 12px 0; }
+.parts-list > div {
+  display: grid;
+  grid-template-columns: 11em 1fr;
+  gap: 18px;
+  align-items: center;
+  padding-block: 10px;
+  border-top: 1px solid #d9cdd4;
+}
+.parts-list > div:last-child { border-bottom: 1px solid #d9cdd4; }
+.parts-list dt { display: flex; align-items: center; gap: 12px; font-weight: 700; color: #68365b; }
+.parts-list img { flex: none; width: 48px; height: 48px; object-fit: contain; }
+.parts-list dd { line-height: 1.55; }
+.case-note, .case-source { font-size: .88rem; }
+.case-note { color: #655c65; }
+.case-source { color: #68365b; text-decoration: underline; text-underline-offset: 4px; }
+.pin-chapter .brooch-demo h3 { font-size: clamp(20px, 2vw, 30px); margin: 3px 0 18px; letter-spacing: -.045em; }
+.pin-chapter > div > h3:first-child { margin-top: 0; }
+@media (max-width: 520px) {
+  .parts-list > div { grid-template-columns: 1fr; gap: 3px; }
+  .parts-list img { width: 36px; height: 36px; }
+  .parts-list dd { padding-left: 48px; }
+  .brooch-route { gap: 4px; }
+  .brooch-route i { padding: 4px 8px; }
+  .brooch-actions .redo { margin-left: 0; }
+}

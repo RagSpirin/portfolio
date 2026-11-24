@@ -1,0 +1,76 @@
+@media screen {
+  body {background:#fffaf3}
+  .mast:not(.shell) {background:#fffaf3;color:#241c36;border-bottom:1px solid #d7cfdf}
+  .mast .identity i {background:#443aad;color:#fff0ac}
+  .mast .identity span {color:#635774;border-color:#b7abc4}
+  .mast .print {color:#342a76;border-color:#8c80a1}
+  .mast nav a:hover {color:#7035a2}
+  .home-intro {
+    position:relative;isolation:isolate;grid-template-columns:1fr 1.06fr;align-items:stretch;
+    gap:0;padding:0;max-width:none;background:#fce8ed;color:#322044
+  }
+  .hero-editorial {align-self:center;padding:clamp(32px,4vw,72px) clamp(25px,3vw,62px) clamp(32px,4vw,72px) max(var(--pad),calc((100vw - 1440px)/2));}
+  .home-name .eyebrow {color:#6c385f;font-size:13px}
+  .home-name h1 {font-size:clamp(67px,7.9vw,132px);line-height:1.01;margin:13px 0 21px;color:#39265b}
+  .home-name h1 span {color:#c54251}
+  .home-philosophy {max-width:505px}
+  .home-philosophy h2 {font-size:clamp(22px,2.3vw,37px);letter-spacing:-.055em}
+  .home-philosophy p {color:#4e3855;line-height:1.62}
+  .home-philosophy summary {color:#813b6e}
+  .orbit-art {
+    position:relative;overflow:hidden;min-height:345px;
+    background:radial-gradient(ellipse at 92% 112%,#37b7db 0%,transparent 43%),radial-gradient(ellipse at 10% 102%,#5141ac,transparent 57%),linear-gradient(138deg,#321e70,#4e67d3 66%,#9e8ce5)
+  }
+  .orbit-art::before {
+    content:"";position:absolute;inset:0;opacity:.33;
+    background-image:radial-gradient(circle,rgba(245,242,255,.58) .7px,transparent 1px);
+    background-size:10px 10px
+  }
+  .orbit-art::after {content:"";position:absolute;left:27%;right:22%;bottom:4%;height:6%;background:#1c185261;filter:blur(11px);border-radius:50%;pointer-events:none}
+  #color-track {position:absolute;width:100%;height:100%;display:block}
+  .directory {background:#2d275a;color:#fcf1ff;gap:12px 24px}.directory strong{color:#ffe7a5}
+  .directory a {text-decoration:none}.directory a:hover{text-decoration:underline}
+  .shelf {padding-top:clamp(30px,3vw,50px)}
+  .shelf>h2,.cv h2 {color:#33244c}
+  .featured-project {border-radius:5px;background:#38242a}
+  .feature-tint {background:linear-gradient(90deg,#241423f3,#391f3596 38%,transparent 73%),linear-gradient(0deg,#271727bf,transparent 52%)}
+  .featured-project .label {color:#ffdaa7}
+  .feature-copy b {background:#ffd099;color:#442532}
+  .second-project {
+    position:relative;isolation:isolate;overflow:hidden;border-radius:5px;min-height:235px;
+    background:#f5cce4;color:#442443;align-items:flex-start;flex-direction:column;gap:0;padding-right:49%
+  }
+  .second-project::after {content:"";position:absolute;inset:0 0 0 54%;z-index:-1;background:#2f292d url("pinball/title-screen.webp") center / cover no-repeat}
+  .second-project .eyebrow {color:#71355b}.second-project>strong {background:#52244e;color:#fff2ed}
+  .second-project:hover>strong {color:#41243b;background:#fff1cf}
+  .cv .period {color:#a7366c}.cv dl>div {border-top-color:#d8cbd9}
+  .cv dd a {color:#733763}
+  .pin-page .pin-cover {
+    background:linear-gradient(90deg,#361934 8%,#49213fe5 43%,#28172532 78%),url("pinball/title-screen.webp") right center / cover no-repeat
+  }
+  .pin-page .pin-cover h1 em {color:#ffb8de}.pin-page .pin-cover .label{color:#ffd5af}
+  .pin-page .pin-chapter h2 {color:#68365b}.pin-page .pin-actions a{background:#562d57;color:#fff8f4}
+  .council-cover.pin-cover {position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(110deg,#104e50,#13796b 63%,#80bd8d);color:white}
+  .council-cover::after {
+    content:"";position:absolute;z-index:-1;width:40vw;height:40vw;right:-9vw;top:8%;border-radius:50%;
+    background:repeating-radial-gradient(circle at center,#ffda79 0 7px,#379785 8px 18px,#9de3c6 19px 25px,#328778 26px 38px);
+    mask-image:linear-gradient(100deg,transparent,#000 65%);transform:rotate(-15deg)
+  }
+  .council-cover .label {color:#ffe595}.council-cover+.pin-chapter h2 {color:#0e6259}
+  body:has(.route-section) {--paper:#fff9ee;--ink:#352323;--line:#ddc9b6;--accent:#9d382a;--soft:#f9e9d4}
+  .route-section .heading h2,.cannon-finding h3 {color:inherit}
+  body:has(.route-section) .cover h1,body:has(.route-section) .cover-role {color:#782e31}
+  body:has(.route-section) .return-nav {color:#81362b}
+  @media(max-width:780px){
+    .home-intro {grid-template-columns:1fr;gap:0}
+    .hero-editorial {padding:32px var(--pad) 24px}
+    .home-name h1 {margin:8px 0 15px}
+    .orbit-art {min-height:0;height:clamp(180px,46vw,290px)}
+    .second-project {padding:24px;min-height:0}
+    .second-project::after {position:relative;display:block;inset:auto;width:100%;aspect-ratio:16/9;margin-top:22px;z-index:0;background-size:contain}
+    .pin-page .pin-cover {background:linear-gradient(90deg,#32182feb,#392039d9),url("pinball/title-screen.webp") center / cover}
+    .council-cover::after {right:-22vw;width:65vw;height:65vw;top:25%;opacity:.5}
+    .directory {gap:9px 16px}.feature-tint{background:linear-gradient(0deg,#261321f5,#341c2e9c 58%,transparent)}
+  }
+}
+@media print {.orbit-art{display:none!important}}

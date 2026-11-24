@@ -1,0 +1,65 @@
+.device-summary .library-launch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5em;
+  margin-top: .65rem;
+  padding: .3rem .65rem;
+  border: 1px solid #c2cec5;
+  border-radius: 5px;
+  background: #fff;
+  color: #244b38;
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+.library-launch[hidden] {display: none}
+.device-summary .library-launch:hover {background: #edf4ee; border-color: #799380}
+.play-archive .record-method > p {margin: .5em 0 0; line-height: 1.5}
+:root:has(#play-library) {scrollbar-gutter: stable}
+:root:has(#play-library[open]) {overflow: hidden}
+#play-library {
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  width: min(38rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 3rem);
+  padding: 0;
+  margin: auto;
+  border: 1px solid #bfcac0;
+  border-radius: 12px;
+  background: #fefffd;
+  color: #202b23;
+  box-shadow: 0 20px 90px #0a1f1538;
+  overscroll-behavior: contain;
+}
+#play-library::backdrop {background: #12251dd6}
+.library-shell {padding: clamp(1.25rem, 2.5vw, 2rem)}
+.library-head, .library-footer, .library-footer > div, #library-filters {display: flex; align-items: center}
+.library-head, .library-footer {justify-content: space-between; gap: 1rem}
+.library-head h2 {margin: 0; font-size: clamp(1.35rem, 2.1vw, 1.9rem); letter-spacing: -.035em}
+.library-head form {margin: 0}
+#play-library button {font: inherit; cursor: pointer; border: 1px solid #cbd6cc; color: #214532; background: #fff; border-radius: 5px}
+#play-library .library-close {font-size: 1.45rem; width: 2.15rem; height: 2.15rem; line-height: 1}
+#library-search {box-sizing: border-box; width: 100%; padding: .7rem .85rem; margin: 1.1rem 0 .65rem; border: 1px solid #b9c7bc; border-radius: 6px; background: #fff; color: #24392b; font: inherit; font-size: .93rem}
+#library-filters {gap: .4rem; flex-wrap: wrap; margin-bottom: .75rem}
+#library-filters button {padding: .32rem .75rem; font-size: .82rem}
+#library-filters button[aria-pressed="true"] {background: #244c3b; color: white; border-color: #244c3b}
+#library-titles {list-style: none; margin: 0; padding: 0; border-top: 1px solid #b7c7ba; min-height: 16.5rem}
+#library-titles > li {box-sizing: border-box; min-height: 2.75rem; padding: .5rem .1rem; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .15rem .7rem; border-bottom: 1px solid #dce3dc; font-size: .96rem; line-height: 1.4}
+#library-titles > li > span {font-weight: 550; overflow-wrap: anywhere}
+#library-titles small {color: #566c5d; font-size: .76rem; white-space: nowrap}
+#library-titles .library-edition-note {grid-column: 1 / -1; white-space: normal}
+.library-shell {position: relative}
+#library-empty {margin: -16.5rem 0 0; height: 16.5rem; display: grid; place-content: center; color: #58695d}
+#library-empty[hidden] {display:none}
+.library-footer {margin-top: 1rem; color: #4c6154; font-size: .83rem}
+.library-footer > div {gap: .4rem}
+.library-footer button {padding: .42rem .7rem}
+#play-library button[aria-disabled="true"] {opacity: .45; cursor: default}
+#play-library button:hover:not([aria-pressed="true"]):not([aria-disabled="true"]) {background: #edf4ee}
+#play-library :is(button, input):focus-visible, .library-launch:focus-visible {outline: 2px solid #27684f; outline-offset: 3px}
+#library-title:focus {outline: none}
+@media print {#play-library, .library-launch {display: none !important}}
+
