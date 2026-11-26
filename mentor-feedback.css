@@ -246,3 +246,9 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
 .folio .skill-claims > li::before {content: ""; position: absolute; left: 1px; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: #2f6b55}
 .folio .skill-claims > li > span {position: relative; margin-top: 6px; padding-left: 13px; border-left: 0}
 .folio .skill-claims > li > span::before {content: "–"; position: absolute; left: 0; top: 0; color: #8a948f}
+
+/* 주요 역량 3단: 이름 + 설명 문장 + 사례 두세 줄 (11/27 00:10 형락 님 A안) */
+.folio .skill-cards .skill-cases {grid-column: 1 / -1; grid-row: 4; align-self: start; display: grid; gap: 11px; margin: 15px 0 0; padding: 0; list-style: none}
+.folio .skill-cases > li {position: relative; margin: 0; padding-left: 15px; color: #3d4944; font-size: 14.5px; line-height: 1.62; word-break: keep-all}
+.folio .skill-cases > li::before {content: ""; position: absolute; left: 1px; top: .66em; width: 5px; height: 5px; border-radius: 50%; background: #2f6b55}
+@media print {.folio .skill-cases > li {font-size: 9pt}}
