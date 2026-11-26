@@ -19,30 +19,31 @@ dl.intent dd {margin: 0; font-size: 16px; line-height: 1.7}
 .term-note b {font-weight: 700; color: inherit}
 @media (max-width: 900px) {dl.intent {grid-template-columns: 1fr}}
 
-/* 게임·영화·책이 기획에 해 준 일 (2026-11-26 17:04 형락 님 방향)
-   구역마다: 그 매체가 해 준 역할(제목과 요약) → 기록 → 작품과 이어진 역량 */
+/* 게임·영화·책이 기획에 해 준 일 (2026-11-26 17:21 형락 님 정정)
+   구역마다: 제목(플레이한 게임) → 기록 → 그 매체가 해 준 역할(요약) → 기획에 영향을 준 작품 */
 .play-archive .archive-lede {max-width: 46em; margin: 14px 0 0; font-size: clamp(15px, 1.15vw, 18px); line-height: 1.75; color: #3d4742; word-break: keep-all; text-wrap: pretty}
-.play-archive .archive-head {margin-bottom: clamp(22px, 2.6vw, 34px)}
+.play-archive .archive-head {margin-bottom: clamp(28px, 3.4vw, 48px)}
 .play-archive .archive-head h2 {word-break: keep-all; text-wrap: balance}
-.media-panel, .cinema-record {--mp-paper: #f8faf8; --mp-line: #d6e0da; --mp-ink: #1f2a25; --mp-soft: #47554d; --mp-accent: #1d4a3a; --mp-band: #20392f; --mp-band-label: #a9ccba; --mp-band-soft: #d6e3db; --mp-mark: #dfe9e3}
-.cinema-record {--mp-paper: #fcf9fa; --mp-line: #e2d3da; --mp-ink: #37222e; --mp-soft: #5e4854; --mp-accent: #6a384e; --mp-band: #3a2431; --mp-band-label: #dfb7ca; --mp-band-soft: #eadbe3; --mp-mark: #eedde5}
-.media-books {--mp-paper: #f8f9fc; --mp-line: #d8dee8; --mp-ink: #1f2633; --mp-soft: #475166; --mp-accent: #2c3b5a; --mp-band: #232f45; --mp-band-label: #b5c4e0; --mp-band-soft: #d9e0ec; --mp-mark: #dfe5f0}
+.medium {--mp-paper: #f8faf8; --mp-line: #d6e0da; --mp-ink: #1f2a25; --mp-soft: #47554d; --mp-accent: #1d4a3a; --mp-band: #20392f; --mp-band-label: #a9ccba; --mp-band-soft: #d6e3db; --mp-mark: #dfe9e3}
+.medium-films {--mp-paper: #fcf9fa; --mp-line: #e2d3da; --mp-ink: #37222e; --mp-soft: #5e4854; --mp-accent: #6a384e; --mp-band: #3a2431; --mp-band-label: #dfb7ca; --mp-band-soft: #eadbe3; --mp-mark: #eedde5}
+.medium-books {--mp-paper: #f8f9fc; --mp-line: #d8dee8; --mp-ink: #1f2633; --mp-soft: #475166; --mp-accent: #2c3b5a; --mp-band: #232f45; --mp-band-label: #b5c4e0; --mp-band-soft: #d9e0ec; --mp-mark: #dfe5f0}
+.medium + .medium {margin-top: clamp(40px, 5vw, 72px)}
+.medium-title {margin: 0 0 clamp(12px, 1.4vw, 18px); color: var(--ink, #1f2a25); font-size: clamp(24px, 2.3vw, 34px); line-height: 1.25; letter-spacing: -.055em; word-break: keep-all}
 .media-panel {border: 1px solid var(--mp-line); background: var(--mp-paper); color: var(--mp-ink)}
-.play-archive > .media-panel, .play-archive > .cinema-record {margin-top: clamp(34px, 4.2vw, 60px)}
-.play-archive > .archive-head + .media-panel {margin-top: 0}
-
-/* 구역 머리: 매체 이름, 역할 제목, 요약 */
-.medium-head {grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 14px clamp(24px, 4vw, 64px); align-items: end; padding: clamp(24px, 3vw, 42px) clamp(16px, 3.5vw, 52px); background: var(--mp-band); color: #fff}
-.medium-head h3 {margin: 0; color: #fff; font-size: clamp(23px, 2.35vw, 34px); line-height: 1.3; letter-spacing: -.05em; word-break: keep-all; text-wrap: balance}
-.medium-name {display: block; margin-bottom: 10px; color: var(--mp-band-label); font-size: clamp(14px, 1.05vw, 16px); font-weight: 700; line-height: 1.4; letter-spacing: -.01em}
-.medium-lead {margin: 0; color: var(--mp-band-soft); font-size: clamp(15px, 1.12vw, 17px); line-height: 1.78; word-break: keep-all; text-wrap: pretty}
+.medium .cinema-record {margin-top: 0}
 .records-block {padding: clamp(18px, 2.4vw, 34px) clamp(16px, 3.5vw, 52px) clamp(14px, 1.6vw, 22px); background: #fff}
+
+/* 요약 띠: 기록과 작품 사이에 둔다. 그 매체가 해 준 역할(제목)과 요약 */
+.medium-head {grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 14px clamp(24px, 4vw, 64px); align-items: baseline; padding: clamp(24px, 3vw, 42px) clamp(16px, 3.5vw, 52px); background: var(--mp-band); color: #fff}
+.medium-head h4 {margin: 0; color: #fff; font-size: clamp(20px, 1.9vw, 27px); line-height: 1.34; letter-spacing: -.05em; word-break: keep-all; text-wrap: balance}
+.medium-name {display: block; margin-bottom: 8px; color: var(--mp-band-label); font-size: clamp(14px, 1.05vw, 16px); font-weight: 600; line-height: 1.4; letter-spacing: -.01em}
+.medium-lead {margin: 0; color: var(--mp-band-soft); font-size: clamp(15px, 1.12vw, 17px); line-height: 1.78; word-break: keep-all; text-wrap: pretty}
 
 /* 작품 줄: 표지 → 제목 → 배운 것 → 이어진 역량이나 사례 */
 .picks-block {grid-column: 1 / -1; padding: clamp(20px, 2.5vw, 34px) clamp(16px, 3.5vw, 52px) clamp(26px, 3vw, 42px); border-top: 1px solid var(--mp-line); background: var(--mp-paper)}
 .medium-head + .picks-block {border-top: 0}
 .picks-head {display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 20px; margin: 0 0 clamp(14px, 1.6vw, 22px)}
-.picks-head h3 {margin: 0; color: var(--mp-accent); font-size: clamp(1.05rem, 1.4vw, 1.28rem); line-height: 1.45; letter-spacing: -.035em}
+.picks-head h4 {margin: 0; color: var(--mp-accent); font-size: clamp(1.05rem, 1.4vw, 1.28rem); line-height: 1.45; letter-spacing: -.035em}
 .sample-flag {margin: 0; font-size: 12.5px; font-weight: 600; line-height: 1.5; color: #a2542a}
 .picks {list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(12px, 1.6vw, 24px)}
 /* 작품마다 네 줄(표지와 제목, 배운 것, 이어진 곳, 사례)을 옆 작품과 같은 높이에 맞춘다 */
@@ -51,8 +52,8 @@ dl.intent dd {margin: 0; font-size: 16px; line-height: 1.7}
 .pick-top {display: block; color: inherit; text-decoration: none}
 .pick-cover {display: flex; align-items: flex-end; aspect-ratio: 2 / 3}
 .pick-cover img {display: block; width: 100%; height: auto; max-height: 100%; object-fit: cover; object-position: center top; border-radius: 3px; box-shadow: 0 2px 6px #39243028}
-.pick h4 {margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--mp-ink); color: var(--mp-ink); font-size: clamp(.93rem, 1.12vw, 1.04rem); line-height: 1.45; letter-spacing: -.03em; word-break: keep-all}
-a.pick-top:is(:hover, :focus-visible) h4 {text-decoration: underline; text-underline-offset: 3px}
+.pick h5 {margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--mp-ink); color: var(--mp-ink); font-size: clamp(.93rem, 1.12vw, 1.04rem); line-height: 1.45; letter-spacing: -.03em; word-break: keep-all}
+a.pick-top:is(:hover, :focus-visible) h5 {text-decoration: underline; text-underline-offset: 3px}
 .pick-note {margin: 6px 0 0; text-wrap: pretty; font-size: 14.5px; line-height: 1.68; color: var(--mp-soft); word-break: keep-all}
 .pick-to {margin: 14px 0 0; font-size: 14px; line-height: 1.45}
 .pick-to span {display: block; margin-bottom: 5px; color: var(--mp-soft); font-size: 12px; font-weight: 600}
