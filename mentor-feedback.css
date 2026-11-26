@@ -240,3 +240,9 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
 
 /* 카드 그림 숨김 (11/27 00:00 형락 님 "사진 없애줘봐"). 되돌리려면 이 한 줄만 지운다 */
 .folio .skill-cards .skill-figure {display: none}
+
+/* 주장 줄에 글머리 기호 (11/27 00:03 형락 님) */
+.folio .skill-claims > li {position: relative; padding-left: 15px}
+.folio .skill-claims > li::before {content: ""; position: absolute; left: 1px; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: #2f6b55}
+.folio .skill-claims > li > span {position: relative; margin-top: 6px; padding-left: 13px; border-left: 0}
+.folio .skill-claims > li > span::before {content: "–"; position: absolute; left: 0; top: 0; color: #8a948f}
