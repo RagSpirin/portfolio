@@ -337,3 +337,33 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
 .skill-zoom-dialog {max-width: min(1080px, 94vw); padding: 0; border: 0; background: #fff; box-shadow: 0 12px 40px rgba(0,0,0,.25); cursor: zoom-out}
 .skill-zoom-dialog::backdrop {background: rgba(20, 26, 23, .6)}
 .skill-zoom-dialog img {display: block; width: 100%; height: auto}
+
+/* 다섯 카드의 그림 칸 통일 (11/27 03:00 형락 님 "사진 크기·레이아웃·위치 통일")
+   모든 카드를 같은 폭으로, 그림은 설명 문장 바로 아래 같은 비율(16:7) 칸에. 두 장 비교는 같은 칸을 반으로 나눔. */
+@media (min-width: 1001px) {
+  .folio .practice-five.skill-cards > li {grid-column: span 2}
+  .folio .practice-five.skill-cards > li:nth-child(4) {grid-column: 2 / span 2}
+  .folio .practice-five.skill-cards > li:nth-child(5) {grid-column: 4 / span 2}
+  .folio #capabilities .skill-cards > li .skill-card {grid-template-columns: 34px minmax(0, 1fr); column-gap: 12px}
+  .folio #capabilities .skill-cards > li .skill-figure {grid-column: 1 / -1; grid-row: 3; margin-top: 14px; align-self: start}
+  .folio #capabilities .skill-cards > li .skill-cases {grid-column: 1 / -1; grid-row: 4; padding-right: 0}
+  .folio #capabilities .skill-cards > li .skill-line {min-height: calc(3em + 14px)}
+}
+.folio #capabilities .skill-cards .skill-figure > img,
+.folio #capabilities .skill-cards .skill-figure-pair > span,
+.folio #capabilities .skill-cards .skill-survey-pair {aspect-ratio: 16 / 7; width: 100%; height: auto}
+.folio #capabilities .skill-cards .skill-figure > img {object-fit: cover}
+.folio #capabilities .skill-cards .skill-figure-pair > span,
+.folio #capabilities .skill-cards .skill-survey-pair {display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 4px}
+.folio #capabilities .skill-cards .skill-figure-pair img {width: 100%; height: 100%; min-height: 0; aspect-ratio: auto; object-fit: cover}
+.folio #capabilities #skill-lead .skill-figure > img {object-position: 50% 30%}
+.folio #capabilities #skill-reference .skill-figure-pair img:first-child {object-position: 50% 60%}
+/* 피드백 수용: 폼 캡처는 글씨가 잘리지 않게 칸 안에 통째로 */
+.folio #capabilities #skill-listen .skill-survey-pair a {position: relative; display: block; min-height: 0; background: #fff; border: 1px solid #dfe5e1; border-radius: 2px; cursor: zoom-in}
+.folio #capabilities #skill-listen .skill-survey-pair img {display: block; width: 100%; height: 100%; aspect-ratio: auto; object-fit: contain; object-position: 50% 100%; border: 0; padding: 22px 2px 2px; box-sizing: border-box; background: none}
+.folio #capabilities #skill-listen .skill-survey-tag {position: absolute; top: 4px; left: 6px; font-size: 11.5px; font-weight: 700; color: #1d2925; line-height: 1.3}
+.folio #capabilities #skill-listen .skill-survey-notes {display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px}
+.folio #capabilities #skill-listen .skill-survey-notes > div {display: grid; align-content: start; gap: 3px}
+.folio #capabilities #skill-listen .skill-survey-num {font-size: 13px; font-weight: 700; color: #2f6b55}
+.folio #capabilities #skill-listen .skill-survey-notes q {display: block; color: #55605b; font-size: 12px; line-height: 1.45; word-break: keep-all; quotes: "“" "”"}
+.folio #capabilities #skill-listen .skill-survey figcaption {margin-top: 6px}
