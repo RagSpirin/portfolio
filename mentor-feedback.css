@@ -84,3 +84,17 @@ dl.intent dd {margin: 0; font-size: 16px; line-height: 1.7}
 /* 소개글: 재미와 중요하게 보는 것, 할 수 있는 것 두 문단까지 노출 */
 html.cp-home3 .folio .intro-copy:not(.cp-open) > p:nth-child(2) {display: block}
 .folio .intro-copy > p:nth-child(2) {color: #1f2a25}
+
+/* 주요 역량 v6: 제목 + 한 줄 + 사례 한 줄씩 */
+.strength {padding: 22px 0 22px}
+.strength h4 {margin-bottom: 8px; font-size: clamp(20px, 1.75vw, 26px)}
+.strength-say {margin-bottom: 12px; padding-bottom: 0; border-bottom: 0}
+.strength-say p {margin: 0; font-size: clamp(15px, 1.1vw, 17px); line-height: 1.65; color: #3d4742}
+.strength-cases {gap: 0; border-top: 1px solid #e1e6e2}
+.strength-cases > li {display: block; padding: 0; border-left: 0; border-bottom: 1px solid #e1e6e2}
+.strength-cases a {display: grid; grid-template-columns: 13.5em minmax(0, 1fr) auto; gap: 0 12px; align-items: baseline; padding: 8px 0; color: inherit; text-decoration: none}
+.strength-cases a b {margin: 0; font-size: 13.5px; font-weight: 700; color: #145c4d}
+.strength-cases a span {font-size: 14px; line-height: 1.5; color: #4a534e; word-break: keep-all}
+.strength-cases a i {font-style: normal; font-size: 13px; color: #145c4d}
+.strength-cases a:hover span {text-decoration: underline; text-underline-offset: 3px}
+.strength-cases a:focus-visible {outline: 2px solid #145c4d; outline-offset: 2px}
