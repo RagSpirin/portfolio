@@ -104,6 +104,25 @@
 <p>공연에서 익힌 묘기를 이어 써서 공장을 빠져나가는 마지막 구간입니다. 전 구간을 혼자 설계했고, 갈림길과 합류 지점, 묘기 기물의 배치, 추격자(골렘)의 동선을 기획해 Unity로 구현했습니다.</p>
   </div>
   <dl class="intent" aria-label="기획 의도"><div><dt>의도한 재미</dt><dd>쫓기는 압박 속에서 익숙한 묘기를 이어 쓰고, 동료와 역할을 나눠 살아 나오는 것. "배운 것을 이어 써서 여기까지 왔다"는 감각을 목표로 했습니다.</dd></div><div><dt>플레이어의 과제</dt><dd>안내 문구 없이 조명과 구조물만 보고 다음에 갈 곳을 판단하기.</dd></div><div><dt>참고한 설계 자료</dt><dd>GDC 강연 'Invisible Intuition'과 Valve의 'The AI Systems of Left 4 Dead'. 길을 읽히는 방법과 추격의 긴장 사이에 숨 돌릴 틈을 두는 방법을 참고했습니다.</dd></div></dl>
+  <section class="level-plan" aria-labelledby="level-plan-title">
+    <div class="level-plan-head">
+      <h3 id="level-plan-title">전체 동선과 레벨 설계 원칙</h3>
+      <p>대기실에서 갈대밭 출구까지 출구는 하나. 중간 구역마다 길이 갈라졌다가 다음 합류점에서 다시 만나는 구조입니다.</p>
+    </div>
+    <div class="level-plan-body">
+      <figure class="level-map">
+        <a data-expand href="assets/escape-overview.webp"><img src="assets/escape-overview.webp" width="1560" height="789" loading="lazy" alt="탈출로 A 전체 동선도. 대기실과 조우실, 첫 대포와 외줄, 검사동 갈림, 컨베이어 관측장, 하차장과 반환교, 화염 복도와 열 회수, 반출 경로 선택, 배선 작업장과 갈대밭 순서"></a>
+        <figcaption><b>탈출로 A 전체 동선</b><span>기획서 도식 · 색은 대포·봉·외줄·합류 지점, 화살표는 진행 순서(거리와 높이는 축척 생략)</span></figcaption>
+      </figure>
+      <ol class="level-rules">
+        <li><b>글 대신 빛과 구조로 길 안내</b><span>바닥 경로선이나 안내 문구 없이 벽의 개구부, 다음 목표의 실루엣, 착지면 위 작업등으로 다음 발판을 읽게 배치</span></li>
+        <li><b>같은 합류점, 성격이 다른 길</b><span>분기와 합류 사이에 타이밍을 읽는 길, 봉을 연달아 잡는 길, 다른 기물로 위험을 나누는 길. 두 번째 테스트(M2)에서 일행이 이동봉 하나 앞에 몰려 기다리던 병목을 컨베이어 세 경로로 분산</span><a class="doc-link" data-expand aria-haspopup="dialog" href="assets/conveyor-plan.webp" data-description="컨베이어 관측장에서 순환 이동봉, 계단과 외줄 뒤 상승 고정봉, 대포 뒤 고정봉의 세 경로로 갈라졌다가 같은 하차장에서 합류하는 도면.">컨베이어 세 경로 도면</a></li>
+        <li><b>피할 틈이 있는 추격</b><span>추격자(골렘)가 나타나는 자리는 대포 앞, 기다려야 하는 자리, 다음 착지점을 바로 막지 않게 배치. 공격 직전 동작으로 달아날 시간을 주고, 한 명이 유인하는 동안 동료가 먼저 건너는 것도 협동으로 설계</span></li>
+        <li><b>갈 수 있어 보이는 곳은 실제로 갈 수 있게</b><span>도달한 뒤 되돌아올 수 있는 곳만 길로 두고, 봉이나 발판처럼 보이는 장식은 정리. 플레이어 카메라 높이에서 확인</span></li>
+      </ol>
+    </div>
+    <p class="level-source">출처: 직접 작성한 탈출로 리메이크 기획서(2026.11.16) <a href="https://drive.google.com/file/d/107uUlzDNcE0-OVUcgS_JUcYDpvnpKM2R/view" target="_blank" rel="noopener">원문 보기 <span aria-hidden="true">↗</span></a></p>
+  </section>
   <div class="case-feature">
     <figure class="case-film">
       <video controls muted playsinline preload="none" aria-label="M3 골렘과 탈출로 경로 선택" aria-describedby="m3-golem-fork-note" poster="assets/m3-golem-fork.webp">
@@ -233,7 +252,7 @@
 <details class="archive"><summary>탈출로 M3 화면과 설계 자료</summary><h4>최종 플레이테스트</h4><div class="archive-grid"><a href="assets/m3-route-landing.webp" data-expand class="doc-thumb"><img src="assets/m3-route-landing.webp" alt="M3 · 높이가 다른 공장 발판" loading="lazy"><span>M3 · 높이가 다른 공장 발판</span></a><a href="assets/m3-pursuer.webp" data-expand class="doc-thumb"><img src="assets/m3-pursuer.webp" alt="M3 · 단원에게 다가온 골렘" loading="lazy"><span>M3 · 단원에게 다가온 골렘</span></a></div><h4>탈출로 설계 자료</h4><figure class="shot case-diagram">
       <a href="assets/conveyor-plan.webp" data-expand aria-label="컨베이어 세 경로 기획도 확대"><img src="assets/conveyor-plan.webp" alt="순환 이동봉, 하층 연속봉, 대포 뒤 고정봉 경로가 하차장에서 만나는 기획도" loading="lazy"></a>
       <figcaption><b>세 경로가 같은 하차장에서 합류</b><span>설계 자료 · 순환 이동봉, 하층 연속봉, 대포 뒤 고정봉 중 선택.</span></figcaption>
-    </figure><div class="archive-grid"><a href="assets/escape-overview.webp" data-expand class="doc-thumb"><img src="assets/escape-overview.webp" alt="기획서 도식 · 전체 구간 흐름" loading="lazy"><span>기획서 도식 · 전체 구간 흐름</span></a></div></details><a class="doc-link" data-expand aria-haspopup="dialog" href="assets/doc-captures/design-escape.webp" data-description="탈출로의 세 가지 설계 원칙. 다음 발판을 살피고 묘기를 조합해 경로를 고르며, 추격자를 유인해 동료를 먼저 보낸다.">탈출로 리메이크 기획서 발췌</a></div></section>
+    </figure></details><a class="doc-link" data-expand aria-haspopup="dialog" href="assets/doc-captures/design-escape.webp" data-description="탈출로의 세 가지 설계 원칙. 다음 발판을 살피고 묘기를 조합해 경로를 고르며, 추격자를 유인해 동료를 먼저 보낸다.">탈출로 리메이크 기획서 발췌</a></div></section>
 
 <section id="act-m2" class="test-section"><div class="shell chapter"><div class="heading"><div><span class="kicker">Playtest & iteration</span><h2>첫 테스트에서 바꾼 것</h2></div><p>첫 번째 플레이테스트(M1)의 10월 23일 설문에서 목표를 파악하기 어렵다는 응답 16/18건. 다음 빌드에서 맡은 과제는 공연의 묘기를 그대로 쓰는 탈출 동선 설계.</p></div>
 <div class="response-plots"><figure><figcaption>동료의 실수·사고가 재미있었다 <b>4 / 9명</b></figcaption><div aria-hidden="true"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="on" style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i></div><small>M1 종료 설문 · 해당 상황 경험자</small></figure><figure><figcaption>다음 목표를 파악하기 어려웠다 <b>16 / 18건</b></figcaption><div aria-hidden="true"><i class="on" style="--i:0"></i><i class="on" style="--i:1"></i><i class="on" style="--i:2"></i><i class="on" style="--i:3"></i><i class="on" style="--i:4"></i><i class="on" style="--i:5"></i><i class="on" style="--i:6"></i><i class="on" style="--i:7"></i><i class="on" style="--i:8"></i><i class="on" style="--i:9"></i><i class="on" style="--i:10"></i><i class="on" style="--i:11"></i><i class="on" style="--i:12"></i><i class="on" style="--i:13"></i><i class="on" style="--i:14"></i><i class="on" style="--i:15"></i><i style="--i:16"></i><i style="--i:17"></i></div><small>M1 첫날 밤 설문 · 어려운 점으로 선택한 응답</small></figure></div>

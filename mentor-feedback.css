@@ -402,3 +402,26 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
   .folio .career-entry {grid-template-columns: minmax(0, 1fr) !important; row-gap: 12px}
   .folio .career-entry .career-card {justify-self: start; width: min(100%, 260px)}
 }
+
+/* ---------- 커튼콜 탈출로: 전체 동선도와 레벨 설계 원칙을 접지 않고 보이게 (11/27 새벽) ---------- */
+.level-plan {margin: 6px 0 44px; padding-top: 18px; border-top: 2px solid var(--ink, #352323)}
+.level-plan-head h3 {margin: 0 0 6px}
+.level-plan-head p {margin: 0 0 20px; max-width: 62em}
+.level-plan-body {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g, 32px); align-items: start}
+.level-map {grid-column: span 2; margin: 0; min-width: 0}
+.level-map a {display: block}
+.level-map img {display: block; width: 100%; height: auto; background: #0f151b; cursor: zoom-in}
+.level-map figcaption {display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 8px}
+.level-rules {list-style: none; margin: 0; padding: 0; counter-reset: level-rule}
+.level-rules > li {position: relative; counter-increment: level-rule; margin: 0 0 14px; padding: 0 0 14px 34px; border-bottom: 1px solid var(--line, #d5d6cf)}
+.level-rules > li:last-child {margin-bottom: 0}
+.level-rules > li::before {content: counter(level-rule, decimal-leading-zero); position: absolute; left: 0; top: 3px; font-size: 14px; font-weight: 700; color: var(--acc, #9d382a)}
+.level-rules b {display: block; margin-bottom: 4px; font-size: 17px; line-height: 1.45; color: var(--ink, #352323)}
+html.cp-cc main .level-rules span {display: block; font-size: 15px; line-height: 1.65; color: var(--ink, #352323)}
+.level-rules .doc-link {min-height: 0; margin-top: 6px}
+html.cp-cc main .level-source {margin: 14px 0 0; font-size: 14px; color: var(--sub, #695552)}
+.level-source a {font-weight: 700; color: var(--ink, #352323); text-underline-offset: 3px}
+@media (max-width: 760px) {
+  .level-plan-body {grid-template-columns: minmax(0, 1fr); gap: 20px}
+  .level-map {grid-column: auto}
+}
