@@ -425,3 +425,8 @@ html.cp-cc main .level-source {margin: 14px 0 0; font-size: 14px; color: var(--s
   .level-plan-body {grid-template-columns: minmax(0, 1fr); gap: 20px}
   .level-map {grid-column: auto}
 }
+
+/* 외줄타기: 첫 테스트 뒤 바꾼 것(문제 → 바꾼 것 → 결과) */
+.rope-finding {margin: 1.6rem 0 0}
+.rope-finding p + p {margin-top: .5rem}
+.rope-finding strong {color: var(--accent, #a83224); margin-right: .35rem}
