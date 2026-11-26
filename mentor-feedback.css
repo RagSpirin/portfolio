@@ -237,3 +237,6 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
 @media print {.folio .skill-figure, .folio .skill-more {display: none}}
 .folio .skill-stat-row {padding-block: 34px}
 @media (max-width: 620px) {.folio .skill-stat-row {padding-block: 20px}}
+
+/* 카드 그림 숨김 (11/27 00:00 형락 님 "사진 없애줘봐"). 되돌리려면 이 한 줄만 지운다 */
+.folio .skill-cards .skill-figure {display: none}
