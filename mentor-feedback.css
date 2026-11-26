@@ -69,3 +69,10 @@ dl.intent dd {margin: 0; font-size: 16px; line-height: 1.7}
 @media (max-width: 900px) {.strength {grid-template-columns: 1fr; gap: 16px 0}}
 @media (max-width: 520px) {.strength-cases > li {grid-template-columns: 1fr; gap: 8px 0}}
 @media print {.strength-shot {display: none}}
+
+/* 주요 역량 v4: 가로 2열 카드. 카드 안은 역량 설명 → 사례 */
+.strengths {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 44px; border-top: 0}
+.strength {display: block; padding: 24px 0 28px; border-top: 1px solid #cfd6d1; border-bottom: 0}
+.strength-say {margin-bottom: 16px; padding-bottom: 6px; border-bottom: 1px solid #e1e6e2}
+.strength-cases > li {grid-template-columns: 132px minmax(0, 1fr); gap: 0 14px}
+@media (max-width: 900px) {.strengths {grid-template-columns: 1fr}}
