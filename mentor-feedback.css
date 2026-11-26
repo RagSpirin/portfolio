@@ -181,3 +181,19 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
 }
 @media print {.folio .skill-cards .skill-line {display: block; font-size: 9pt; margin: 2pt 0 0; border: 0; padding: 0}}
 @media (min-width: 1001px) {.folio .skill-cards > li:nth-child(-n+3) .skill-line {min-height: calc(3em + 14px)}}
+
+/* 주요 역량 카드 본문: 굵은 주장 + 그 아래 사례 (11/26 22:41 형락 님 승인) */
+.folio .skill-cards .skill-claims {
+  grid-column: 1 / -1; grid-row: 3; align-self: start;
+  display: grid; gap: 15px; margin: 15px 0 0; padding: 0; list-style: none;
+}
+.folio .skill-claims > li {margin: 0}
+.folio .skill-claims b {
+  display: block; color: #1d2925; font-size: 15px; font-weight: 700;
+  line-height: 1.5; letter-spacing: -.02em; word-break: keep-all;
+}
+.folio .skill-claims span {
+  display: block; margin-top: 5px; padding-left: 11px; border-left: 2px solid #d9e0dd;
+  color: #55605b; font-size: 14px; line-height: 1.6; word-break: keep-all;
+}
+@media print {.folio .skill-claims {display: none}}
