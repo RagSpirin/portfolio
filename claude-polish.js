@@ -93,7 +93,7 @@
     }
     const cw = +(Object.entries(area).sort((x, y) => y[1] - x[1])[0] || [0])[0];
     if (!cw) return;
-    const z = Math.min(1.14, Math.max(.71, innerWidth * .646 / cw));
+    const z = Math.min(1.14, Math.max(.71, innerWidth * .659 / cw));
     document.body.style.zoom = Math.abs(z - 1) < .01 ? '' : z.toFixed(3);
   };
   fit(); addEventListener('resize', fit);
