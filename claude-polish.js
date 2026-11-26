@@ -82,7 +82,7 @@
   }
 
   /* ---------- b. large screens: same proportions as 1920 (zoom, capped at 1.4) ---------- */
-  // content column ≈ 68% of the window on every page; zoom limited to 0.75–1.2.
+  // content column ≈ 62% of the window on every page; zoom limited to 0.7–1.1 (2026-11-26: whole site a little smaller).
   // Content width = the box width (≥ 900px, not full-bleed) that covers the most page height at zoom 1.
   const fit = () => {
     document.body.style.zoom = '';
@@ -93,7 +93,7 @@
     }
     const cw = +(Object.entries(area).sort((x, y) => y[1] - x[1])[0] || [0])[0];
     if (!cw) return;
-    const z = Math.min(1.2, Math.max(.75, innerWidth * .68 / cw));
+    const z = Math.min(1.1, Math.max(.7, innerWidth * .62 / cw));
     document.body.style.zoom = Math.abs(z - 1) < .01 ? '' : z.toFixed(3);
   };
   fit(); addEventListener('resize', fit);
