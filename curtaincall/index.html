@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#faf9f6">
-<title>커튼콜 · 주형락 게임 기획 포트폴리오</title><meta name="description" content="4인 팀장 주형락의 커튼콜 포트폴리오. 외줄타기 협동 묘기 설계, 인간 대포 협동 재설계와 탈출로의 분기·합류·추격 기획 및 구현."><link rel="stylesheet" href="../typography.css"><link rel="stylesheet" href="style.css?v=document-captures"><link rel="stylesheet" href="exhibits.css"><script defer src="exhibits.js"></script><link rel="stylesheet" href="../portfolio-color.css"><link rel="stylesheet" href="../portfolio-finish.css"><link rel="stylesheet" href="../resume-navigation.css"><link rel="stylesheet" href="../claude-polish.css"><link rel="stylesheet" href="docs/section.css">
+<title>커튼콜 · 주형락 게임 기획 포트폴리오</title><meta name="description" content="4인 팀장 주형락의 커튼콜 포트폴리오. 외줄타기 협동 묘기 설계, 인간 대포 협동 재설계와 탈출로의 분기·합류·추격 기획 및 구현."><link rel="stylesheet" href="../typography.css"><link rel="stylesheet" href="style.css?v=document-captures"><link rel="stylesheet" href="exhibits.css"><script defer src="exhibits.js"></script><link rel="stylesheet" href="../portfolio-color.css"><link rel="stylesheet" href="../portfolio-finish.css"><link rel="stylesheet" href="../resume-navigation.css"><link rel="stylesheet" href="../claude-polish.css"><link rel="stylesheet" href="../mentor-feedback.css"><link rel="stylesheet" href="docs/section.css">
 </head>
 <body><a class="skip" href="#main">본문 바로가기</a>
 <header class="resume-navigation"><div class="resume-navigation-inner"><a class="resume-back" href="../index.html#project-curtaincall"><span aria-hidden="true">←</span> 이력서로 돌아가기</a></div></header>
@@ -9,10 +9,11 @@
 <section class="cover shell">
   <div class="cover-intro">
     <h1>커튼콜<span lang="en">Curtain Call</span></h1>
-    <p class="cover-role">4인 팀장 · 협동 게임플레이 및 레벨 기획·구현</p>
-<p class="cover-contribution">서커스 탈출 게임 원안과 모든 묘기의 메커니즘 직접 구상. 외줄타기의 균형·목마 규칙 설계, 인간 대포 협동 규칙 재설계, 탈출로 전 구간 단독 설계와 골렘 추격 구현, 팀 분업과 최종 빌드 범위 조정.</p>
-    <p class="deck">공연으로 자금을 모으고 대기실에서 단서를 찾아 탈출하는 PC 2~4인 협동 게임.</p>
-    <a class="primary docs-jump" href="#documents">기획서 원문 8편 보기</a>
+    <p class="deck cover-what">공연으로 자금을 모으고, 대기실에서 단서를 찾고, 무대에서 익힌 묘기로 서커스를 탈출하는 PC 2~4인 협동 게임.</p>
+    <p class="cover-role">4인 팀장 · 레벨 및 협동 게임플레이 기획·구현</p>
+<p class="cover-contribution">게임 원안과 모든 묘기의 규칙을 직접 구상했습니다. 탈출로 전 구간을 혼자 설계하고 구현했고, 외줄타기와 인간 대포의 협동 규칙을 만들고 테스트 결과에 따라 다시 설계했습니다. 팀장으로서 분업과 최종 빌드 범위를 정했습니다.</p>
+    <a class="primary docs-jump" href="#documents">상세 기획서 보기</a>
+    <a class="route-jump" href="#case-route">탈출로 레벨 설계부터 보기 <span aria-hidden="true">↓</span></a>
     
   </div>
 <figure class="cover-media"><div class="player"><video id="cover-video" playsinline muted loop preload="none" poster="assets/m3-tightrope-duet.webp" aria-label="커튼콜 세 번째 플레이테스트 외줄타기 영상"><source src="assets/m3-tightrope.mp4" type="video/mp4"></video><div class="curtains" aria-hidden="true"><i></i><i></i></div><button id="play" hidden>클립 재생</button></div><figcaption><b>외줄타기</b><span>세 번째 플레이테스트(M3) · 11.22–23</span></figcaption></figure>
@@ -20,7 +21,7 @@
 <section id="lead" class="profile shell" aria-label="담당 범위">
   <dl>
     <div><dt>팀 운영</dt><dd>개발 순서 결정과 플레이테스트 기준 설정</dd></div>
-<div><dt>담당 씬</dt><dd><a href="#case-tightrope">외줄타기 설계</a> · 인간 대포 재기획 · 탈출로 전체 단독 설계 · 골렘 추격</dd></div>
+<div><dt>담당 씬</dt><dd><a href="#case-route">탈출로 전 구간 단독 설계와 추격자(골렘) 동선</a> · <a href="#case-tightrope">외줄타기 규칙 설계</a> · <a href="#case-cannon">인간 대포 규칙 구상과 재설계</a></dd></div>
     <div><dt>협업 범위</dt><dd>대기실·리허설은 씬 담당자 제작, 멀티플레이·보상은 개발 총괄과 연동</dd></div>
     <div><dt>제작 환경</dt><dd>Unity 6 · PC</dd></div>
   </dl>
@@ -29,7 +30,7 @@
   <li>위험한 묘기 끝에 터지는 더 큰 환호</li>
   <li>공연으로 번 공동 자금은 부상 치료와 기물 구입에</li>
   <li>한 번 더 벌지, 지금 가진 장비로 나갈지 동료와 함께 선택</li>
-</ul></div><div class="sequence"><figure class="shot"><a data-expand href="assets/m3-rope.webp"><img loading="lazy" src="assets/m3-rope.webp" alt="공연으로 모은 공동 자금"></a><figcaption><b>공연으로 모은 공동 자금</b><span>외줄에서는 친구의 실수 한 번에 나까지 휘청. 위험한 길일수록 커지는 보상과 부상 위험</span></figcaption></figure><figure class="shot"><a data-expand href="assets/m3-explore.webp"><img loading="lazy" src="assets/m3-explore.webp" alt="쉬는 시간의 출구 탐색"></a><figcaption><b>쉬는 시간의 출구 탐색</b><span>공연 사이에는 대기실 안쪽에서 단서 찾기. 밤에는 몸과 장비를 정비하고 다음 날 준비</span></figcaption></figure><figure class="shot"><a data-expand href="assets/m3-route.webp"><img loading="lazy" src="assets/m3-route.webp" alt="무대에서 익힌 묘기로 탈출"></a><figcaption><b>무대에서 익힌 묘기로 탈출</b><span>공연에서 익힌 기술로 건너는 마지막 시설. 기한을 넘기면 새 단원으로 1일차부터 다시 시작</span></figcaption></figure></div><a class="doc-link" data-expand aria-haspopup="dialog" href="assets/doc-captures/design-loop.webp" data-description="아침 쉬는 시간부터 공연, 밤 정비와 수면까지 하루를 여섯 시간대로 나눈 기획서 표.">게임 흐름과 기획 의도 발췌</a></section>
+</ul></div><div class="sequence"><figure class="shot"><a data-expand href="assets/m3-rope.webp"><img loading="lazy" src="assets/m3-rope.webp" alt="공연으로 모은 공동 자금"></a><figcaption><b>공연으로 모은 공동 자금</b><span>외줄에서는 친구의 실수 한 번에 나까지 휘청. 위험한 길일수록 커지는 보상과 부상 위험</span></figcaption></figure><figure class="shot"><a data-expand href="assets/m3-explore.webp"><img loading="lazy" src="assets/m3-explore.webp" alt="쉬는 시간의 출구 탐색"></a><figcaption><b>쉬는 시간의 출구 탐색</b><span>공연 사이에는 대기실 안쪽에서 단서 찾기. 밤에는 몸과 장비를 정비하고 다음 날 준비</span></figcaption></figure><figure class="shot"><a data-expand href="assets/m3-route.webp"><img loading="lazy" src="assets/m3-route.webp" alt="무대에서 익힌 묘기로 탈출"></a><figcaption><b>무대에서 익힌 묘기로 탈출</b><span>공연에서 익힌 기술로 건너는 마지막 시설. 기한을 넘기면 새 단원으로 1일차부터 다시 시작</span></figcaption></figure></div><a class="doc-link" data-expand aria-haspopup="dialog" href="assets/doc-captures/design-loop.webp" data-description="아침 쉬는 시간부터 공연, 밤 정비와 수면까지 하루를 여섯 시간대로 나눈 기획서 표.">게임 흐름과 기획 의도 발췌</a><dl class="intent" aria-label="기획 의도"><div><dt>출발한 질문</dt><dd>서커스 무대에서 친구들과 떠들썩하게 웃으며 협동하는 게임을 만들면 어떨까?</dd></div><div><dt>의도한 재미</dt><dd>위험한 묘기일수록 환호와 보상이 커지고 그만큼 다칠 위험도 커집니다. 한 번 더 벌지, 지금 나갈지를 동료와 함께 정하는 데서 재미가 나오게 했습니다.</dd></div><div><dt>플레이어의 과제</dt><dd>공연에서 익힌 묘기를 탈출로에서 이어 쓰기. 새 조작을 배우는 대신 이미 배운 행동으로 다음 길을 판단합니다.</dd></div></dl><p class="term-note">이 페이지의 <b>M1·M2·M3</b>는 첫 번째·두 번째·세 번째 플레이테스트에 쓴 빌드입니다. <b>골렘</b>은 탈출로에서 단원을 쫓는 추격자, <b>목마</b>는 동료 위에 올라타 함께 움직이는 묘기입니다.</p></section>
 <section class="shell chapter reel-chapter" id="stage-wire" aria-labelledby="reel-heading"><div class="heading"><div><span class="kicker">Gameplay</span><h2 id="reel-heading">공연에서 탈출까지</h2></div><p>M3 최종 테스트에서 기록한 외줄 공연, 대기실 탐색, 공장 탈출과 골렘 추격.</p></div>
 <div class="reel-grid"><figure><video preload="metadata" controls playsinline muted poster="assets/m3-rope.webp" aria-label="M3 최종 테스트에서 촬영한 외줄, 대기실, 탈출로와 추격 장면"><source src="assets/curtaincall-play.mp4" type="video/mp4"></video><figcaption>M3 · 0.8.9 최종 플레이테스트 영상 · 9초</figcaption></figure><div id="stage-swing"><h3>탈출로에 적용한 묘기</h3><ol class="mechanic-steps"><li><b>대포 발사</b><span>첫 발판에서 건너편 외줄까지 이동</span></li><li><b>외줄 착지</b><span>균형을 잡고 줄 끝의 봉까지 접근</span></li><li><b>공중그네</b><span>봉을 잡고 하강해 다음 발판에 착지</span></li></ol></div></div></section>
 <section class="shell chapter" id="case-tightrope" aria-labelledby="tightrope-heading">
@@ -37,6 +38,7 @@
     <div><span class="kicker">Co-op design</span><h2 id="tightrope-heading">외줄타기<span class="serif" lang="en">The Tightrope</span></h2></div>
     <p>외줄타기의 균형, 옆줄 이동, 목마 규칙을 직접 설계했습니다. 한 사람이 뛰거나 기울 때 동료도 균형을 다시 잡아야 하는 협동 묘기입니다.</p>
   </div>
+  <dl class="intent" aria-label="기획 의도"><div><dt>의도한 재미</dt><dd>성공하려고 아등바등하며 동료와 다급하게 소통하는 과정. 실패 자체가 아니라 그 과정이 재미있도록, 한 사람의 흔들림이 동료에게도 전해지게 했습니다.</dd></div><div><dt>플레이어의 과제</dt><dd>내 균형을 잡으면서 동료의 위치와 기울기를 함께 읽기.</dd></div><div><dt>통과 기준</dt><dd>그래픽 없이 기본 도형만으로 플레이해도 재미있을 것. 재미없으면 반려한다는 기준을 기획서에 적어 두었습니다.</dd></div></dl>
   <div class="reel-grid">
     <figure class="shot">
       <a href="assets/m3-tightrope.webp" data-expand aria-label="외줄 위 목마 장면 확대"><img src="assets/m3-tightrope.webp" width="1280" height="720" loading="lazy" alt="단원 두 명이 목마를 탄 채 불 링을 향해 외줄을 건너는 모습. 화면 아래에 좌우 균형 게이지가 보인다."></a>
@@ -55,8 +57,9 @@
 <section class="shell chapter" id="case-cannon">
   <div class="heading">
     <div><span class="kicker">Co-op design</span><h2>인간 대포<span class="serif">The Human Cannon</span></h2></div>
-    <p>인간 대포의 발사·받기 메커니즘 원안 구상. 이후 팀원이 작성한 상세 초안을 이어받아 공중·지상의 협동 규칙을 재설계하고 구현.</p>
+    <p>대포로 날아가는 사람과 지상에서 받아 주는 사람이 짝을 이루는 묘기입니다. 발사·받기 규칙을 직접 구상하고 구현했고, 테스트에서 드러난 문제에 맞춰 공중과 지상의 역할을 다시 설계했습니다.</p>
   </div>
+  <dl class="intent" aria-label="기획 의도"><div><dt>의도한 재미</dt><dd>내가 대포에 들어가고 건너편의 친구가 나를 받아 준다면, 언제 쏠지 둘이 신호를 맞추는 순간부터 재미있지 않을까?</dd></div><div><dt>플레이어의 과제</dt><dd>날아가는 사람은 쏘는 타이밍을, 받는 사람은 동료가 떨어질 곳을 읽기.</dd></div><div><dt>발견한 문제</dt><dd>처음 규칙에서는 한 사람이 날아가는 동안 지상의 동료가 기다리기만 했습니다. 그래서 지상에도 판단할 일을 만들었습니다.</dd></div></dl>
   <div class="case-feature">
     <figure class="case-film">
       <video controls muted playsinline preload="none" aria-label="M3 인간 대포 발사와 트램펄린 착지" aria-describedby="m3-cannon-catch-note" poster="assets/m3-cannon-catch.webp">
@@ -67,7 +70,7 @@
     </figure>
     <div class="case-sidebar">
       <div class="case-decision">
-        <p><strong>초안</strong> 단원이 비행하는 동안 지상 담당자에게는 대기 시간 발생.</p>
+        <p><strong>처음 규칙</strong> 단원이 비행하는 동안 지상 담당자에게는 대기 시간 발생.</p>
         <p><strong>바꾼 규칙</strong> 비행자가 봉을 잡으면 톱 정지. 그사이 지상 담당자는 트램펄린을 밀고 관문을 통과해 동료의 착지 지원.</p>
       </div>
       <details class="clip-stills" open><summary>출발 지점과 봉 관문 사진</summary>
@@ -98,8 +101,9 @@
 <div class="shell chapter">
   <div class="heading">
     <div><span class="kicker">Level design</span><h2>탈출로<span class="serif">The Escape Route</span></h2></div>
-<p>탈출로 A 전 구간 단독 설계. 분기·합류 지점, 묘기 기물과 골렘 추격 동선 기획 및 Unity 구현.</p>
+<p>공연에서 익힌 묘기를 이어 써서 공장을 빠져나가는 마지막 구간입니다. 전 구간을 혼자 설계했고, 갈림길과 합류 지점, 묘기 기물의 배치, 추격자(골렘)의 동선을 기획해 Unity로 구현했습니다.</p>
   </div>
+  <dl class="intent" aria-label="기획 의도"><div><dt>의도한 재미</dt><dd>쫓기는 압박 속에서 익숙한 묘기를 이어 쓰고, 동료와 역할을 나눠 살아 나오는 것. "배운 것을 이어 써서 여기까지 왔다"는 감각을 목표로 했습니다.</dd></div><div><dt>플레이어의 과제</dt><dd>안내 문구 없이 조명과 구조물만 보고 다음에 갈 곳을 판단하기.</dd></div><div><dt>참고한 설계 자료</dt><dd>GDC 강연 'Invisible Intuition'과 Valve의 'The AI Systems of Left 4 Dead'. 길을 읽히는 방법과 추격의 긴장 사이에 숨 돌릴 틈을 두는 방법을 참고했습니다.</dd></div></dl>
   <div class="case-feature">
     <figure class="case-film">
       <video controls muted playsinline preload="none" aria-label="M3 골렘과 탈출로 경로 선택" aria-describedby="m3-golem-fork-note" poster="assets/m3-golem-fork.webp">

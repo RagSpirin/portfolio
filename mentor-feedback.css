@@ -25,3 +25,15 @@ html.cp-home3 .folio .intro-copy:not(.cp-open) > p:not(:first-child) {display: b
 html.cp-home3 .folio .intro-copy:not(.cp-open) > p:nth-child(n+4) {display: none}
 .folio .intro-copy > p:first-child {color: #1f2a25; font-weight: 600}
 @media print {.archive-uses, .archive-lede, .project-pitch, .skill-more {display: none !important}}
+
+/* 커튼콜 페이지: 구역별 기획 의도, 용어 풀이, 첫 화면 순서 */
+.cover .cover-what {margin-top: .9rem; max-width: 26em; color: var(--ink, #1d2622) !important; font-size: 19px !important; font-weight: 600; line-height: 1.6}
+.cover .cover-contribution {max-width: 30em}
+.cover .route-jump {display: inline-block; margin: .9rem 0 0 1.1rem; font-size: 15px; font-weight: 600; color: inherit; text-decoration: underline; text-underline-offset: .3em}
+dl.intent {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 2rem; margin: 1.6rem 0 2.2rem; padding: 0; border-top: 2px solid currentColor}
+dl.intent > div {padding: 1rem 0 0}
+dl.intent dt {font-size: 14px; font-weight: 700; letter-spacing: 0; color: var(--accent, #782e31); margin: 0 0 .4rem}
+dl.intent dd {margin: 0; font-size: 16px; line-height: 1.7}
+.term-note {margin: 0 0 1rem; font-size: 14.5px; line-height: 1.7; color: var(--muted, #5c6660)}
+.term-note b {font-weight: 700; color: inherit}
+@media (max-width: 900px) {dl.intent {grid-template-columns: 1fr}}
