@@ -207,3 +207,33 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
     color: var(--ink);
   }
 }
+
+/* 주요 역량 카드: 그림 한 장 + 사례 접기 (11/26 23:50 형락 님 "진행") */
+.folio .skill-cards .skill-card {grid-template-rows: auto auto auto auto 1fr}
+.folio .skill-cards .skill-figure {grid-column: 1 / -1; grid-row: 3; margin: 16px 0 0}
+.folio .skill-cards .skill-claims {grid-row: 4}
+.folio .skill-figure img {display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 2px; background: #1c2421}
+.folio .skill-figure-pair > span {display: grid; grid-template-columns: 1fr 1fr; gap: 4px}
+.folio .skill-figure-pair img {aspect-ratio: 8 / 9}
+.folio .skill-figure figcaption {margin-top: 7px; color: #6b7570; font-size: 12.5px; line-height: 1.45; word-break: keep-all}
+.folio .skill-stat {display: grid; align-content: center; gap: 12px; aspect-ratio: auto}
+.folio .skill-stat-row {display: grid; grid-template-columns: 5.2em minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 14px 16px; background: #f3f6f4; border-radius: 2px}
+.folio .skill-stat-row span {display: block; margin: 0; padding: 0; border: 0; color: #55605b; font-size: 13.5px}
+.folio .skill-stat-row i {position: relative; display: block; height: 10px; background: #dfe6e2; border-radius: 5px; overflow: hidden}
+.folio .skill-stat-row i::after {content: ""; position: absolute; inset: 0; width: calc(var(--v) * 100%); background: #2f6b55; border-radius: 5px}
+.folio .skill-stat-row b {display: block; color: #1d2925; font-size: 19px; font-weight: 700; letter-spacing: -.03em; white-space: nowrap}
+.folio .skill-stat figcaption {margin-top: 0}
+.folio .skill-cards .skill-more {
+  grid-column: 1 / -1; grid-row: 5; align-self: end; justify-self: start;
+  margin-top: 16px; padding: 7px 14px; background: #fff; border: 1px solid #c9d2ce; border-radius: 3px;
+  color: #23302b; font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer;
+}
+.folio .skill-cards .skill-more:hover {border-color: #23302b}
+.folio .skill-cards .skill-more span::after {content: " ↓"}
+.folio .skill-cards .skill-more[aria-expanded="true"] span::after {content: " ↑"}
+.folio .skill-card.is-folded .skill-claims > li > span {display: none}
+.folio .skill-card.is-folded .skill-claims {gap: 9px}
+@media (min-width: 1001px) {.folio .skill-cards > li:nth-child(n+4) .skill-figure img {aspect-ratio: 21 / 9}}
+@media print {.folio .skill-figure, .folio .skill-more {display: none}}
+.folio .skill-stat-row {padding-block: 34px}
+@media (max-width: 620px) {.folio .skill-stat-row {padding-block: 20px}}

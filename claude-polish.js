@@ -202,3 +202,18 @@
       { duration: 900, delay: i * 120, easing: EASE, fill: 'backwards' }); });
   }, { threshold: .6 }).observe(bar);
 })();
+
+/* 주요 역량 카드: 사례는 눌러서 펼침 (스크립트가 없으면 모두 보임) */
+(() => {
+  document.querySelectorAll('.skill-card').forEach(card => {
+    const btn = card.querySelector('.skill-more');
+    if (!btn) return;
+    btn.hidden = false;
+    card.classList.add('is-folded');
+    btn.addEventListener('click', () => {
+      const open = card.classList.toggle('is-folded') === false;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.firstElementChild.textContent = open ? '사례 접기' : '사례 보기';
+    });
+  });
+})();
