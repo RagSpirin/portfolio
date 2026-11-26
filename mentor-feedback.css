@@ -20,9 +20,7 @@
 
 .project-spec .project-pitch {margin: 8px 0 12px; max-width: 30em; font-size: clamp(14.5px, 1.1vw, 17px); font-weight: 600; line-height: 1.6; color: #2f3a35; word-break: keep-all}
 
-/* intro: who I am as a designer stays visible; only the personal story sits behind 더 보기 */
-html.cp-home3 .folio .intro-copy:not(.cp-open) > p:not(:first-child) {display: block}
-html.cp-home3 .folio .intro-copy:not(.cp-open) > p:nth-child(n+4) {display: none}
+/* intro: one short paragraph on what I make; the rest sits behind 더 보기 */
 .folio .intro-copy > p:first-child {color: #1f2a25; font-weight: 600}
 @media print {.archive-uses, .archive-lede, .project-pitch, .skill-more {display: none !important}}
 
@@ -37,3 +35,20 @@ dl.intent dd {margin: 0; font-size: 16px; line-height: 1.7}
 .term-note {margin: 0 0 1rem; font-size: 14.5px; line-height: 1.7; color: var(--muted, #5c6660)}
 .term-note b {font-weight: 700; color: inherit}
 @media (max-width: 900px) {dl.intent {grid-template-columns: 1fr}}
+
+/* 역량: 역량 설명이 먼저, 사례는 구분선 아래 */
+.folio .practice-four .skill-define {font-size: clamp(15px, 1.12vw, 17.5px); font-weight: 500; line-height: 1.75; word-break: keep-all}
+.folio .practice-four .skill-evidence {grid-column: 1/-1; margin-top: 14px; padding-top: 12px; border-top: 1px solid #cfd6d1}
+.folio .practice-four .skill-evidence .skill-case {margin: 0 0 6px; font-weight: 600; color: #3d4742}
+.folio .practice-four .skill-evidence .skill-case b {display: inline-block; margin-right: 8px; padding: 1px 7px; font-size: 12px; font-weight: 700; color: #fff; background: #145c4d}
+.folio .practice-four .skill-evidence .work-points li {font-size: 14px; color: #4a534e}
+/* 영향을 준 게임 */
+.influences {margin: 0 0 40px}
+.influences h3 {margin: 0 0 12px; font-size: clamp(18px, 1.5vw, 23px); letter-spacing: -.03em}
+.influence-list {list-style: none; margin: 0; padding: 0; border-top: 2px solid #1f2a25}
+.influence-list > li {display: grid; grid-template-columns: 14em 1fr 1fr; gap: 0 28px; padding: 13px 0; border-bottom: 1px solid #cfd6d1; font-size: 15px; line-height: 1.65}
+.influence-list b {font-weight: 700}
+.influence-empty {color: #8a938d}
+.influence-todo {margin: 10px 0 0; font-size: 13px; font-weight: 700; color: #a2542a}
+@media (max-width: 760px) {.influence-list > li {grid-template-columns: 1fr}}
+@media print {.influences {display: none !important}}
