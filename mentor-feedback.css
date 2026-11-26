@@ -197,3 +197,13 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
   color: #55605b; font-size: 14px; line-height: 1.6; word-break: keep-all;
 }
 @media print {.folio .skill-claims {display: none}}
+
+/* 구역 제목 크기 통일 (11/26 23:45 형락 님): 주요 역량·플레이한 게임·영화·책 = 개인 이력·프로젝트와 같은 크기 */
+@media screen {
+  .folio .practice > h3, .folio .medium-title {
+    font-size: clamp(29px, 3.1vw, 46px);
+    line-height: 1.15;
+    letter-spacing: -.065em;
+    color: var(--ink);
+  }
+}
