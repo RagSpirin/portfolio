@@ -151,3 +151,33 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
   .folio .practice-five > li {grid-column: span 2}
   .folio .practice-five > li:nth-child(n+4) {grid-column: span 3}
 }
+
+/* 주요 역량 카드형: 짧은 이름 + 한 줄 설명 + 사례 (11/26 20:44 형락 님 선택) */
+.folio .skill-cards {gap: 14px}
+.folio .skill-cards .skill-card {
+  grid-template-columns: 34px minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  align-content: start;
+  gap: 0 12px;
+  padding: 22px 24px 20px;
+  background: #fff;
+  border: 1px solid #d9e0dd;
+  border-radius: 3px;
+}
+.folio .skill-cards .practice-mark {grid-column: 1; grid-row: 1; width: 34px; height: 34px; align-self: center}
+.folio .skill-cards h4 {
+  grid-column: 2; grid-row: 1; align-self: center; margin: 0;
+  font-size: clamp(22px, 1.75vw, 27px); letter-spacing: -.04em; line-height: 1.2;
+}
+.folio .skill-cards .skill-line {
+  grid-column: 1 / -1; grid-row: 2; margin: 14px 0 0; padding-bottom: 14px;
+  border-bottom: 1px solid #e4e9e7;
+  color: #23302b; font-size: 16px; font-weight: 600; line-height: 1.5; letter-spacing: -.02em; word-break: keep-all;
+}
+.folio .skill-cards .work-points {grid-column: 1 / -1; grid-row: 3; margin-top: 12px; color: #55605b; font-size: 14px}
+@media (max-width: 620px) {
+  .folio .skill-cards .skill-card {padding: 18px}
+  .folio .skill-cards h4 {font-size: 21px}
+}
+@media print {.folio .skill-cards .skill-line {display: block; font-size: 9pt; margin: 2pt 0 0; border: 0; padding: 0}}
+@media (min-width: 1001px) {.folio .skill-cards > li:nth-child(-n+3) .skill-line {min-height: calc(3em + 14px)}}
