@@ -76,3 +76,7 @@ dl.intent dd {margin: 0; font-size: 16px; line-height: 1.7}
 .strength-say {margin-bottom: 16px; padding-bottom: 6px; border-bottom: 1px solid #e1e6e2}
 .strength-cases > li {grid-template-columns: 132px minmax(0, 1fr); gap: 0 14px}
 @media (max-width: 900px) {.strengths {grid-template-columns: 1fr}}
+
+/* 주요 역량 v5: 사례는 사진 없이 글만 */
+.strength-cases {gap: 12px}
+.strength-cases > li {display: block; padding-left: 12px; border-left: 2px solid #cfd6d1}
