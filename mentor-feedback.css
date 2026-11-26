@@ -81,9 +81,7 @@ dl.intent dd {margin: 0; font-size: 16px; line-height: 1.7}
 .strength-cases {gap: 12px}
 .strength-cases > li {display: block; padding-left: 12px; border-left: 2px solid #cfd6d1}
 
-/* 소개글: 재미와 중요하게 보는 것, 할 수 있는 것 두 문단까지 노출 */
-html.cp-home3 .folio .intro-copy:not(.cp-open) > p:nth-child(2) {display: block}
-.folio .intro-copy > p:nth-child(2) {color: #1f2a25}
+/* 소개글: 첫 문단만 노출, 둘째 문단부터는 더 보기 안 (2026-11-26 16:10 형락 님 지시) */
 
 /* 주요 역량 v6: 제목 + 한 줄 + 사례 한 줄씩 */
 .strength {padding: 22px 0 22px}
