@@ -52,3 +52,20 @@ dl.intent dd {margin: 0; font-size: 16px; line-height: 1.7}
 .influence-todo {margin: 10px 0 0; font-size: 13px; font-weight: 700; color: #a2542a}
 @media (max-width: 760px) {.influence-list > li {grid-template-columns: 1fr}}
 @media print {.influences {display: none !important}}
+
+/* 주요 역량 v3: 왼쪽에 역량(생각), 오른쪽에 프로젝트별 사례와 화면 */
+.strengths {list-style: none; margin: 0; padding: 0; border-top: 1px solid #cfd6d1}
+.strength {display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0 48px; padding: 30px 0 32px; border-bottom: 1px solid #cfd6d1; scroll-margin-top: 20px}
+.strength h4 {display: flex; align-items: center; gap: 12px; margin: 0 0 14px; font-size: clamp(19px, 1.6vw, 24px); line-height: 1.3; letter-spacing: -.04em; word-break: keep-all}
+.strength h4 .practice-mark {flex: none}
+.strength-say p {margin: 0 0 10px; font-size: clamp(15px, 1.12vw, 17.5px); line-height: 1.8; color: #1f2a25; word-break: keep-all}
+.strength-cases {list-style: none; margin: 0; padding: 0; display: grid; gap: 16px}
+.strength-cases > li {display: grid; grid-template-columns: 168px minmax(0, 1fr); gap: 0 18px; align-items: start}
+.strength-shot {display: block; aspect-ratio: 16/9; overflow: hidden; background: #e7ebe8}
+.strength-shot img {width: 100%; height: 100%; object-fit: cover; display: block}
+.strength-cases b {display: block; margin: 0 0 3px; font-size: 14px; font-weight: 700; color: #145c4d}
+.strength-cases p {margin: 0; font-size: 14.5px; line-height: 1.65; color: #4a534e; word-break: keep-all}
+.strength-cases .skill-more {margin-top: 3px; font-size: 13px}
+@media (max-width: 900px) {.strength {grid-template-columns: 1fr; gap: 16px 0}}
+@media (max-width: 520px) {.strength-cases > li {grid-template-columns: 1fr; gap: 8px 0}}
+@media print {.strength-shot {display: none}}
