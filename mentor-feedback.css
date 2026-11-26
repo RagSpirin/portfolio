@@ -1,0 +1,27 @@
+/* 2026-11-26 mentor feedback layer: capability cards with one case each, play-record uses, project pitch lines */
+.folio .practice-grid.practice-four {grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px}
+.folio .practice-four .skill-card {grid-template-rows: auto auto auto 1fr auto; align-items: start}
+.folio .practice-four h4 {align-self: center}
+.folio .practice-four .skill-define {grid-column: 1/-1; margin: 0; color: #1f2a25; font-weight: 600; line-height: 1.6}
+.folio .practice-four .skill-case {grid-column: 1/-1; margin: 6px 0 0; font-size: 13px; font-weight: 700; letter-spacing: 0; color: #145c4d}
+.folio .practice-four .work-points {grid-column: 1/-1; margin-top: 0}
+.skill-more {grid-column: 1/-1; justify-self: start; display: inline-block; margin-top: 4px; font-size: 14px; font-weight: 700; color: #145c4d; text-decoration: underline; text-underline-offset: 4px}
+.skill-more:hover {color: #0c3f35}
+.skill-more:focus-visible {outline: 2px solid currentColor; outline-offset: 3px}
+
+.play-archive .archive-head {display: block}
+.play-archive .archive-lede {max-width: 44em; margin: 14px 0 0; font-size: clamp(15px, 1.15vw, 18px); line-height: 1.7; color: #3d4742; word-break: keep-all}
+.archive-uses {list-style: none; margin: 26px 0 34px; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 28px}
+.archive-uses > li {border-top: 2px solid #1f2a25; padding: 14px 0 6px}
+.archive-uses h3 {margin: 0 0 8px; font-size: clamp(15px, 1.2vw, 18px); line-height: 1.4; letter-spacing: -.03em; word-break: keep-all}
+.archive-uses p {margin: 0; font-size: 14.5px; line-height: 1.7; color: #4a534e; word-break: keep-all}
+@media (max-width: 1100px) {.archive-uses {grid-template-columns: repeat(2, minmax(0, 1fr))}}
+@media (max-width: 620px) {.archive-uses, .folio .practice-grid.practice-four {grid-template-columns: 1fr}}
+
+.project-spec .project-pitch {margin: 8px 0 12px; max-width: 30em; font-size: clamp(14.5px, 1.1vw, 17px); font-weight: 600; line-height: 1.6; color: #2f3a35; word-break: keep-all}
+
+/* intro: who I am as a designer stays visible; only the personal story sits behind 더 보기 */
+html.cp-home3 .folio .intro-copy:not(.cp-open) > p:not(:first-child) {display: block}
+html.cp-home3 .folio .intro-copy:not(.cp-open) > p:nth-child(n+4) {display: none}
+.folio .intro-copy > p:first-child {color: #1f2a25; font-weight: 600}
+@media print {.archive-uses, .archive-lede, .project-pitch, .skill-more {display: none !important}}
