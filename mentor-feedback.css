@@ -277,3 +277,15 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
   #skill-reference .skill-figure-pair > span {aspect-ratio: 16 / 9; grid-template-rows: minmax(0, 1fr)}
   #skill-reference .skill-figure-pair img {height: 100%; min-height: 0}
 }
+
+/* 사진 세 장 배치·크기 재조정 (11/27 00:58 형락 님 "배치랑 사이즈 재조정") */
+.folio #skill-listen .skill-stat-row {padding: 22px 16px}
+.folio #skill-lead .skill-figure img {aspect-ratio: 3 / 2; object-position: 50% 34%}
+.folio #skill-reference .skill-figure-pair > span {aspect-ratio: auto; grid-template-rows: none}
+.folio #skill-reference .skill-figure-pair img {height: auto; aspect-ratio: 3 / 4}
+.folio #skill-reference .skill-figure-pair img:first-child {object-position: 50% 50%}
+@media (min-width: 1001px) {
+  .folio .skill-cards > li:nth-child(n+4) .skill-card {grid-template-columns: 34px minmax(0, 1fr) minmax(0, 44%)}
+  .folio .skill-cards > li:nth-child(n+4) .skill-figure {margin-top: 4px}
+}
+@media (max-width: 1000px) {.folio #skill-listen .skill-stat-row {padding: 14px}}
