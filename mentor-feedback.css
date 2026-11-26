@@ -118,3 +118,19 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
   .medium .cinema-stats dd {font-size: clamp(36px, 3vw, 48px)}
   .medium .cinema-record-head h3 {font-size: clamp(17px, 1.4vw, 21px)}
 }
+
+/* 영향을 준 작품을 작게 (2026-11-26 17:57 형락 님): 표지는 왼쪽에 작게, 글은 오른쪽. 두 개씩 두 줄 */
+.picks {grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px clamp(24px, 3vw, 44px)}
+.pick, .pick:nth-child(-n+2) {display: grid; grid-template-columns: clamp(76px, 8vw, 104px) minmax(0, 1fr); grid-template-rows: auto auto auto 1fr; grid-row: auto; column-gap: clamp(14px, 1.5vw, 20px); align-items: start}
+.pick-top {display: contents}
+.pick-cover {grid-column: 1; grid-row: 1 / span 4; aspect-ratio: auto; align-items: flex-start}
+.pick h5, .pick-note, .pick-to, .pick-case {grid-column: 2}
+.pick h5 {margin: 0; padding-top: 8px}
+.pick-note {font-size: 14px; line-height: 1.62}
+.pick-to {margin-top: 9px}
+.pick:nth-child(-n+2) .pick-case {padding-bottom: 0}
+.cover-slot {aspect-ratio: 2 / 3; height: auto; padding: 9px}
+.cover-slot b {font-size: 13px}
+.cover-slot small {font-size: 10.5px}
+.cover-slot i {padding: 1px 4px; font-size: 9.5px}
+@media (max-width: 760px) {.picks {grid-template-columns: 1fr}}
