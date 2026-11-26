@@ -367,3 +367,38 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
 .folio #capabilities #skill-listen .skill-survey-num {font-size: 13px; font-weight: 700; color: #2f6b55}
 .folio #capabilities #skill-listen .skill-survey-notes q {display: block; color: #55605b; font-size: 12px; line-height: 1.45; word-break: keep-all; quotes: "“" "”"}
 .folio #capabilities #skill-listen .skill-survey figcaption {margin-top: 6px}
+
+/* ---------- 휴대폰 화면(11/27 새벽): 데스크톱용 3단 격자가 좁은 화면에서도 걸려 글자가 한두 글자씩 끊기던 문제 ---------- */
+@media (max-width: 800px) {
+  .folio .resume-project {grid-template-columns: minmax(0, 1fr)}
+}
+@media (max-width: 560px) {
+  .folio .project-work dl {grid-template-columns: minmax(0, 1fr)}
+}
+@media (max-width: 760px) {
+  html.cp-cc .shell {width: calc(100% - 32px)}
+  html.cp-cc .chapter {padding-block: 36px}
+  html.cp-cc .cover {grid-template-columns: minmax(0, 1fr) !important; gap: 18px !important; padding-block: 24px 18px}
+  html.cp-cc .cover h1 {font-size: 64px !important}
+  html.cp-cc main h2 {font-size: 34px}
+  html.cp-cc :is(#case-tightrope, #case-cannon, #case-route > .shell) > .heading h2 {font-size: 40px}
+  html.cp-cc main .final-test h2 {font-size: 24px !important}
+  html.cp-cc main :is(p, li, dd, td, th, .annotation) {font-size: 15.5px}
+  html.cp-cc .heading > p {font-size: 16px !important}
+  html.cp-cc .profile dl {grid-template-columns: minmax(0, 1fr) !important; gap: 10px !important}
+  html.cp-cc .profile dl > div {display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: .6rem}
+  html.cp-cc .heading > ul.design-notes,
+  html.cp-cc :is(.reel-grid, .case-feature, .two-col, .production-grid, .chase-review, .route-gallery, .two-col.test, .spatial-intent, .other-findings) {grid-template-columns: minmax(0, 1fr) !important; gap: 20px !important}
+  html.cp-cc :is(.reel-grid, .case-feature, .two-col, .production-grid, .chase-review, .route-gallery, .two-col.test) > *,
+  html.cp-cc #case-cannon .two-col > * {grid-column: auto !important}
+  html.cp-cc :is(.sequence, .process, .archive-grid) {grid-template-columns: minmax(0, 1fr) !important; gap: 18px !important}
+  html.cp-cc .production-grid .documents {position: static}
+  html.cp-cc .chase-findings dd {font-size: 32px !important}
+  html.cp-cc .response-plots figcaption b {font-size: 22px !important}
+  html.cp-cc main table {width: 100%}
+  html.cp-cc main :is(table, .compare) {max-width: 100%}
+}
+@media (max-width: 560px) {
+  .folio .career-entry {grid-template-columns: minmax(0, 1fr) !important; row-gap: 12px}
+  .folio .career-entry .career-card {justify-self: start; width: min(100%, 260px)}
+}
