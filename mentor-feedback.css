@@ -252,3 +252,20 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
 .folio .skill-cases > li {position: relative; margin: 0; padding-left: 15px; color: #3d4944; font-size: 14.5px; line-height: 1.62; word-break: keep-all}
 .folio .skill-cases > li::before {content: ""; position: absolute; left: 1px; top: .66em; width: 5px; height: 5px; border-radius: 50%; background: #2f6b55}
 @media print {.folio .skill-cases > li {font-size: 9pt}}
+
+/* 카드 그림 다시 표시, 낮고 작게 (11/27 00:29 형락 님 "시각자료 넣자") */
+.folio .skill-cards .skill-figure {display: block; margin: 14px 0 0}
+.folio .skill-cards .skill-figure img {aspect-ratio: 5 / 2}
+.folio .skill-cards .skill-figure-pair img {aspect-ratio: 5 / 4}
+.folio .skill-cards .skill-stat {display: grid; gap: 6px}
+.folio .skill-cards .skill-stat-row {padding: 11px 14px}
+.folio .skill-cards .skill-stat-row b {font-size: 16px}
+.folio .skill-cards .skill-figure figcaption {margin-top: 6px; font-size: 12px}
+.folio .skill-cards .skill-cases {margin-top: 13px}
+@media (min-width: 1001px) {
+  .folio .skill-cards > li:nth-child(n+4) .skill-card {grid-template-columns: 34px minmax(0, 1fr) minmax(0, 36%); column-gap: 12px}
+  .folio .skill-cards > li:nth-child(n+4) .skill-cases {grid-column: 1 / 3; grid-row: 3; padding-right: 14px}
+  .folio .skill-cards > li:nth-child(n+4) .skill-figure {grid-column: 3; grid-row: 3; margin-top: 15px}
+  .folio .skill-cards > li:nth-child(n+4) .skill-figure img {aspect-ratio: 16 / 9}
+}
+@media (min-width: 1001px) {.folio .skill-cards > li:nth-child(n+4) .skill-figure {align-self: start}}
