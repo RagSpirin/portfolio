@@ -24,13 +24,13 @@ dl.intent dd {margin: 0; font-size: 16px; line-height: 1.7}
 .medium {--mp-paper: #f8faf8; --mp-line: #d6e0da; --mp-ink: #1f2a25; --mp-soft: #47554d; --mp-accent: #1d4a3a; --mp-band: #20392f; --mp-band-label: #a9ccba; --mp-band-soft: #d6e3db; --mp-mark: #dfe9e3}
 .medium-films {--mp-paper: #fcf9fa; --mp-line: #e2d3da; --mp-ink: #37222e; --mp-soft: #5e4854; --mp-accent: #6a384e; --mp-band: #3a2431; --mp-band-label: #dfb7ca; --mp-band-soft: #eadbe3; --mp-mark: #eedde5}
 .medium-books {--mp-paper: #f8f9fc; --mp-line: #d8dee8; --mp-ink: #1f2633; --mp-soft: #475166; --mp-accent: #2c3b5a; --mp-band: #232f45; --mp-band-label: #b5c4e0; --mp-band-soft: #d9e0ec; --mp-mark: #dfe5f0}
-.medium + .medium {margin-top: clamp(36px, 4.4vw, 64px); padding-top: clamp(36px, 4.4vw, 64px); border-top: 1px solid #aab6af}
+.medium + .medium {margin-top: clamp(40px, 5vw, 72px)}
 .medium-title {margin: 0 0 clamp(14px, 1.6vw, 22px); color: var(--ink, #1f2a25); font-size: clamp(29px, 3.1vw, 46px); line-height: 1.15; letter-spacing: -.065em; word-break: keep-all}
 .media-panel {border: 1px solid var(--mp-line); background: var(--mp-paper); color: var(--mp-ink)}
 .medium .cinema-record {margin-top: 0}
 .records-block {padding: clamp(18px, 2.4vw, 34px) clamp(16px, 3.5vw, 52px) clamp(14px, 1.6vw, 22px); background: #fff}
 
-/* 요약 띠: 기록과 작품 사이에 둔다. 그 매체가 해 준 역할(제목)과 요약 */
+/* 요약 띠: 구역 제목 바로 아래 (17:43 형락 님). 그 매체가 해 준 역할(제목)과 요약 */
 .medium-head {grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 14px clamp(24px, 4vw, 64px); align-items: baseline; padding: clamp(24px, 3vw, 42px) clamp(16px, 3.5vw, 52px); background: var(--mp-band); color: #fff}
 .medium-head h4 {margin: 0; color: #fff; font-size: clamp(20px, 1.9vw, 27px); line-height: 1.34; letter-spacing: -.05em; word-break: keep-all; text-wrap: balance}
 .medium-name {display: block; margin-bottom: 8px; color: var(--mp-band-label); font-size: clamp(14px, 1.05vw, 16px); font-weight: 600; line-height: 1.4; letter-spacing: -.01em}
