@@ -144,3 +144,10 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
   .cover-slot {height: 100%; aspect-ratio: auto}
   .pick h5, .pick-note, .pick-to, .pick-case {grid-column: 1}
 }
+
+/* 주요 역량 5개 시안 (2026-11-26 18:16 형락 님): 윗줄 3개, 아랫줄 2개가 같은 전체 폭을 채운다 */
+@media (min-width: 1001px) {
+  .folio .practice-five {grid-template-columns: repeat(6, minmax(0, 1fr))}
+  .folio .practice-five > li {grid-column: span 2}
+  .folio .practice-five > li:nth-child(n+4) {grid-column: span 3}
+}
