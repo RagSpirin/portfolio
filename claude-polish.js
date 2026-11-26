@@ -217,3 +217,24 @@
     });
   });
 })();
+
+/* 주요 역량 카드 그림 크게 보기 (11/27) */
+(function () {
+  var links = document.querySelectorAll('a.skill-zoom');
+  if (!links.length || typeof HTMLDialogElement === 'undefined') return;
+  var dialog = document.createElement('dialog');
+  dialog.className = 'skill-zoom-dialog';
+  var img = document.createElement('img');
+  document.body.appendChild(dialog);
+  dialog.addEventListener('click', function () { dialog.close(); });
+  links.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var thumb = a.querySelector('img');
+      if (!img.parentNode) dialog.appendChild(img);
+      img.src = a.getAttribute('href');
+      img.alt = thumb ? thumb.alt : '';
+      dialog.showModal();
+    });
+  });
+})();

@@ -324,3 +324,16 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
 .folio #skill-listen .skill-voice q {display: block; margin-top: 6px; color: #55605b; font-size: 12.5px; line-height: 1.45; word-break: keep-all; quotes: "“" "”"}
 .folio #skill-listen .skill-voice figcaption {margin-top: 2px}
 @media (max-width: 1000px) {.folio #skill-listen .skill-voice .skill-stat-row {padding: 0}}
+
+/* 피드백 수용: 구글 폼 응답 화면 비교 캡처 (11/27 02:39 형락 님 "캡처해서 비교 사진을") */
+.folio #skill-listen .skill-survey-pair {display: grid; grid-template-columns: 1fr 1fr; gap: 10px}
+.folio #skill-listen .skill-survey-col {display: grid; align-content: start; gap: 5px; min-width: 0}
+.folio #skill-listen .skill-survey-tag {font-size: 12.5px; font-weight: 700; color: #1d2925}
+.folio #skill-listen .skill-zoom {display: block; cursor: zoom-in}
+.folio #skill-listen .skill-zoom img {display: block; width: 100%; height: auto; aspect-ratio: 626 / 364; object-fit: contain; background: #fff; border: 1px solid #dfe5e1; border-radius: 2px}
+.folio #skill-listen .skill-survey-num {font-size: 13px; font-weight: 700; color: #2f6b55}
+.folio #skill-listen .skill-survey q {display: block; color: #55605b; font-size: 12px; line-height: 1.45; word-break: keep-all; quotes: "“" "”"}
+.folio #skill-listen .skill-survey figcaption {margin-top: 8px}
+.skill-zoom-dialog {max-width: min(1080px, 94vw); padding: 0; border: 0; background: #fff; box-shadow: 0 12px 40px rgba(0,0,0,.25); cursor: zoom-out}
+.skill-zoom-dialog::backdrop {background: rgba(20, 26, 23, .6)}
+.skill-zoom-dialog img {display: block; width: 100%; height: auto}
