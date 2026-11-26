@@ -269,3 +269,11 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
   .folio .skill-cards > li:nth-child(n+4) .skill-figure img {aspect-ratio: 16 / 9}
 }
 @media (min-width: 1001px) {.folio .skill-cards > li:nth-child(n+4) .skill-figure {align-self: start}}
+
+#skill-lead .skill-figure img {object-position: center 30%}
+#skill-listen .skill-stat-row {grid-template-columns: 4.2em minmax(0, 1fr) 7em}
+#skill-listen .skill-stat-row b {text-align: right; font-variant-numeric: tabular-nums}
+@media (min-width: 1001px) {
+  #skill-reference .skill-figure-pair > span {aspect-ratio: 16 / 9; grid-template-rows: minmax(0, 1fr)}
+  #skill-reference .skill-figure-pair img {height: 100%; min-height: 0}
+}
