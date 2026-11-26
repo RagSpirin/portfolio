@@ -289,3 +289,28 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
   .folio .skill-cards > li:nth-child(n+4) .skill-figure {margin-top: 4px}
 }
 @media (max-width: 1000px) {.folio #skill-listen .skill-stat-row {padding: 14px}}
+
+/* 두 응답 캡처를 기존 비교표의 두 행과 같은 높이로 표시한다. */
+#skill-listen .survey-captures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  height: calc(2lh + 94px);
+  font-size: 16px;
+  font-weight: 700;
+}
+#skill-listen .survey-captures a {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 3px;
+  min-height: 0;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+  cursor: zoom-in;
+}
+#skill-listen .survey-captures img {width: 100%; height: 100%; object-fit: contain; background: white}
+#skill-listen .survey-captures b {font-size: 13px; line-height: 1.25}
+@media (max-width: 1000px) {
+  #skill-listen .survey-captures {height: calc(2lh + 62px)}
+}
