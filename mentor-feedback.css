@@ -106,3 +106,6 @@ html.cp-home3 .folio .intro-copy:not(.cp-open) > p:nth-child(2) {display: block}
 .strength-cases a b {display: block; margin-bottom: 3px; font-size: 13.5px}
 .strength-cases a span {display: block; font-size: 14.5px; line-height: 1.6}
 .strength-cases a i {display: inline-block; margin-top: 3px; font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px}
+
+/* 소개글 v8: 제출 당시 세 문단을 새 순서로(중요하게 보는 것 → 기획의 시작 → 게이머). 첫 문단이 길어져 굵기를 낮춤 */
+.folio .intro-copy > p:first-child {font-weight: 500}
