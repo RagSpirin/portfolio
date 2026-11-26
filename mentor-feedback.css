@@ -24,7 +24,7 @@ dl.intent dd {margin: 0; font-size: 16px; line-height: 1.7}
 .medium {--mp-paper: #f8faf8; --mp-line: #d6e0da; --mp-ink: #1f2a25; --mp-soft: #47554d; --mp-accent: #1d4a3a; --mp-band: #20392f; --mp-band-label: #a9ccba; --mp-band-soft: #d6e3db; --mp-mark: #dfe9e3}
 .medium-films {--mp-paper: #fcf9fa; --mp-line: #e2d3da; --mp-ink: #37222e; --mp-soft: #5e4854; --mp-accent: #6a384e; --mp-band: #3a2431; --mp-band-label: #dfb7ca; --mp-band-soft: #eadbe3; --mp-mark: #eedde5}
 .medium-books {--mp-paper: #f8f9fc; --mp-line: #d8dee8; --mp-ink: #1f2633; --mp-soft: #475166; --mp-accent: #2c3b5a; --mp-band: #232f45; --mp-band-label: #b5c4e0; --mp-band-soft: #d9e0ec; --mp-mark: #dfe5f0}
-.medium + .medium {margin-top: clamp(40px, 5vw, 72px)}
+.medium + .medium {margin-top: clamp(36px, 4.4vw, 64px); padding-top: clamp(36px, 4.4vw, 64px); border-top: 1px solid #aab6af}
 .medium-title {margin: 0 0 clamp(14px, 1.6vw, 22px); color: var(--ink, #1f2a25); font-size: clamp(29px, 3.1vw, 46px); line-height: 1.15; letter-spacing: -.065em; word-break: keep-all}
 .media-panel {border: 1px solid var(--mp-line); background: var(--mp-paper); color: var(--mp-ink)}
 .medium .cinema-record {margin-top: 0}
@@ -69,3 +69,18 @@ a.pick-top:is(:hover, :focus-visible) h5 {text-decoration: underline; text-under
   .pick:nth-child(-n+2) .pick-case {padding-bottom: 30px}
 }
 @media (max-width: 760px) {.medium-head {grid-template-columns: 1fr; align-items: start}}
+
+/* 기획에 영향을 준 작품: 문서가 길어져 접어 둔다 (2026-11-26 17:38 형락 님) */
+details.picks-block {padding-block: clamp(16px, 1.8vw, 24px)}
+details.picks-block > summary.picks-head {display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; cursor: pointer; list-style: none}
+details.picks-block > summary::-webkit-details-marker {display: none}
+details.picks-block[open] {padding-bottom: clamp(26px, 3vw, 42px)}
+details.picks-block[open] > summary.picks-head {margin-bottom: 6px}
+details.picks-block > .sample-flag {margin: 0 0 clamp(14px, 1.6vw, 22px)}
+.picks-toggle {display: inline-flex; align-items: center; gap: 7px; flex: none; padding: 5px 11px; border: 1px solid var(--mp-line); border-radius: 4px; background: #fff; color: var(--mp-accent); font-size: 13px; font-weight: 650; line-height: 1.4}
+.picks-toggle::after {content: ""; width: 6px; height: 6px; margin-top: -3px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg)}
+details[open] > summary .picks-toggle::after {margin-top: 3px; transform: rotate(-135deg)}
+details.picks-block .when-open, details.picks-block[open] .when-closed {display: none}
+details.picks-block[open] .when-open {display: inline}
+details.picks-block > summary:hover .picks-toggle {border-color: var(--mp-accent)}
+details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent); outline-offset: 4px}
