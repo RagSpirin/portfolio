@@ -89,35 +89,32 @@ details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent)
 .cinema-record-body {grid-column: 1 / -1; display: grid; grid-template-columns: clamp(230px, 28%, 345px) minmax(0, 1fr)}
 @media screen and (max-width: 600px) {.cinema-record-body {grid-template-columns: 1fr}}
 
-/* 게임과 영화·시리즈를 한 줄에 나란히, 책은 아래 줄에 같은 폭으로 (2026-11-26 17:47 형락 님, 데스크톱 기준) */
+/* 한 줄에 한 구역, 대신 낮게 (2026-11-26 17:53 형락 님: 나란히 놓은 안은 별로, 화면을 덜 차지하게)
+   넓은 화면에서는 요약을 왼쪽, 기록을 오른쪽에 나란히 두고 작품 줄은 그 아래 전체 폭 */
 @media (min-width: 1100px) {
-  .folio .play-archive {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(48px, 4.5vw, 68px) clamp(22px, 2.4vw, 36px); align-items: stretch}
-  .medium + .medium {margin-top: 0}
-  .medium {display: flex; flex-direction: column; min-width: 0}
-  .medium > .media-panel, .medium > .cinema-record {flex: 1; display: flex; flex-direction: column}
-  .medium-title {font-size: clamp(26px, 2.2vw, 34px)}
-  /* 요약 띠: 한 칸에 맞게 위아래로 */
-  .medium .medium-head {grid-template-columns: 1fr; gap: 10px; padding: clamp(20px, 2vw, 28px) clamp(18px, 2vw, 30px)}
-  .medium .medium-head h4 {font-size: clamp(19px, 1.55vw, 23px)}
+  .medium + .medium {margin-top: clamp(30px, 3vw, 44px)}
+  .medium-title {margin-bottom: 12px; font-size: clamp(24px, 2.1vw, 32px)}
+  .medium-games .media-panel, .medium .cinema-record {display: grid; grid-template-columns: minmax(0, 36fr) minmax(0, 64fr)}
+  .medium-games .medium-head, .medium-films .medium-head {grid-column: auto; grid-template-columns: 1fr; align-content: center; gap: 12px; padding: 26px 30px 26px clamp(16px, 3.5vw, 52px)}
+  .medium-games .medium-head h4, .medium-films .medium-head h4 {font-size: clamp(20px, 1.6vw, 25px)}
   .medium .medium-lead {font-size: 15px; line-height: 1.72}
-  /* 게임 기록: Steam 카드 위, 콘솔 두 개는 그 아래 나란히 */
-  .medium .records-block {padding: clamp(16px, 1.6vw, 24px) clamp(18px, 2vw, 30px) 12px}
-  .medium .record-spread {grid-template-columns: 1fr; gap: 14px}
-  .medium .steam-scene {flex: none; aspect-ratio: 3.2}
-  .medium .steam-record .record-total {font-size: clamp(36px, 3.2vw, 48px)}
-  .medium .device-records {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; gap: 14px}
-  .medium .device-records > li {grid-template-columns: 1fr; align-content: start; gap: 10px; padding-top: 12px}
-  .medium .device-art {aspect-ratio: 2.4}
-  .medium .device-records .library-generations, .medium .device-records .record-basis {font-size: 12.5px}
-  /* 영화 기록: 캡처 칸을 좁게 */
-  .medium .cinema-record-body {flex: 1; display: grid; grid-template-columns: minmax(0, 40%) minmax(0, 1fr)}
-  .medium .cinema-overview {padding: clamp(18px, 1.8vw, 26px); gap: 16px}
-  .medium .cinema-stats dd {font-size: clamp(34px, 3vw, 46px)}
+  .medium-books .medium-head {padding-block: 24px}
+  .medium details.picks-block {grid-column: 1 / -1}
+  /* 게임 기록: 원래 배치 그대로 작게 */
+  .medium .records-block {padding: 20px clamp(18px, 1.8vw, 26px) 10px}
+  .medium .record-spread {gap: 18px}
+  .medium .steam-scene {flex: none; aspect-ratio: 2.9}
+  .medium .steam-shelf {gap: 8px; padding: 12px 16px 14px}
+  .medium .steam-record .record-total {font-size: clamp(32px, 2.6vw, 40px)}
+  .medium .device-records {gap: 10px}
+  .medium .device-records > li {grid-template-columns: 92px 1fr; gap: 14px; padding-top: 10px}
+  .medium .device-records h3 {font-size: 15.5px}
+  .medium .device-records .record-total {font-size: 27px}
+  .medium .device-records .library-generations, .medium .device-records .record-basis {font-size: 12px; line-height: 1.45}
+  .medium .record-footnotes {margin-top: 8px}
+  /* 영화 기록: 왓챠 프로필과 감상 기록을 한 줄에 */
+  .medium .cinema-record-body {grid-column: auto; grid-template-columns: minmax(0, 40%) minmax(0, 1fr)}
+  .medium .cinema-overview {padding: 20px clamp(18px, 2vw, 30px); gap: 14px}
+  .medium .cinema-stats dd {font-size: clamp(36px, 3vw, 48px)}
   .medium .cinema-record-head h3 {font-size: clamp(17px, 1.4vw, 21px)}
-  /* 접힌 작품 줄은 칸 맨 아래에 맞추고, 펼치면 두 개씩 */
-  .medium details.picks-block {margin-top: auto; padding-inline: clamp(18px, 2vw, 30px)}
-  .medium .picks {grid-template-columns: repeat(2, minmax(0, 1fr))}
-  .medium .pick:nth-child(-n+2) .pick-case {padding-bottom: 30px}
-  /* 한쪽 작품 줄을 펼치면 옆 칸이 같이 늘어나지 않게 */
-  .folio .play-archive:has(details.picks-block[open]) {align-items: start}
 }
