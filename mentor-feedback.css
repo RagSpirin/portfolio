@@ -84,3 +84,40 @@ details.picks-block .when-open, details.picks-block[open] .when-closed {display:
 details.picks-block[open] .when-open {display: inline}
 details.picks-block > summary:hover .picks-toggle {border-color: var(--mp-accent)}
 details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent); outline-offset: 4px}
+
+/* 영화 기록 묶음(캡처 + 감상 기록): 요약 띠와 작품 줄 사이에 한 덩어리로 */
+.cinema-record-body {grid-column: 1 / -1; display: grid; grid-template-columns: clamp(230px, 28%, 345px) minmax(0, 1fr)}
+@media screen and (max-width: 600px) {.cinema-record-body {grid-template-columns: 1fr}}
+
+/* 게임과 영화·시리즈를 한 줄에 나란히, 책은 아래 줄에 같은 폭으로 (2026-11-26 17:47 형락 님, 데스크톱 기준) */
+@media (min-width: 1100px) {
+  .folio .play-archive {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(48px, 4.5vw, 68px) clamp(22px, 2.4vw, 36px); align-items: stretch}
+  .medium + .medium {margin-top: 0}
+  .medium {display: flex; flex-direction: column; min-width: 0}
+  .medium > .media-panel, .medium > .cinema-record {flex: 1; display: flex; flex-direction: column}
+  .medium-title {font-size: clamp(26px, 2.2vw, 34px)}
+  /* 요약 띠: 한 칸에 맞게 위아래로 */
+  .medium .medium-head {grid-template-columns: 1fr; gap: 10px; padding: clamp(20px, 2vw, 28px) clamp(18px, 2vw, 30px)}
+  .medium .medium-head h4 {font-size: clamp(19px, 1.55vw, 23px)}
+  .medium .medium-lead {font-size: 15px; line-height: 1.72}
+  /* 게임 기록: Steam 카드 위, 콘솔 두 개는 그 아래 나란히 */
+  .medium .records-block {padding: clamp(16px, 1.6vw, 24px) clamp(18px, 2vw, 30px) 12px}
+  .medium .record-spread {grid-template-columns: 1fr; gap: 14px}
+  .medium .steam-scene {flex: none; aspect-ratio: 3.2}
+  .medium .steam-record .record-total {font-size: clamp(36px, 3.2vw, 48px)}
+  .medium .device-records {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; gap: 14px}
+  .medium .device-records > li {grid-template-columns: 1fr; align-content: start; gap: 10px; padding-top: 12px}
+  .medium .device-art {aspect-ratio: 2.4}
+  .medium .device-records .library-generations, .medium .device-records .record-basis {font-size: 12.5px}
+  /* 영화 기록: 캡처 칸을 좁게 */
+  .medium .cinema-record-body {flex: 1; display: grid; grid-template-columns: minmax(0, 40%) minmax(0, 1fr)}
+  .medium .cinema-overview {padding: clamp(18px, 1.8vw, 26px); gap: 16px}
+  .medium .cinema-stats dd {font-size: clamp(34px, 3vw, 46px)}
+  .medium .cinema-record-head h3 {font-size: clamp(17px, 1.4vw, 21px)}
+  /* 접힌 작품 줄은 칸 맨 아래에 맞추고, 펼치면 두 개씩 */
+  .medium details.picks-block {margin-top: auto; padding-inline: clamp(18px, 2vw, 30px)}
+  .medium .picks {grid-template-columns: repeat(2, minmax(0, 1fr))}
+  .medium .pick:nth-child(-n+2) .pick-case {padding-bottom: 30px}
+  /* 한쪽 작품 줄을 펼치면 옆 칸이 같이 늘어나지 않게 */
+  .folio .play-archive:has(details.picks-block[open]) {align-items: start}
+}
