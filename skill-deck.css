@@ -36,10 +36,12 @@
   background: #1c2421; border-radius: 2px;
 }
 .deck-art > img {display: block; width: 100%; height: 100%; object-fit: cover}
-.deck-art-pies {display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: #fff; border: 1px solid #e4e9e7; box-sizing: border-box}
-.deck-pie {display: grid; grid-template-rows: minmax(0, 1fr) auto; align-items: center; justify-items: center; min-width: 0; padding: 8px 4px 7px}
-.deck-pie img {display: block; width: 100%; max-width: 120px; height: auto; min-height: 0}
-.folio .deck-pie small {font-size: 11px; font-weight: 600; color: #55605b; line-height: 1.2; white-space: nowrap}
+.deck-art-pies {display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto minmax(0, 1fr); gap: 0; background: #fff; border: 1px solid #e4e9e7; box-sizing: border-box}
+.folio .deck-pie-ask {grid-column: 1 / -1; padding: 8px 6px 0; font-size: 11.5px; font-weight: 600; color: #3d4944; line-height: 1.3; text-align: center; letter-spacing: -.02em; word-break: keep-all}
+.deck-pie {display: grid; grid-template-rows: minmax(0, 1fr) auto auto; align-items: center; justify-items: center; min-width: 0; min-height: 0; padding: 4px 4px 7px}
+.deck-pie img {display: block; width: 100%; max-width: 104px; height: 100%; min-height: 0; object-fit: contain}
+.folio .deck-pie b {margin-top: 3px; font-size: 17px; font-weight: 800; color: #2f6b55; line-height: 1.15; letter-spacing: -.02em; font-variant-numeric: tabular-nums}
+.folio .deck-pie small {font-size: 10.5px; font-weight: 600; color: #6b7570; line-height: 1.25; white-space: nowrap}
 /* 번호 옆에 아이콘+제목, 사진 아래 설명은 가운데 정렬 (11/27 17:08·17:15 형락 님) */
 .folio .deck-no {flex: none}
 .folio .deck-name {display: flex; align-items: center; gap: 6px; min-width: 0; font-size: 19px; font-weight: 700; letter-spacing: -.04em; line-height: 1.2; text-align: left; white-space: nowrap}
@@ -145,8 +147,40 @@ html[data-cp-motion="off"] .deck-slot, html[data-cp-motion="off"] .deck-slot::af
 .folio .deck-big .skill-figure-pair > span {display: flex; gap: 8px; align-items: flex-start}
 .folio .deck-big .skill-figure-pair > span > img {flex: var(--ar, 1) 1 0; min-width: 0; width: 100%}
 .folio .deck-big .skill-figure figcaption {margin-top: 9px; font-size: 13.5px; font-weight: 400; line-height: 1.5; color: #6b7570; word-break: keep-all}
-.folio .deck-big .skill-cases {display: grid; gap: 10px; margin: 22px 0 0; padding: 0; list-style: none}
-.folio .deck-big .skill-cases > li {font-size: 16px; font-weight: 400; line-height: 1.65; color: #2c3833}
+.folio .deck-big .skill-cases {display: grid; gap: 10px; margin: 22px 0 0; padding: 0; list-style: none; counter-reset: deck-case}
+.folio .deck-big .skill-cases > li {counter-increment: deck-case; padding-left: 36px; font-size: 16px; font-weight: 400; line-height: 1.65; color: #2c3833}
+/* 사례 번호 = 위 그림의 번호 */
+.folio .deck-big .skill-cases > li::before {
+  content: counter(deck-case); left: 0; top: .12em; width: 24px; height: 24px; border-radius: 2px;
+  display: grid; place-items: center; background: #2f6b55; color: #fff;
+  font-size: 13px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;
+}
+
+/* 사례 근거 그림: 세 칸, 그림마다 사례 번호 */
+.folio .deck-proof {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start}
+.folio .deck-proof-item {margin: 0; min-width: 0}
+.folio .deck-proof-item.is-wide {grid-column: span 2}
+.folio .deck-proof-pic {position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #1c2421; border-radius: 2px; cursor: zoom-in}
+.folio .deck-proof-item.is-wide .deck-proof-pic {aspect-ratio: 3.27}
+.folio .deck-proof-pic img {display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(var(--z, 1)); transition: transform .45s cubic-bezier(.2,.8,.2,1)}
+.folio .deck-proof-pic:hover img {transform: scale(calc(var(--z, 1) * 1.04))}
+.folio .deck-proof-pic.is-doc {background: #fff; box-shadow: inset 0 0 0 1px #dfe5e1}
+.folio .deck-proof-pic.is-doc img {object-fit: contain; padding: 6px 8px; box-sizing: border-box}
+.folio .deck-proof-pic.is-doc:hover img {transform: none}
+.folio .deck-proof-pic:focus-visible {outline: 2px solid #2f6b55; outline-offset: 2px}
+.folio .deck-proof-no {
+  position: absolute; left: 8px; top: 8px; min-width: 24px; height: 24px; padding: 0 6px; box-sizing: border-box;
+  display: grid; place-items: center; background: #2f6b55; color: #fff; border-radius: 2px;
+  font-size: 13px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+.folio .deck-proof figcaption {margin-top: 8px; font-size: 13.5px; font-weight: 400; line-height: 1.5; color: #4a5651; letter-spacing: -.01em; word-break: keep-all}
+html[data-cp-motion="off"] .deck-proof-pic img {transition: none}
+
+/* 그림 크게 보기 */
+.deck-peek {position: absolute; inset: 0; z-index: 10; display: grid; place-items: center; padding: 40px 24px; box-sizing: border-box; background: rgba(10, 14, 12, .88); cursor: zoom-out}
+.deck-peek[hidden] {display: none}
+.deck-peek:focus {outline: none}
+.deck-peek img {display: block; max-width: min(1400px, 100%); max-height: calc(100vh - 80px); width: auto; height: auto; background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, .5)}
 
 /* 세로 사진 한 장(리더십): 사진 왼쪽, 사례 오른쪽 */
 .folio .deck-big.is-portrait .deck-big-body {display: grid; grid-template-columns: minmax(0, 250px) minmax(0, 1fr); gap: 30px; align-items: start}
@@ -206,7 +240,11 @@ html[data-cp-motion="off"] .deck-slot, html[data-cp-motion="off"] .deck-slot::af
   .folio .deck-big .skill-survey-pair, .folio .deck-big .skill-survey-notes {grid-template-columns: minmax(0, 1fr)}
   .folio .deck-big.is-portrait .deck-big-body {grid-template-columns: minmax(0, 1fr); gap: 18px}
   .folio .deck-big.is-portrait .skill-figure img {max-width: 230px; margin-inline: auto}
-  .folio .deck-big .skill-cases > li {font-size: 15px}
+  .folio .deck-big .skill-cases > li {font-size: 15px; padding-left: 34px}
+  .folio .deck-proof {grid-template-columns: minmax(0, 1fr); gap: 16px}
+  .folio .deck-proof-item.is-wide {grid-column: auto}
+  .folio .deck-proof-item.is-wide .deck-proof-pic {aspect-ratio: 3.5}
+  .deck-peek {padding: 16px 8px}
   .deck-bar {top: 12px; left: 16px; right: 16px; justify-content: flex-end}
   .folio .deck-nav {top: auto; bottom: 18px; width: 48px; height: 48px}
   .deck-prev {left: calc(50% - 110px)}
