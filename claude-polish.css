@@ -189,3 +189,14 @@ html.cp-home3 .cp-more {margin-top: 6px; font: inherit; font-size: 14px; font-we
 :is(p, li, dd, dt, figcaption, td, th, summary, blockquote) {word-break: keep-all; overflow-wrap: break-word; text-wrap: pretty}
 figcaption :is(b, span, small, strong), .cover-slot b {word-break: keep-all; overflow-wrap: break-word; text-wrap: balance}
 .nowrap {white-space: nowrap}
+/* 기획서 원본 연결(11/27): 원문 링크 줄, 기획의 출발 구역 */
+.doc-originals {display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; margin: 18px 0 0; font-size: 14px; color: var(--muted, #626661)}
+.doc-originals .doc-link {min-height: 0; margin: 0}
+.documents a.doc-original {align-items: center}
+.origin .intent dd {font-size: 17px}
+.origin .spatial-intent {margin-top: 8px}
+.origin-steps > li {padding-bottom: 12px; margin-bottom: 12px}
+.origin-refs th small {display: block; margin-top: 2px; font-size: 13px; font-weight: 500; color: var(--muted, #626661)}
+.origin-refs tbody th {width: 26%; font-weight: 700}
+.origin-refs td:last-child {width: 22%; color: var(--muted, #626661); font-weight: 500}
+@media (max-width: 700px) {.origin-refs, .origin-refs caption, .origin-refs tbody, .origin-refs tr, .origin-refs th, .origin-refs td {display: block; width: auto !important} .origin-refs thead {display: none} .origin-refs tr {padding: 10px 0; border-bottom: 1px solid var(--line, #d5d6cf)} .origin-refs tbody th, .origin-refs td {border: 0; padding: 2px 0} .origin-refs td.none {display: none} .origin-refs td:last-child:not(.none)::before {content: "가져오지 않은 것 · "}}
