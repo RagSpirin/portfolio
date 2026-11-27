@@ -286,7 +286,7 @@
     stage.addEventListener('pointerup', end);
     stage.addEventListener('pointercancel', end);
 
-    return { open: openDeck };
+    return { open: openDeck, dialog: dlg };
   }
   window.CardDeck = { make, el, img, mark, shot };
 

@@ -260,28 +260,39 @@ html[data-cp-motion="off"] .deck-proof-pic img {transition: none}
 
 /* ---------- 기획에 영향을 준 작품 (pick-deck.js) ---------- */
 details.picks-block.is-decked {display: none}
+/* 영화 구역은 그리드 안이라, 폰에서 가로로 넘기는 카드 줄이 구역 폭을 늘리지 않게 */
+.folio .pick-deck {min-width: 0}
 .folio .pick-card {padding: 12px 12px 14px; text-align: center}
-.folio .pick-card-cover {position: relative; display: block; aspect-ratio: 4 / 5; margin: 0 0 14px; background: #eef3f0; border-radius: 2px; overflow: hidden}
+.folio .pick-card-cover {position: relative; display: block; aspect-ratio: 4 / 5; margin: 0 0 14px; background: color-mix(in srgb, var(--mp-mark, #dfe9e3) 55%, #fff); border-radius: 2px; overflow: hidden}
 .folio .pick-card-cover img {position: absolute; inset: 8%; display: block; width: 84%; height: 84%; object-fit: contain; filter: drop-shadow(0 6px 10px rgba(29, 41, 37, .24))}
 .folio .pick-card-name {display: flex; align-items: center; justify-content: center; min-height: 2.8em; font-size: 16px; font-weight: 700; line-height: 1.4; letter-spacing: -.03em; color: #1d2925; word-break: keep-all; text-wrap: balance}
-.folio .pick-card-skill {display: flex; align-items: center; justify-content: center; gap: 6px; margin: 10px 0 14px; font-size: 13px; font-weight: 600; line-height: 1.3; color: #2f6b55; letter-spacing: -.02em}
+.folio .pick-card-skill {display: flex; align-items: center; justify-content: center; gap: 6px; margin: 10px 0 14px; font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--mp-accent, #2f6b55); letter-spacing: -.02em}
 .folio .pick-card-skill .deck-mark {width: 22px; height: 22px}
 .folio .pick-card-skill .deck-mark img {width: 15px; height: 15px}
 
 /* 큰 카드: 세로형. 위는 표지, 아래는 제목·이어진 역량·배운 점·기획에 반영 (11/27 18:30 형락 님 "포스터나 표지가 세로") */
 .pick-dialog .deck-stage {--bw: min(580px, calc(100vw - 56px)); --gap: 44px}
 .folio .deck-big.pick-big {padding: 0 0 28px}
-.folio .pick-big-art {position: relative; height: clamp(180px, 30vh, 330px); background: #e9efeb; border-radius: 4px 4px 0 0}
+.folio .pick-big-art {position: relative; height: clamp(180px, 30vh, 330px); background: var(--pk-tint, #e9efeb); border-radius: 4px 4px 0 0}
 .folio .pick-big-art img {position: absolute; inset: 22px 0; display: block; width: 100%; height: calc(100% - 44px); object-fit: contain; filter: drop-shadow(0 10px 16px rgba(29, 41, 37, .3))}
+/* 표지 그림이 아직 없는 책: 제목·저자를 적은 표지 자리를 세로 표지 비율로 (transform 없이, 글자 흐림 방지) */
+.folio .pick-card-cover.has-slot, .folio .pick-big-art.has-slot {display: flex; align-items: center; justify-content: center}
+.folio .pick-card-cover .cover-slot, .folio .pick-big-art .cover-slot {position: static; display: flex; flex-direction: column; gap: 6px; width: auto; height: 84%; aspect-ratio: 2 / 3; padding: 14px; box-sizing: border-box; border-radius: 2px; color: #fff; text-align: left; box-shadow: 0 6px 14px rgba(31, 38, 51, .28)}
+.folio .pick-card-cover .cover-slot b {font-size: 17px; line-height: 1.3; letter-spacing: -.04em}
+.folio .pick-card-cover .cover-slot small {font-size: 12px; line-height: 1.4; color: #d7deeb}
+.folio .pick-card-cover .cover-slot i, .folio .pick-big-art .cover-slot i {margin-top: auto; align-self: flex-start; padding: 1px 6px; border: 1px solid #ffffff80; border-radius: 2px; font-style: normal; font-size: 11px; font-weight: 600; line-height: 1.5}
+.folio .pick-big-art .cover-slot {height: calc(100% - 44px); padding: 18px}
+.folio .pick-big-art .cover-slot b {font-size: 22px; line-height: 1.3; letter-spacing: -.04em}
+.folio .pick-big-art .cover-slot small {font-size: 13.5px; line-height: 1.4; color: #d7deeb}
 .folio .pick-big-body {padding: 22px 32px 0}
 .folio .pick-big-head {display: block}
-.folio .pick-big-kind {margin: 0 0 5px; font-size: 14px; font-weight: 600; color: #2f6b55; letter-spacing: -.01em}
+.folio .pick-big-kind {margin: 0 0 5px; font-size: 14px; font-weight: 600; color: var(--pk-accent, #2f6b55); letter-spacing: -.01em}
 .folio .deck-big.pick-big h3 {font-size: 28px; line-height: 1.25; word-break: keep-all}
-.folio .pick-big-out {display: inline-block; margin-top: 8px; font-size: 14px; font-weight: 600; color: #1d4a3a; text-decoration: none; border-bottom: 1px solid currentColor}
+.folio .pick-big-out {display: inline-block; margin-top: 8px; font-size: 14px; font-weight: 600; color: var(--pk-accent, #1d4a3a); text-decoration: none; border-bottom: 1px solid currentColor}
 .folio .pick-big-to {display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 12px 0 0}
 .folio .deck-big .pick-label {display: block; margin: 0 0 7px; font-size: 13.5px; font-weight: 700; line-height: 1.3; color: #6b7570; letter-spacing: .01em}
 .folio .deck-big .pick-big-to .pick-label {margin: 0}
-.folio .pick-big-skill {display: inline-flex; align-items: center; gap: 7px; font-size: 17px; font-weight: 700; line-height: 1.35; color: #1d4a3a; letter-spacing: -.02em}
+.folio .pick-big-skill {display: inline-flex; align-items: center; gap: 7px; font-size: 17px; font-weight: 700; line-height: 1.35; color: var(--pk-accent, #1d4a3a); letter-spacing: -.02em}
 .folio .pick-big-learn {margin-top: 18px; padding-top: 18px; border-top: 1px solid #e4e9e7}
 .folio .pick-big-note {margin: 0; font-size: 18px; font-weight: 500; line-height: 1.65; letter-spacing: -.02em; color: #1d2925; word-break: keep-all; text-wrap: pretty}
 .folio .pick-big-use {margin-top: 18px}
@@ -290,6 +301,14 @@ details.picks-block.is-decked {display: none}
 .folio .pick-big-case {margin: 0; font-size: 16px; line-height: 1.6; color: #2c3833; word-break: keep-all}
 .folio .pick-big-use .deck-proof-pic {aspect-ratio: 16 / 10}
 .folio .pick-big-use figcaption {display: none}
+/* 낮은 화면(1280×720 등): 표지 칸을 줄여 큰 카드가 스크롤 없이 들어가게 */
+@media (max-height: 760px) and (min-width: 761px) {
+  .folio .pick-big-art {height: clamp(150px, 25vh, 190px)}
+  .folio .pick-big-body {padding-top: 16px}
+  .folio .pick-big-learn, .folio .pick-big-use {margin-top: 14px}
+  .folio .pick-big-learn {padding-top: 14px}
+  .folio .pick-big-note {font-size: 17px; line-height: 1.6}
+}
 @media (max-width: 760px) {
   .folio .pick-big-art {height: clamp(160px, 26vh, 240px)}
   .folio .pick-big-body {padding: 18px 20px 0}
