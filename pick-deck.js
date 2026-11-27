@@ -1,4 +1,4 @@
-/* 기획에 영향을 준 게임·영화·책: 주요 역량과 같은 카드 넘기기 (11/27 18:05·18:34 형락 님).
+/* 기획에 영향을 준 게임·영화·책: 주요 역량과 같은 카드 넘기기 (11/27 18:05·18:34 형락 님). 카드 줄은 펼치기 안에.
    글과 표지는 페이지 안 목록(ul.picks > li.pick)에서 읽는다. 작품을 바꿀 때는 그 목록만 고치면 카드와 큰 카드가 같이 바뀐다.
    li.pick 의 data-shot(커튼콜 화면 경로), data-shot-alt, data-shot-pos, data-shot-zoom 은 큰 카드의 화면 한 장. 없으면 화면 없이 글만. */
 (() => {
@@ -56,14 +56,10 @@
       items,
       kind: 'pick',
       label: kind, prevLabel: '이전 작품', nextLabel: '다음 작품',
+      /* 카드 줄은 원래 "펼치기" 안에 둔다: 접힌 채로 시작하고, 펼치면 카드가 차례로 놓인다 (11/27 18:44 형락 님) */
       place(rail) {
-        const sec = el('section', 'picks-block pick-deck');
-        sec.setAttribute('aria-label', kind);
-        const head = el('div', 'picks-head');
-        head.append(el('h4', null, title ? title.textContent.trim() : kind));
-        sec.append(head, rail);
-        block.before(sec);
-        block.classList.add('is-decked');
+        list.before(rail);
+        block.classList.add('is-decked', 'pick-deck');
       },
       front(it, i, b) {
         const open = el('span', 'deck-plus'); open.setAttribute('aria-hidden', 'true');
