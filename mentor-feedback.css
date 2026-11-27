@@ -436,16 +436,6 @@ html.cp-cc main .level-source {margin: 14px 0 0; font-size: 14px; color: var(--s
 .folio #capabilities .skill-figure-portrait > span {display: block; aspect-ratio: 16 / 7; overflow: hidden; background: #e8ecea; border-radius: 2px}
 .folio #capabilities .skill-cards .skill-figure-portrait img {display: block; width: auto; height: 100%; margin: 0 auto; aspect-ratio: auto; object-fit: contain; border-radius: 0}
 /* 피드백 수용: 첫 테스트 의견 → 마지막 테스트 폼 응답 두 장 */
-.folio #capabilities #skill-listen .skill-survey-critique {display: block; margin: 0 0 10px; padding: 9px 11px 10px; background: #f3f6f4; border-left: 2px solid #c3cdc8}
-.folio #capabilities #skill-listen .skill-survey-critique .skill-survey-num {display: block; margin-bottom: 3px}
-.folio #capabilities #skill-listen .skill-survey-critique q {display: block; color: #55605b; font-size: 12px; line-height: 1.5; word-break: keep-all; quotes: "“" "”"}
-.folio #capabilities #skill-listen .skill-survey-after {display: block; margin: 0 0 5px}
-.folio #capabilities #skill-listen .skill-survey-pair img {object-position: 50% 60%; padding: 24px 6px 4px}
-.folio #capabilities #skill-listen .skill-survey-tag b, .folio #capabilities #skill-listen .skill-survey-tag em {font-style: normal}
-.folio #capabilities #skill-listen .skill-survey-legend {display: flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; margin: 6px 0 0; padding: 0; border: 0; color: #55605b; font-size: 12px; line-height: 1.5; min-height: 0}
-.folio #capabilities #skill-listen .skill-survey-legend i {display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: -2px}
-.folio #capabilities #skill-listen .skill-survey-legend .dot-very {background: #109618}
-.folio #capabilities #skill-listen .skill-survey-legend .dot-yes {background: #ff9900}
 
 /* ---------- 커튼콜 탈출로: 최종 기획서의 여덟 구간 (컨셉아트 · Unity · 구상도) ---------- */
 .route-zones {margin: 44px 0 8px; padding-top: 18px; border-top: 2px solid var(--ink, #352323)}
