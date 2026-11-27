@@ -59,27 +59,34 @@
         const open = el('span', 'deck-plus'); open.setAttribute('aria-hidden', 'true');
         b.append(coverBox(it, 'pick-card-cover'), el('span', 'pick-card-name', it.name), skill(it, 'pick-card-skill'), open);
       },
+      /* 큰 카드는 세로형: 표지(포스터)가 세로라 카드도 세로로 (11/27 18:30 형락 님) */
       big(it, i, big) {
+        const art = el('div', 'pick-big-art');
+        if (it.cover) art.append(img(it.cover.src, it.cover.w, it.cover.h));
+        const body = el('div', 'pick-big-body');
         const head = el('header', 'pick-big-head');
         head.append(el('p', 'pick-big-kind', kind), el('h3', null, it.name));
         if (it.href) {
           const a = el('a', 'pick-big-out', '작품 정보 ↗'); a.href = it.href; a.target = '_blank'; a.rel = 'noopener';
           head.append(a);
         }
-        const body = el('div', 'pick-big-body');
-        const text = el('div', 'pick-big-text');
+        if (it.toName) {
+          const to = el('p', 'pick-big-to');
+          to.append(el('span', 'pick-label', it.toLabel || '이어진 역량'), skill(it, 'pick-big-skill'));
+          head.append(to);
+        }
         const learn = el('section', 'pick-big-learn');
         learn.append(el('h4', 'pick-label', '배운 점'), el('p', 'pick-big-note', it.note.trim()));
-        const link = el('section', 'pick-big-link');
-        const words = el('div', 'pick-big-words');
-        if (it.toName) words.append(el('h4', 'pick-label', it.toLabel || '이어진 역량'), skill(it, 'pick-big-skill'));
-        if (it.use.trim()) words.append(el('h4', 'pick-label', '기획에 반영'), el('p', 'pick-big-case', it.use.trim()));
-        link.append(words);
-        if (it.shot) link.append(shot(it.shot));
-        else link.classList.add('is-text');
-        text.append(learn, link);
-        body.append(coverBox(it, 'pick-big-cover'), text);
-        big.append(head, body);
+        body.append(head, learn);
+        if (it.use.trim() || it.shot) {
+          const use = el('section', 'pick-big-use');
+          const rowEl = el('div', 'pick-big-use-row' + (it.shot ? '' : ' is-text'));
+          rowEl.append(el('p', 'pick-big-case', it.use.trim()));
+          if (it.shot) rowEl.append(shot(it.shot));
+          use.append(el('h4', 'pick-label', '기획에 반영'), rowEl);
+          body.append(use);
+        }
+        big.append(art, body);
       }
     });
   });
