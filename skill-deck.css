@@ -103,10 +103,10 @@ html.deck-lock {overflow: hidden}
 .deck-dialog::backdrop {background: rgba(14, 19, 17, .8)}
 .deck-dialog:focus {outline: none}
 .deck-stage {
-  --bw: min(960px, calc(100vw - 340px)); --gap: 30px; --drag: 0px;
+  --bw: min(1240px, calc(100vw - 260px)); --gap: 30px; --drag: 0px;
   position: absolute; inset: 0; perspective: 1700px; touch-action: pan-y;
 }
-@media (min-width: 1800px) and (min-height: 960px) {.deck-stage {--bw: min(1100px, calc(100vw - 520px))}}
+@media (min-width: 1800px) and (min-height: 960px) {.deck-stage {--bw: min(1400px, calc(100vw - 420px))}}
 .deck-slot {
   --x: 0px; --s: 1; --ry: 0deg;
   position: absolute; left: 50%; top: calc(50% + 12px); width: var(--bw);
@@ -128,8 +128,8 @@ html.deck-lock {overflow: hidden}
 html[data-cp-motion="off"] .deck-slot, html[data-cp-motion="off"] .deck-slot::after {transition: none}
 
 .folio .deck-big {
-  box-sizing: border-box; max-height: calc(100vh - 150px); overflow: auto; overscroll-behavior: contain;
-  padding: 30px 36px 34px; background: #fff; border-radius: 4px;
+  box-sizing: border-box; max-height: calc(100vh - 120px); overflow: auto; overscroll-behavior: contain;
+  padding: 34px 42px 38px; background: #fff; border-radius: 4px;
   box-shadow: 0 30px 70px rgba(0, 0, 0, .38); touch-action: pan-y;
 }
 .folio .deck-big-head {display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; column-gap: 12px}
@@ -188,6 +188,7 @@ html[data-cp-motion="off"] .deck-proof-pic img {transition: none}
 .folio .deck-big.is-portrait .skill-figure img {object-fit: cover}
 
 /* 피드백 수용: 구글 폼 응답 화면 두 장 */
+.folio .deck-big .skill-survey {max-width: 900px}
 .folio .deck-big .skill-survey-pair {display: grid; grid-template-columns: 1fr 1fr; gap: 10px}
 .folio .deck-big .skill-survey-pair a {position: relative; display: block; padding-top: 28px; background: #fff; border: 1px solid #dfe5e1; border-radius: 2px; cursor: zoom-in}
 .folio .deck-big .skill-survey-pair img {width: 100%; height: auto; object-fit: contain; background: #fff; border: 0}
@@ -226,6 +227,7 @@ html[data-cp-motion="off"] .deck-proof-pic img {transition: none}
   .folio .deck-big {padding: 24px 30px 28px; max-height: calc(100vh - 110px)}
   .deck-slot {top: calc(50% + 18px)}
   .folio .deck-big h3 {font-size: 26px}
+  .folio .deck-big .skill-survey {max-width: 760px}
 }
 /* 휴대폰: 큰 카드는 화면 폭에 맞추고, 넘김 버튼은 아래쪽에 */
 @media (max-width: 760px) {
