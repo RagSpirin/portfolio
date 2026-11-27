@@ -95,10 +95,15 @@
       <dialog id="note-view" aria-labelledby="note-title" closedby="any">
         <header class="note-toolbar">
           <h3 id="note-title">수기 근무일지</h3>
+          <span id="note-count" class="note-count" aria-live="polite"></span>
           <button id="note-zoom" type="button">원본 크기</button>
           <form method="dialog"><button type="submit" autofocus>닫기</button></form>
         </header>
-        <div class="note-scroll" tabindex="0" role="region" aria-labelledby="note-title"><img alt=""></div>
+        <div class="note-stage">
+          <div class="note-scroll" tabindex="0" role="region" aria-labelledby="note-title"><img alt=""></div>
+          <button class="note-nav note-prev" type="button" aria-label="이전 사진"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="note-nav note-next" type="button" aria-label="다음 사진"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
       </dialog>
     </section>
   </main>
