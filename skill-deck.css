@@ -27,8 +27,8 @@
 }
 .folio .deck-card:focus-visible {outline: 2px solid #2f6b55; outline-offset: 3px}
 .folio .deck-card.is-lifted {opacity: 0}
-.deck-top {display: flex; align-items: center; min-height: 24px}
-.folio .deck-no {font-size: 15px; font-weight: 700; color: #2f6b55; letter-spacing: .02em; font-variant-numeric: tabular-nums}
+.deck-top {display: flex; align-items: center; min-height: 30px}
+.folio .deck-no {font-size: 22px; font-weight: 700; color: #2f6b55; letter-spacing: 0; line-height: 1; font-variant-numeric: tabular-nums}
 .folio .deck-mark {display: inline-grid; place-items: center; width: 26px; height: 26px; margin: 0}
 .folio .deck-mark img {display: block; width: 20px; height: 20px}
 .deck-art {
@@ -41,10 +41,10 @@
 .deck-pie img {display: block; width: 100%; max-width: 120px; height: auto; min-height: 0}
 .folio .deck-pie small {font-size: 11px; font-weight: 600; color: #55605b; line-height: 1.2; white-space: nowrap}
 /* 사진 아래 글자는 가운데 정렬, 이름 앞에 아이콘 (11/27 17:08 형락 님) */
-.folio .deck-name {display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 22px; font-weight: 700; letter-spacing: -.04em; line-height: 1.25; text-align: center; word-break: keep-all}
-.folio .deck-name .deck-mark {flex: none; width: 28px; height: 28px}
-.folio .deck-name .deck-mark img {width: 22px; height: 22px}
-.folio .deck-line {display: block; margin: 10px 0 14px; font-size: 16px; text-align: center; font-weight: 500; color: #3d4944; line-height: 1.55; letter-spacing: -.02em; word-break: keep-all}
+.folio .deck-name {display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 19px; font-weight: 700; letter-spacing: -.04em; line-height: 1.25; text-align: center; word-break: keep-all}
+.folio .deck-name .deck-mark {flex: none; width: 26px; height: 26px}
+.folio .deck-name .deck-mark img {width: 20px; height: 20px}
+.folio .deck-line {display: block; margin: 8px 0 14px; font-size: 14px; text-align: center; font-weight: 500; color: #3d4944; line-height: 1.55; letter-spacing: -.02em; word-break: keep-all}
 .deck-plus {
   position: relative; flex: none; align-self: center; margin-top: auto; width: 22px; height: 22px;
   border: 1px solid #c9d2ce; border-radius: 2px; background: #fff;
@@ -58,8 +58,8 @@
 @media (min-width: 1700px) {
   .deck-row {gap: 18px}
   .folio .deck-card {padding: 14px 14px 18px}
-  .folio .deck-name {font-size: 24px}
-  .folio .deck-line {font-size: 17px}
+  .folio .deck-name {font-size: 21px}
+  .folio .deck-line {font-size: 15px}
 }
 /* 좁은 화면: 한 줄로 두고 옆으로 밀어 본다 */
 @media (max-width: 1000px) {
@@ -110,7 +110,7 @@ html[data-cp-motion="off"] .deck-slot, html[data-cp-motion="off"] .deck-slot::af
   box-shadow: 0 30px 70px rgba(0, 0, 0, .38); touch-action: pan-y;
 }
 .folio .deck-big-head {display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; column-gap: 12px}
-.folio .deck-big-head .deck-no {font-size: 15px}
+.folio .deck-big-head .deck-no {font-size: 24px}
 .folio .deck-big-head .deck-mark {width: 32px; height: 32px}
 .folio .deck-big-head .deck-mark img {width: 24px; height: 24px}
 .folio .deck-big h3 {margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -.04em; line-height: 1.2; color: #1d2925}
