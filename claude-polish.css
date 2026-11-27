@@ -11,8 +11,8 @@ html[data-cp-motion=on] .folio .featured-project img {transition: transform .45s
 html.cp-on .scene-arrival {animation: none !important}
 
 /* toggle: small text, page colours */
-.cp-toggle {position: fixed; right: 14px; bottom: 12px; z-index: 60; font-family: inherit; font-size: 12px; font-weight: 500; line-height: 1; color: inherit; background: transparent; border: 0; padding: 6px 4px; opacity: .55; cursor: pointer; text-decoration: underline; text-underline-offset: 3px}
-.cp-toggle:hover, .cp-toggle:focus-visible {opacity: 1}
+.cp-toggle {position: fixed; right: 14px; bottom: 12px; z-index: 60; font-family: inherit; font-size: 12px; font-weight: 500; line-height: 1; color: #57524d; background: #fffdfaeb; border: 1px solid #0000001a; border-radius: 3px; padding: 6px 8px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px}
+.cp-toggle:hover, .cp-toggle:focus-visible {color: #1d1b19}
 
 /* ---------- d. home: larger game video (text left, video right kept) ---------- */
 .folio .resume-project {grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr)}
@@ -183,3 +183,37 @@ html.cp-home3 .cp-more {margin-top: 6px; font: inherit; font-size: 14px; font-we
 
 /* h4: hide the print button on the resume home */
 .folio .section-top .print {display: none !important}
+
+/* 줄바꿈 정리(11/27): 단어 중간에서 끊기거나 마지막 줄에 한 글자만 남는 것 방지 */
+:is(h1, h2, h3, h4, h5, h6) {word-break: keep-all; overflow-wrap: break-word; text-wrap: balance}
+:is(p, li, dd, dt, figcaption, td, th, summary, blockquote) {word-break: keep-all; overflow-wrap: break-word; text-wrap: pretty}
+figcaption :is(b, span, small, strong), .cover-slot b {word-break: keep-all; overflow-wrap: break-word; text-wrap: balance}
+.nowrap {white-space: nowrap}
+/* 기획서 원본 연결(11/27): 원문 링크 줄, 기획의 출발 구역 */
+.doc-originals {display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 20px; margin: 18px 0 0; font-size: 14px; color: var(--muted, #626661)}
+.doc-originals .doc-link {min-height: 0; margin: 0}
+.documents a.doc-original {align-items: center}
+.origin .intent dd {font-size: 17px}
+.origin-steps > li {padding-bottom: 12px; margin-bottom: 12px}
+/* 원본 보기(11/27): 기획의 출발 발표 자료 창, 기획서 원본 창 */
+.deck-viewer {margin-top: 28px}
+.deck-tabs {display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px}
+.deck-tabs [role="tab"] {display: inline-flex; align-items: baseline; gap: 8px; min-height: 44px; padding: 8px 16px; font: inherit; font-size: 15px; font-weight: 700; color: var(--ink, #22231f); background: transparent; border: 1px solid var(--line, #d5d6cf); border-radius: 3px; cursor: pointer}
+.deck-tabs [role="tab"] small {font-size: 13px; font-weight: 500; color: var(--muted, #626661)}
+.deck-tabs [role="tab"][aria-selected="true"] {color: #fff; background: var(--ink, #22231f); border-color: var(--ink, #22231f)}
+.deck-tabs [role="tab"][aria-selected="true"] small {color: #ffffffd9}
+.deck-frame {position: relative; aspect-ratio: 16 / 9.6; background: #1d1f1c; border: 1px solid var(--line, #d5d6cf)}
+.deck-frame iframe {position: absolute; inset: 0; width: 100%; height: 100%; border: 0}
+.origin-steps-wrap {margin-top: 40px; max-width: 860px}
+.origin-steps-wrap h3 {font-size: 1.22rem; margin-bottom: 14px}
+.origin-steps > li {padding-bottom: 12px; margin-bottom: 12px}
+html.ov-lock {overflow: hidden}
+.ov-dialog {width: min(1200px, 96vw); height: min(92vh, 1100px); max-width: none; max-height: none; padding: 0; border: 0; border-radius: 4px; background: #fff; display: none; flex-direction: column}
+.ov-dialog[open] {display: flex}
+.ov-dialog::backdrop {background: #111312cc}
+.ov-bar {display: flex; align-items: center; gap: 16px; padding: 10px 14px 10px 18px; border-bottom: 1px solid #d5d6cf}
+.ov-bar h3 {flex: 1; min-width: 0; margin: 0; font-size: 16px; line-height: 1.4; overflow: hidden; text-overflow: ellipsis; white-space: nowrap}
+.ov-open {font-size: 14px; font-weight: 600; white-space: nowrap}
+.ov-close {min-height: 40px; padding: 6px 14px; font: inherit; font-size: 14px; font-weight: 600; background: #22231f; color: #fff; border: 0; border-radius: 3px; cursor: pointer}
+.ov-frame {flex: 1; width: 100%; border: 0; background: #2b2d2a}
+@media (max-width: 700px) {.deck-frame {aspect-ratio: 3 / 4} .ov-dialog {width: 100%; height: 100%; margin: 0; border-radius: 0} .ov-bar {gap: 10px; padding: 8px 10px 8px 14px} .ov-open {font-size: 13px}}

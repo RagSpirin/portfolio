@@ -1,0 +1,324 @@
+/* 주요 역량 카드 넘기기 (skill-deck.js). 스크립트가 없으면 이 규칙은 쓰이지 않고 원래 카드가 보인다. */
+#capabilities.deck-on > .skill-cards {display: none}
+
+/* ---------- 앞면 다섯 장 ---------- */
+.deck-row {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr)); gap: 14px;
+}
+.deck-row > li {margin: 0; padding: 0; min-width: 0}
+.deck-row > li::before {content: none}
+.folio .deck-card {
+  --ly: 0px; --rx: 0deg; --ry: 0deg;
+  position: relative; display: flex; flex-direction: column; gap: 0;
+  width: 100%; height: 100%; box-sizing: border-box; margin: 0;
+  padding: 12px 12px 12px;
+  font: inherit; color: #1d2925; text-align: left;
+  background: #fff; border: 1px solid #d9e0dd; border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(29, 41, 37, .05);
+  cursor: pointer;
+  transform: none;
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease, border-color .2s ease, opacity .25s ease;
+}
+/* 가만히 있을 때 3D 변환을 걸면 글자가 그림처럼 처리돼 흐려진다. 마우스를 올렸을 때만 기울인다. */
+.folio .deck-card:hover, .folio .deck-card:focus-visible {
+  --ly: -8px;
+  transform: perspective(900px) translateY(var(--ly)) rotateX(var(--rx)) rotateY(var(--ry));
+  border-color: #23302b;
+  box-shadow: 0 18px 36px rgba(29, 41, 37, .16);
+}
+.folio .deck-card:focus-visible {outline: 2px solid #2f6b55; outline-offset: 3px}
+.folio .deck-card.is-lifted {opacity: 0}
+.folio .deck-top {display: flex; align-items: center; gap: 9px; min-height: 34px}
+.folio .deck-no {font-size: 22px; font-weight: 700; color: #2f6b55; letter-spacing: 0; line-height: 1; font-variant-numeric: tabular-nums}
+.folio .deck-mark {display: inline-grid; place-items: center; width: 26px; height: 26px; margin: 0}
+.folio .deck-mark img {display: block; width: 20px; height: 20px}
+.deck-art {
+  display: block; margin: 10px 0 14px; aspect-ratio: 4 / 3; overflow: hidden;
+  background: #1c2421; border-radius: 2px;
+}
+.deck-art > img {display: block; width: 100%; height: 100%; object-fit: cover}
+.deck-art-pies {display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto minmax(0, 1fr); gap: 0; background: #fff; border: 1px solid #e4e9e7; box-sizing: border-box}
+.folio .deck-pie-ask {grid-column: 1 / -1; padding: 8px 6px 0; font-size: 11.5px; font-weight: 600; color: #3d4944; line-height: 1.3; text-align: center; letter-spacing: -.02em; word-break: keep-all}
+.deck-pie {display: grid; grid-template-rows: minmax(0, 1fr) auto auto; align-items: center; justify-items: center; min-width: 0; min-height: 0; padding: 4px 4px 7px}
+.deck-pie img {display: block; width: 100%; max-width: 104px; height: 100%; min-height: 0; object-fit: contain}
+.folio .deck-pie b {margin-top: 3px; font-size: 17px; font-weight: 800; color: #2f6b55; line-height: 1.15; letter-spacing: -.02em; font-variant-numeric: tabular-nums}
+.folio .deck-pie small {font-size: 10.5px; font-weight: 600; color: #6b7570; line-height: 1.25; white-space: nowrap}
+/* 번호 옆에 아이콘+제목, 사진 아래 설명은 가운데 정렬 (11/27 17:08·17:15 형락 님) */
+.folio .deck-no {flex: none}
+.folio .deck-name {display: flex; align-items: center; gap: 6px; min-width: 0; font-size: 19px; font-weight: 700; letter-spacing: -.04em; line-height: 1.2; text-align: left; white-space: nowrap}
+.folio .deck-sign {display: grid; align-self: center; width: 28px; height: 28px; margin: 0 0 8px}
+.folio .deck-sign img {width: 20px; height: 20px}
+.folio .deck-line {display: block; margin: 0 0 14px; font-size: 14px; text-align: center; font-weight: 500; color: #3d4944; line-height: 1.55; letter-spacing: -.02em; word-break: keep-all}
+.deck-plus {
+  position: relative; flex: none; align-self: center; margin-top: auto; width: 22px; height: 22px;
+  border: 1px solid #c9d2ce; border-radius: 2px; background: #fff;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.deck-plus::before, .deck-plus::after {content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 1.5px; background: #1d2925; transform: translate(-50%, -50%)}
+.deck-plus::after {transform: translate(-50%, -50%) rotate(90deg)}
+.folio .deck-card:hover .deck-plus {background: #1d2925; border-color: #1d2925}
+.folio .deck-card:hover .deck-plus::before, .folio .deck-card:hover .deck-plus::after {background: #fff}
+
+@media (min-width: 1700px) {
+  .folio .deck-line {font-size: 15px}
+}
+/* 사이트 공통 버튼 hover(밝기 낮춤)가 카드에 걸리지 않게 */
+.folio .deck-card:hover, .folio .deck-shift:hover {filter: none}
+/* 좁은 화면 좌우 화살표: 넘칠 때만 보인다 */
+.deck-rail {position: relative}
+.folio .deck-shift {
+  position: absolute; z-index: 4; top: calc(50% - 24px); width: 48px; height: 48px; padding: 0;
+  color: #1d2925; background: #fff; border: 1px solid #23302b; border-radius: 3px;
+  box-shadow: 0 6px 18px rgba(29, 41, 37, .18); cursor: pointer;
+  transition: background-color .2s ease, color .2s ease;
+}
+.folio .deck-shift[hidden] {display: none}
+.folio .deck-shift:hover {background: #1d2925; color: #fff}
+.folio .deck-shift:focus-visible {outline: 2px solid #2f6b55; outline-offset: 3px}
+.deck-shift-prev {left: -8px}
+.deck-shift-next {right: -8px}
+.deck-shift::before {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 11px; height: 11px;
+  border: solid currentColor; border-width: 0 0 2px 2px;
+}
+.deck-shift-prev::before {transform: translate(-30%, -50%) rotate(45deg)}
+.deck-shift-next::before {transform: translate(-70%, -50%) rotate(-135deg)}
+@media print {.deck-shift {display: none !important}}
+/* 좁은 화면: 한 줄로 두고 옆으로 밀어 본다 */
+@media (max-width: 1000px) {
+  .deck-row {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(62vw, 250px);
+    overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    margin-inline: -16px; padding: 10px 16px 12px; scroll-padding-inline: 16px; scrollbar-width: none;
+  }
+  .deck-row::-webkit-scrollbar {display: none}
+  .deck-row > li {scroll-snap-align: start}
+}
+
+/* ---------- 크게 열린 카드 ---------- */
+html.deck-lock {overflow: hidden}
+.deck-dialog {
+  position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none;
+  margin: 0; padding: 0; border: 0; background: transparent; overflow: hidden; color: #1d2925;
+}
+.deck-dialog::backdrop {background: rgba(14, 19, 17, .8)}
+.deck-dialog:focus {outline: none}
+.deck-stage {
+  --bw: min(1320px, calc(100vw - 200px)); --gap: 30px; --drag: 0px;
+  position: absolute; inset: 0; perspective: 1700px; touch-action: pan-y;
+}
+@media (min-width: 1800px) and (min-height: 960px) {.deck-stage {--bw: min(1500px, calc(100vw - 360px))}}
+.deck-slot {
+  --x: 0px; --s: 1; --ry: 0deg;
+  position: absolute; inset: 24px 0 0; margin: auto; width: var(--bw); height: fit-content;
+  transform: translateX(calc(var(--x) + var(--drag))) scale(var(--s)) rotateY(var(--ry));
+  transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .45s ease;
+}
+/* 가운데 카드는 transform을 아예 빼서 글자를 또렷하게 (11/27 18:10 형락 님 "글자가 흐릿") */
+.deck-slot[data-pos="0"] {z-index: 3; transform: none}
+.deck-stage.is-drag .deck-slot[data-pos="0"] {transform: translateX(var(--drag))}
+.deck-slot[data-pos="1"] {--x: calc(var(--bw) * .93 + var(--gap)); --s: .86; --ry: -12deg; z-index: 2; cursor: pointer}
+.deck-slot[data-pos="-1"] {--x: calc(var(--bw) * -.93 - var(--gap)); --s: .86; --ry: 12deg; z-index: 2; cursor: pointer}
+.deck-slot[data-pos="2"] {--x: calc(var(--bw) * 1.8 + var(--gap) * 2); --s: .72; --ry: -22deg; opacity: 0; z-index: 1; pointer-events: none}
+.deck-slot[data-pos="-2"] {--x: calc(var(--bw) * -1.8 - var(--gap) * 2); --s: .72; --ry: 22deg; opacity: 0; z-index: 1; pointer-events: none}
+.deck-slot:not([data-pos="0"]) .deck-big {pointer-events: none}
+/* 옆 카드는 어둡게 덮어 가운데 카드가 앞에 보이게 */
+.deck-slot::after {content: ""; position: absolute; inset: 0; border-radius: 4px; background: rgb(14, 19, 17); opacity: 0; pointer-events: none; transition: opacity .45s ease}
+.deck-slot[data-pos="1"]::after, .deck-slot[data-pos="-1"]::after {opacity: .5}
+.deck-slot[data-pos="1"]:hover::after, .deck-slot[data-pos="-1"]:hover::after {opacity: .3}
+.deck-stage.is-drag .deck-slot {transition: none}
+.deck-stage.is-drag {user-select: none; cursor: grabbing}
+html[data-cp-motion="off"] .deck-slot, html[data-cp-motion="off"] .deck-slot::after {transition: none}
+
+.folio .deck-big {
+  box-sizing: border-box; max-height: calc(100vh - 120px); overflow: auto; overscroll-behavior: contain;
+  padding: 34px 42px 38px; background: #fff; border-radius: 4px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, .38); touch-action: pan-y;
+}
+.folio .deck-big-head {display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; column-gap: 12px}
+.folio .deck-big-head .deck-no {font-size: 28px}
+.folio .deck-big-head .deck-mark {width: 36px; height: 36px}
+.folio .deck-big-head .deck-mark img {width: 26px; height: 26px}
+.folio .deck-big h3 {margin: 0; font-size: 34px; font-weight: 700; letter-spacing: -.04em; line-height: 1.2; color: #1d2925}
+.folio .deck-big-line {
+  grid-column: 1 / -1; margin: 14px 0 0; padding-bottom: 18px; border-bottom: 1px solid #e4e9e7;
+  font-size: 20px; font-weight: 600; line-height: 1.5; letter-spacing: -.02em; color: #23302b; word-break: keep-all;
+}
+.folio .deck-big-body {margin-top: 22px}
+.folio .deck-big .skill-figure {display: block; margin: 0}
+.folio .deck-big .skill-figure img {display: block; width: 100%; height: auto; object-fit: cover; border-radius: 2px; background: #1c2421}
+.folio .deck-big .skill-figure-pair > span {display: flex; gap: 8px; align-items: flex-start}
+.folio .deck-big .skill-figure-pair > span > img {flex: var(--ar, 1) 1 0; min-width: 0; width: 100%}
+.folio .deck-big .skill-figure figcaption {margin-top: 9px; font-size: 15px; font-weight: 400; line-height: 1.5; color: #6b7570; word-break: keep-all}
+.folio .deck-big .skill-cases {display: grid; gap: 12px; margin: 22px 0 0; padding: 0; list-style: none; counter-reset: deck-case}
+.folio .deck-big .skill-cases > li {counter-increment: deck-case; padding-left: 40px; font-size: 18px; font-weight: 400; line-height: 1.6; color: #2c3833}
+/* 사례 번호 = 위 그림의 번호 */
+.folio .deck-big .skill-cases > li::before {
+  content: counter(deck-case); left: 0; top: .1em; width: 26px; height: 26px; border-radius: 2px;
+  display: grid; place-items: center; background: #2f6b55; color: #fff;
+  font-size: 14px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums;
+}
+
+/* 사례 근거 그림: 세 칸, 그림마다 사례 번호 */
+.folio .deck-proof {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start}
+.folio .deck-proof-item {margin: 0; min-width: 0}
+.folio .deck-proof-item.is-wide {grid-column: span 2}
+.folio .deck-proof-pic {position: relative; display: block; aspect-ratio: 3 / 2; overflow: hidden; background: #1c2421; border-radius: 2px; cursor: zoom-in}
+.folio .deck-proof-item.is-wide .deck-proof-pic {aspect-ratio: 3.06}
+.folio .deck-proof-pic img {display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(var(--z, 1)); transition: transform .45s cubic-bezier(.2,.8,.2,1)}
+.folio .deck-proof-pic:hover img {transform: scale(calc(var(--z, 1) * 1.04))}
+.folio .deck-proof-pic.is-doc {background: #fff; box-shadow: inset 0 0 0 1px #dfe5e1}
+.folio .deck-proof-pic.is-doc img {object-fit: contain; padding: 6px 8px; box-sizing: border-box}
+.folio .deck-proof-pic.is-doc:hover img {transform: none}
+.folio .deck-proof-pic:focus-visible {outline: 2px solid #2f6b55; outline-offset: 2px}
+.folio .deck-proof-no {
+  position: absolute; left: 9px; top: 9px; min-width: 26px; height: 26px; padding: 0 6px; box-sizing: border-box;
+  display: grid; place-items: center; background: #2f6b55; color: #fff; border-radius: 2px;
+  font-size: 14px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+.folio .deck-proof-item figcaption {margin-top: 9px; font-size: 15px; font-weight: 400; line-height: 1.5; color: #4a5651; letter-spacing: -.01em; word-break: keep-all}
+html[data-cp-motion="off"] .deck-proof-pic img {transition: none}
+
+/* 그림 크게 보기 */
+.deck-peek {position: absolute; inset: 0; z-index: 10; display: grid; place-items: center; padding: 40px 24px; box-sizing: border-box; background: rgba(10, 14, 12, .88); cursor: zoom-out}
+.deck-peek[hidden] {display: none}
+.deck-peek:focus {outline: none}
+.deck-peek img {display: block; max-width: min(1400px, 100%); max-height: calc(100vh - 80px); width: auto; height: auto; background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, .5)}
+
+/* 세로 사진 한 장(리더십): 사진 왼쪽, 사례 오른쪽 */
+.folio .deck-big.is-portrait .deck-big-body {display: grid; grid-template-columns: minmax(0, 250px) minmax(0, 1fr); gap: 30px; align-items: start}
+.folio .deck-big.is-portrait .skill-cases {margin-top: 0}
+.folio .deck-big.is-portrait .skill-figure img {object-fit: cover}
+
+/* 피드백 수용: 구글 폼 응답 화면 두 장 */
+.folio .deck-big .skill-survey {max-width: 960px}
+.folio .deck-big .skill-survey-pair {display: grid; grid-template-columns: 1fr 1fr; gap: 10px}
+.folio .deck-big .skill-survey-pair a {position: relative; display: block; padding-top: 28px; background: #fff; border: 1px solid #dfe5e1; border-radius: 2px; cursor: zoom-in}
+.folio .deck-big .skill-survey-pair img {width: 100%; height: auto; object-fit: contain; background: #fff; border: 0}
+.folio .deck-big .skill-survey-tag {position: absolute; top: 7px; left: 9px; font-size: 14px; font-weight: 700; color: #1d2925; line-height: 1.3}
+.folio .deck-big .skill-survey-notes {display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px}
+.folio .deck-big .skill-survey-notes > div {display: grid; align-content: start; gap: 4px}
+.folio .deck-big .skill-survey-num {font-size: 16px; font-weight: 700; color: #2f6b55}
+.folio .deck-big .skill-survey-notes q {display: block; font-size: 15px; font-weight: 400; line-height: 1.5; color: #55605b; word-break: keep-all; quotes: "“" "”"}
+
+.deck-bar {
+  position: absolute; z-index: 6; top: 16px; left: 24px; right: 24px;
+  display: flex; align-items: center; justify-content: space-between; pointer-events: none;
+}
+.deck-bar > * {pointer-events: auto}
+.folio .deck-count {margin: 0; font-size: 15px; font-weight: 500; color: rgba(255, 255, 255, .72); font-variant-numeric: tabular-nums; letter-spacing: .04em}
+.folio .deck-count b {font-weight: 700; color: #fff}
+.folio .deck-close, .folio .deck-nav {
+  font: inherit; color: #fff; background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .45); border-radius: 3px; cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.folio .deck-close {padding: 8px 14px; font-size: 14px; font-weight: 600}
+.folio .deck-close:hover, .folio .deck-nav:hover {background: #fff; border-color: #fff; color: #1d2925}
+.folio .deck-close:focus-visible, .folio .deck-nav:focus-visible {outline: 2px solid #fff; outline-offset: 3px}
+.folio .deck-nav {position: absolute; z-index: 6; top: calc(50% - 26px); width: 52px; height: 52px; padding: 0}
+.deck-prev {left: 22px}
+.deck-next {right: 22px}
+.deck-nav::before {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 12px;
+  border: solid currentColor; border-width: 0 0 2px 2px;
+}
+.deck-prev::before {transform: translate(-30%, -50%) rotate(45deg)}
+.deck-next::before {transform: translate(-70%, -50%) rotate(-135deg)}
+
+@media (max-height: 760px) and (min-width: 761px) {
+  .folio .deck-big {padding: 24px 30px 28px; max-height: calc(100vh - 110px)}
+  .deck-slot {inset: 36px 0 0}
+  .folio .deck-big h3 {font-size: 30px}
+  .folio .deck-big .skill-survey {max-width: 760px}
+}
+/* 휴대폰: 큰 카드는 화면 폭에 맞추고, 넘김 버튼은 아래쪽에 */
+@media (max-width: 760px) {
+  .deck-stage {--bw: calc(100vw - 56px); --gap: 10px}
+  .deck-slot {inset: 0 0 36px}
+  .folio .deck-big {max-height: calc(100vh - 160px); max-height: calc(100svh - 160px); padding: 20px 18px 22px}
+  .folio .deck-big h3 {font-size: 23px}
+  .folio .deck-big-line {font-size: 16px; margin-top: 12px; padding-bottom: 14px}
+  .folio .deck-big-body {margin-top: 16px}
+  .folio .deck-big .skill-figure-pair > span {flex-direction: column}
+  .folio .deck-big .skill-figure-pair > span > img {flex: none}
+  .folio .deck-big .skill-survey-pair, .folio .deck-big .skill-survey-notes {grid-template-columns: minmax(0, 1fr)}
+  .folio .deck-big.is-portrait .deck-big-body {grid-template-columns: minmax(0, 1fr); gap: 18px}
+  .folio .deck-big.is-portrait .skill-figure img {max-width: 230px; margin-inline: auto}
+  .folio .deck-big .skill-cases > li {font-size: 16px; padding-left: 36px}
+  .folio .deck-proof {grid-template-columns: minmax(0, 1fr); gap: 16px}
+  .folio .deck-proof-item.is-wide {grid-column: auto}
+  .folio .deck-proof-item.is-wide .deck-proof-pic {aspect-ratio: 3.5}
+  .deck-peek {padding: 16px 8px}
+  .deck-bar {top: 12px; left: 16px; right: 16px; justify-content: flex-end}
+  .folio .deck-nav {top: auto; bottom: 18px; width: 48px; height: 48px}
+  .deck-prev {left: calc(50% - 110px)}
+  .deck-next {right: calc(50% - 110px)}
+  .deck-bar .deck-count {position: fixed; left: 50%; bottom: 31px; transform: translateX(-50%)}
+}
+
+/* ---------- 기획에 영향을 준 작품 (pick-deck.js) ---------- */
+details.picks-block.is-decked {display: none}
+/* 영화 구역은 그리드 안이라, 폰에서 가로로 넘기는 카드 줄이 구역 폭을 늘리지 않게 */
+.folio .pick-deck {min-width: 0}
+.folio .pick-card {padding: 12px 12px 14px; text-align: center}
+.folio .pick-card-cover {position: relative; display: block; aspect-ratio: 4 / 5; margin: 0 0 14px; background: color-mix(in srgb, var(--mp-mark, #dfe9e3) 55%, #fff); border-radius: 2px; overflow: hidden}
+.folio .pick-card-cover img {position: absolute; inset: 8%; display: block; width: 84%; height: 84%; object-fit: contain; filter: drop-shadow(0 6px 10px rgba(29, 41, 37, .24))}
+.folio .pick-card-name {display: flex; align-items: center; justify-content: center; min-height: 2.8em; font-size: 16px; font-weight: 700; line-height: 1.4; letter-spacing: -.03em; color: #1d2925; word-break: keep-all; text-wrap: balance}
+.folio .pick-card-skill {display: flex; align-items: center; justify-content: center; gap: 6px; margin: 10px 0 14px; font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--mp-accent, #2f6b55); letter-spacing: -.02em}
+.folio .pick-card-skill .deck-mark {width: 22px; height: 22px}
+.folio .pick-card-skill .deck-mark img {width: 15px; height: 15px}
+
+/* 큰 카드: 세로형. 위는 표지, 아래는 제목·이어진 역량·배운 점·기획에 반영 (11/27 18:30 형락 님 "포스터나 표지가 세로") */
+.pick-dialog .deck-stage {--bw: min(580px, calc(100vw - 56px)); --gap: 44px}
+.folio .deck-big.pick-big {padding: 0 0 28px}
+.folio .pick-big-art {position: relative; height: clamp(180px, 30vh, 330px); background: var(--pk-tint, #e9efeb); border-radius: 4px 4px 0 0}
+.folio .pick-big-art img {position: absolute; inset: 22px 0; display: block; width: 100%; height: calc(100% - 44px); object-fit: contain; filter: drop-shadow(0 10px 16px rgba(29, 41, 37, .3))}
+/* 표지 그림이 아직 없는 책: 제목·저자를 적은 표지 자리를 세로 표지 비율로 (transform 없이, 글자 흐림 방지) */
+.folio .pick-card-cover.has-slot, .folio .pick-big-art.has-slot {display: flex; align-items: center; justify-content: center}
+.folio .pick-card-cover .cover-slot, .folio .pick-big-art .cover-slot {position: static; display: flex; flex-direction: column; gap: 6px; width: auto; height: 84%; aspect-ratio: 2 / 3; padding: 14px; box-sizing: border-box; border-radius: 2px; color: #fff; text-align: left; box-shadow: 0 6px 14px rgba(31, 38, 51, .28)}
+.folio .pick-card-cover .cover-slot b {font-size: 17px; line-height: 1.3; letter-spacing: -.04em}
+.folio .pick-card-cover .cover-slot small {font-size: 12px; line-height: 1.4; color: #d7deeb}
+.folio .pick-card-cover .cover-slot i, .folio .pick-big-art .cover-slot i {margin-top: auto; align-self: flex-start; padding: 1px 6px; border: 1px solid #ffffff80; border-radius: 2px; font-style: normal; font-size: 11px; font-weight: 600; line-height: 1.5}
+.folio .pick-big-art .cover-slot {height: calc(100% - 44px); padding: 18px}
+.folio .pick-big-art .cover-slot b {font-size: 22px; line-height: 1.3; letter-spacing: -.04em}
+.folio .pick-big-art .cover-slot small {font-size: 13.5px; line-height: 1.4; color: #d7deeb}
+.folio .pick-big-body {padding: 22px 32px 0}
+.folio .pick-big-head {display: block}
+.folio .pick-big-kind {margin: 0 0 5px; font-size: 14px; font-weight: 600; color: var(--pk-accent, #2f6b55); letter-spacing: -.01em}
+.folio .deck-big.pick-big h3 {font-size: 28px; line-height: 1.25; word-break: keep-all}
+.folio .pick-big-out {display: inline-block; margin-top: 8px; font-size: 14px; font-weight: 600; color: var(--pk-accent, #1d4a3a); text-decoration: none; border-bottom: 1px solid currentColor}
+.folio .pick-big-to {display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 12px 0 0}
+.folio .deck-big .pick-label {display: block; margin: 0 0 7px; font-size: 13.5px; font-weight: 700; line-height: 1.3; color: #6b7570; letter-spacing: .01em}
+.folio .deck-big .pick-big-to .pick-label {margin: 0}
+.folio .pick-big-skill {display: inline-flex; align-items: center; gap: 7px; font-size: 17px; font-weight: 700; line-height: 1.35; color: var(--pk-accent, #1d4a3a); letter-spacing: -.02em}
+.folio .pick-big-learn {margin-top: 18px; padding-top: 18px; border-top: 1px solid #e4e9e7}
+.folio .pick-big-note {margin: 0; font-size: 18px; font-weight: 500; line-height: 1.65; letter-spacing: -.02em; color: #1d2925; word-break: keep-all; text-wrap: pretty}
+.folio .pick-big-use {margin-top: 18px}
+.folio .pick-big-use-row {display: grid; grid-template-columns: minmax(0, 1fr) 196px; gap: 16px; align-items: start}
+.folio .pick-big-use-row.is-text {grid-template-columns: minmax(0, 1fr)}
+.folio .pick-big-case {margin: 0; font-size: 16px; line-height: 1.6; color: #2c3833; word-break: keep-all}
+.folio .pick-big-use .deck-proof-pic {aspect-ratio: 16 / 10}
+.folio .pick-big-use figcaption {display: none}
+/* 낮은 화면(1280×720 등): 표지 칸을 줄여 큰 카드가 스크롤 없이 들어가게 */
+@media (max-height: 760px) and (min-width: 761px) {
+  .folio .pick-big-art {height: clamp(150px, 25vh, 190px)}
+  .folio .pick-big-body {padding-top: 16px}
+  .folio .pick-big-learn, .folio .pick-big-use {margin-top: 14px}
+  .folio .pick-big-learn {padding-top: 14px}
+  .folio .pick-big-note {font-size: 17px; line-height: 1.6}
+}
+@media (max-width: 760px) {
+  .folio .pick-big-art {height: clamp(160px, 26vh, 240px)}
+  .folio .pick-big-body {padding: 18px 20px 0}
+  .folio .deck-big.pick-big h3 {font-size: 23px}
+  .folio .pick-big-note {font-size: 16px}
+  .folio .pick-big-use-row {grid-template-columns: minmax(0, 1fr)}
+}
+
+@media print {
+  #capabilities.deck-on > .skill-cards {display: grid !important}
+  details.picks-block.is-decked {display: block !important}
+  .deck-row, .deck-dialog, .pick-deck {display: none !important}
+}

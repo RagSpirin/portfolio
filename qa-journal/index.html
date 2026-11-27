@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="../resume-navigation.css"><link rel="stylesheet" href="../claude-polish.css">
 </head>
 <body>
-  <a class="skip" href="#main">본문 바로가기</a>
   <header class="resume-navigation"><div class="resume-navigation-inner"><a class="resume-back" href="../index.html#career"><span aria-hidden="true">←</span> 이력서로 돌아가기</a></div></header>
   <main id="main" class="wrap">
     <header class="intro">
@@ -66,8 +65,8 @@
             <time datetime="2026-01-08">2026.01.08</time> · <time datetime="2026-01-15">01.15</time>
             <h3>아이템 점검과 시퀀스 더빙 검수</h3>
             <ul>
-              <li>1월 8일에는 별도로 요청받은 아이템 점검을 시작했습니다.</li>
-              <li>15일에는 시퀀스의 더빙을 확인할 수 있도록 해당 장면을 녹화했습니다. 초반에 익힌 챕터 녹화 방식을 음성 검수에도 활용했습니다.</li>
+              <li>별도로 요청받은 아이템 점검을 시작했습니다.</li>
+              <li>시퀀스의 더빙을 확인할 수 있도록 해당 장면을 녹화했습니다. 초반에 익힌 챕터 녹화 방식을 음성 검수에도 활용했습니다.</li>
             </ul>
           </li>
         </ol>
@@ -95,10 +94,15 @@
       <dialog id="note-view" aria-labelledby="note-title" closedby="any">
         <header class="note-toolbar">
           <h3 id="note-title">수기 근무일지</h3>
+          <span id="note-count" class="note-count" aria-live="polite"></span>
           <button id="note-zoom" type="button">원본 크기</button>
           <form method="dialog"><button type="submit" autofocus>닫기</button></form>
         </header>
-        <div class="note-scroll" tabindex="0" role="region" aria-labelledby="note-title"><img alt=""></div>
+        <div class="note-stage">
+          <div class="note-scroll" tabindex="0" role="region" aria-labelledby="note-title"><img alt=""></div>
+          <button class="note-nav note-prev" type="button" aria-label="이전 사진"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="note-nav note-next" type="button" aria-label="다음 사진"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
       </dialog>
     </section>
   </main>

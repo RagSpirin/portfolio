@@ -82,7 +82,7 @@
   }
 
   /* ---------- b. large screens: same proportions as 1920 (zoom, capped at 1.4) ---------- */
-  // content column ≈ 68% of the window on every page; zoom limited to 0.75–1.2.
+  // content column ≈ 64.6% of the window on every page; zoom limited to 0.71–1.14 (2026-11-26: whole site 5% smaller than the 68% setting).
   // Content width = the box width (≥ 900px, not full-bleed) that covers the most page height at zoom 1.
   const fit = () => {
     document.body.style.zoom = '';
@@ -93,7 +93,7 @@
     }
     const cw = +(Object.entries(area).sort((x, y) => y[1] - x[1])[0] || [0])[0];
     if (!cw) return;
-    const z = Math.min(1.2, Math.max(.75, innerWidth * .68 / cw));
+    const z = Math.min(1.14, Math.max(.71, innerWidth * .659 / cw));
     document.body.style.zoom = Math.abs(z - 1) < .01 ? '' : z.toFixed(3);
   };
   fit(); addEventListener('resize', fit);
@@ -201,4 +201,40 @@
     [...bar.children].forEach((c, i) => { c.style.transformOrigin = 'left'; c.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }],
       { duration: 900, delay: i * 120, easing: EASE, fill: 'backwards' }); });
   }, { threshold: .6 }).observe(bar);
+})();
+
+/* 주요 역량 카드: 사례는 눌러서 펼침 (스크립트가 없으면 모두 보임) */
+(() => {
+  document.querySelectorAll('.skill-card').forEach(card => {
+    const btn = card.querySelector('.skill-more');
+    if (!btn) return;
+    btn.hidden = false;
+    card.classList.add('is-folded');
+    btn.addEventListener('click', () => {
+      const open = card.classList.toggle('is-folded') === false;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.firstElementChild.textContent = open ? '사례 접기' : '사례 보기';
+    });
+  });
+})();
+
+/* 주요 역량 카드 그림 크게 보기 (11/27) */
+(function () {
+  var links = document.querySelectorAll('a.skill-zoom');
+  if (!links.length || typeof HTMLDialogElement === 'undefined') return;
+  var dialog = document.createElement('dialog');
+  dialog.className = 'skill-zoom-dialog';
+  var img = document.createElement('img');
+  document.body.appendChild(dialog);
+  dialog.addEventListener('click', function () { dialog.close(); });
+  links.forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var thumb = a.querySelector('img');
+      if (!img.parentNode) dialog.appendChild(img);
+      img.src = a.getAttribute('href');
+      img.alt = thumb ? thumb.alt : '';
+      dialog.showModal();
+    });
+  });
 })();

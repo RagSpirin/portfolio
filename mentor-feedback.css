@@ -1,0 +1,494 @@
+/* 2026-11-26 mentor feedback layer: home intro, project pitch lines, 커튼콜 page notes, game·film·book sections */
+.play-archive .archive-head {display: block}
+
+.project-spec .project-pitch {margin: 8px 0 12px; max-width: 30em; font-size: clamp(14.5px, 1.1vw, 17px); font-weight: 600; line-height: 1.6; color: #2f3a35; word-break: keep-all}
+
+/* 소개글: 제출 당시 세 문단을 새 순서로. 첫 문단만 노출하고 둘째 문단부터는 더 보기 안 (2026-11-26 16:10 형락 님 지시) */
+.folio .intro-copy > p:first-child {color: #1f2a25; font-weight: 500}
+@media print {.project-pitch {display: none !important}}
+
+/* 커튼콜 페이지: 구역별 기획 의도, 용어 풀이, 첫 화면 순서 */
+.cover .cover-what {margin-top: .9rem; max-width: 26em; color: var(--ink, #1d2622) !important; font-size: 19px !important; font-weight: 600; line-height: 1.6}
+.cover .cover-contribution {max-width: 30em}
+.cover .route-jump {display: inline-block; margin: .9rem 0 0 1.1rem; font-size: 15px; font-weight: 600; color: inherit; text-decoration: underline; text-underline-offset: .3em}
+dl.intent {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 2rem; margin: 1.6rem 0 2.2rem; padding: 0; border-top: 2px solid currentColor}
+dl.intent > div {padding: 1rem 0 0}
+dl.intent dt {font-size: 14px; font-weight: 700; letter-spacing: 0; color: var(--accent, #782e31); margin: 0 0 .4rem}
+dl.intent dd {margin: 0; font-size: 16px; line-height: 1.7}
+.term-note {margin: 0 0 1rem; font-size: 14.5px; line-height: 1.7; color: var(--muted, #5c6660)}
+.term-note b {font-weight: 700; color: inherit}
+@media (max-width: 900px) {dl.intent {grid-template-columns: 1fr}}
+
+/* 게임·영화·책이 기획에 해 준 일 (2026-11-26 17:21 형락 님 정정)
+   구역마다: 제목(플레이한 게임) → 기록 → 그 매체가 해 준 역할(요약) → 기획에 영향을 준 작품 */
+.medium {--mp-paper: #f8faf8; --mp-line: #d6e0da; --mp-ink: #1f2a25; --mp-soft: #47554d; --mp-accent: #1d4a3a; --mp-band: #20392f; --mp-band-label: #a9ccba; --mp-band-soft: #d6e3db; --mp-mark: #dfe9e3}
+.medium-films {--mp-paper: #fcf9fa; --mp-line: #e2d3da; --mp-ink: #37222e; --mp-soft: #5e4854; --mp-accent: #6a384e; --mp-band: #3a2431; --mp-band-label: #dfb7ca; --mp-band-soft: #eadbe3; --mp-mark: #eedde5}
+.medium-books {--mp-paper: #f8f9fc; --mp-line: #d8dee8; --mp-ink: #1f2633; --mp-soft: #475166; --mp-accent: #2c3b5a; --mp-band: #232f45; --mp-band-label: #b5c4e0; --mp-band-soft: #d9e0ec; --mp-mark: #dfe5f0}
+.medium + .medium {margin-top: clamp(40px, 5vw, 72px)}
+.medium-title {margin: 0 0 clamp(14px, 1.6vw, 22px); color: var(--ink, #1f2a25); font-size: clamp(29px, 3.1vw, 46px); line-height: 1.15; letter-spacing: -.065em; word-break: keep-all}
+.media-panel {border: 1px solid var(--mp-line); background: var(--mp-paper); color: var(--mp-ink)}
+.medium .cinema-record {margin-top: 0}
+.records-block {padding: clamp(18px, 2.4vw, 34px) clamp(16px, 3.5vw, 52px) clamp(14px, 1.6vw, 22px); background: #fff}
+
+/* 요약 띠: 구역 제목 바로 아래 (17:43 형락 님). 그 매체가 해 준 역할(제목)과 요약 */
+.medium-head {grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 14px clamp(24px, 4vw, 64px); align-items: baseline; padding: clamp(24px, 3vw, 42px) clamp(16px, 3.5vw, 52px); background: var(--mp-band); color: #fff}
+.medium-head h4 {margin: 0; color: #fff; font-size: clamp(20px, 1.9vw, 27px); line-height: 1.34; letter-spacing: -.05em; word-break: keep-all; text-wrap: balance}
+.medium-name {display: block; margin-bottom: 8px; color: var(--mp-band-label); font-size: clamp(14px, 1.05vw, 16px); font-weight: 600; line-height: 1.4; letter-spacing: -.01em}
+.medium-lead {margin: 0; color: var(--mp-band-soft); font-size: clamp(15px, 1.12vw, 17px); line-height: 1.78; word-break: keep-all; text-wrap: pretty}
+
+/* 작품 줄: 표지 → 제목 → 배운 것 → 이어진 역량이나 사례 */
+.picks-block {grid-column: 1 / -1; padding: clamp(20px, 2.5vw, 34px) clamp(16px, 3.5vw, 52px) clamp(26px, 3vw, 42px); border-top: 1px solid var(--mp-line); background: var(--mp-paper)}
+.medium-head + .picks-block {border-top: 0}
+.picks-head {display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 20px; margin: 0 0 clamp(14px, 1.6vw, 22px)}
+.picks-head h4 {margin: 0; color: var(--mp-accent); font-size: clamp(1.05rem, 1.4vw, 1.28rem); line-height: 1.45; letter-spacing: -.035em}
+.sample-flag {margin: 0; font-size: 12.5px; font-weight: 600; line-height: 1.5; color: #a2542a}
+.picks {list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(12px, 1.6vw, 24px)}
+/* 작품마다 네 줄(표지와 제목, 배운 것, 이어진 곳, 사례)을 옆 작품과 같은 높이에 맞춘다 */
+.pick {display: grid; grid-template-rows: subgrid; grid-row: span 4; min-width: 0}
+@supports not (grid-template-rows: subgrid) {.pick {display: block}}
+.pick-top {display: block; color: inherit; text-decoration: none}
+.pick-cover {display: flex; align-items: flex-end; aspect-ratio: 2 / 3}
+.pick-cover img {display: block; width: 100%; height: auto; max-height: 100%; object-fit: cover; object-position: center top; border-radius: 3px; box-shadow: 0 2px 6px #39243028}
+.pick h5 {margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--mp-ink); color: var(--mp-ink); font-size: clamp(.93rem, 1.12vw, 1.04rem); line-height: 1.45; letter-spacing: -.03em; word-break: keep-all}
+a.pick-top:is(:hover, :focus-visible) h5 {text-decoration: underline; text-underline-offset: 3px}
+.pick-note {margin: 6px 0 0; text-wrap: pretty; font-size: 14.5px; line-height: 1.68; color: var(--mp-soft); word-break: keep-all}
+.pick-to {margin: 14px 0 0; font-size: 14px; line-height: 1.45}
+.pick-to span {display: block; margin-bottom: 5px; color: var(--mp-soft); font-size: 12px; font-weight: 600}
+.pick-to b {display: flex; align-items: flex-start; gap: 7px; color: var(--mp-accent); font-weight: 700; letter-spacing: -.02em; word-break: keep-all}
+.pick-to img {flex: none; box-sizing: content-box; width: 14px; height: 14px; margin-top: -1px; padding: 4px; border-radius: 5px; background: var(--mp-mark)}
+.pick-case {margin: 5px 0 0; font-size: 13.5px; line-height: 1.6; color: var(--mp-soft); word-break: keep-all}
+.cover-slot {display: flex; flex-direction: column; gap: 6px; width: 100%; height: 100%; padding: clamp(14px, 1.5vw, 22px); border-radius: 3px; background: var(--slot, #2c3b5a); color: #fff; box-shadow: 0 2px 6px #1f263328}
+.pick:nth-child(2) .cover-slot {--slot: #47566f}
+.pick:nth-child(3) .cover-slot {--slot: #1f2a44}
+.pick:nth-child(4) .cover-slot {--slot: #5d6a83}
+.cover-slot b {font-size: clamp(17px, 1.6vw, 23px); line-height: 1.3; letter-spacing: -.04em; word-break: keep-all}
+.cover-slot small {font-size: 12.5px; line-height: 1.4; color: #d7deeb}
+.cover-slot i {margin-top: auto; align-self: flex-start; padding: 2px 7px; border: 1px solid #ffffff80; border-radius: 2px; font-style: normal; font-size: 11.5px; font-weight: 600; line-height: 1.5}
+@media (max-width: 900px) {
+  .picks {grid-template-columns: repeat(2, minmax(0, 1fr))}
+  .pick:nth-child(-n+2) .pick-case {padding-bottom: 30px}
+}
+@media (max-width: 760px) {.medium-head {grid-template-columns: 1fr; align-items: start}}
+
+/* 기획에 영향을 준 작품: 문서가 길어져 접어 둔다 (2026-11-26 17:38 형락 님) */
+details.picks-block {padding-block: clamp(16px, 1.8vw, 24px)}
+details.picks-block > summary.picks-head {display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; cursor: pointer; list-style: none}
+details.picks-block > summary::-webkit-details-marker {display: none}
+details.picks-block[open] {padding-bottom: clamp(26px, 3vw, 42px)}
+details.picks-block[open] > summary.picks-head {margin-bottom: 6px}
+details.picks-block > .sample-flag {margin: 0 0 clamp(14px, 1.6vw, 22px)}
+.picks-toggle {display: inline-flex; align-items: center; gap: 7px; flex: none; padding: 5px 11px; border: 1px solid var(--mp-line); border-radius: 4px; background: #fff; color: var(--mp-accent); font-size: 13px; font-weight: 650; line-height: 1.4}
+.picks-toggle::after {content: ""; width: 6px; height: 6px; margin-top: -3px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg)}
+details[open] > summary .picks-toggle::after {margin-top: 3px; transform: rotate(-135deg)}
+details.picks-block .when-open, details.picks-block[open] .when-closed {display: none}
+details.picks-block[open] .when-open {display: inline}
+details.picks-block > summary:hover .picks-toggle {border-color: var(--mp-accent)}
+details.picks-block > summary:focus-visible {outline: 2px solid var(--mp-accent); outline-offset: 4px}
+
+/* 영화 기록 묶음(캡처 + 감상 기록): 요약 띠와 작품 줄 사이에 한 덩어리로 */
+.cinema-record-body {grid-column: 1 / -1; display: grid; grid-template-columns: clamp(230px, 28%, 345px) minmax(0, 1fr)}
+@media screen and (max-width: 600px) {.cinema-record-body {grid-template-columns: 1fr}}
+
+/* 한 줄에 한 구역, 대신 낮게 (2026-11-26 17:53 형락 님: 나란히 놓은 안은 별로, 화면을 덜 차지하게)
+   넓은 화면에서는 요약을 왼쪽, 기록을 오른쪽에 나란히 두고 작품 줄은 그 아래 전체 폭 */
+@media (min-width: 1100px) {
+  .medium + .medium {margin-top: clamp(30px, 3vw, 44px)}
+  .medium-title {margin-bottom: 12px; font-size: clamp(24px, 2.1vw, 32px)}
+  .medium-games .media-panel, .medium .cinema-record {display: grid; grid-template-columns: minmax(0, 36fr) minmax(0, 64fr)}
+  .medium-games .medium-head, .medium-films .medium-head {grid-column: auto; grid-template-columns: 1fr; align-content: center; gap: 12px; padding: 26px 30px 26px clamp(16px, 3.5vw, 52px)}
+  .medium-games .medium-head h4, .medium-films .medium-head h4 {font-size: clamp(20px, 1.6vw, 25px)}
+  .medium .medium-lead {font-size: 15px; line-height: 1.72}
+  .medium-books .medium-head {padding-block: 24px}
+  .medium details.picks-block {grid-column: 1 / -1}
+  /* 게임 기록: 원래 배치 그대로 작게 */
+  .medium .records-block {padding: 20px clamp(18px, 1.8vw, 26px) 10px}
+  .medium .record-spread {gap: 18px}
+  .medium .steam-scene {flex: none; aspect-ratio: 2.9}
+  .medium .steam-shelf {gap: 8px; padding: 12px 16px 14px}
+  .medium .steam-record .record-total {font-size: clamp(32px, 2.6vw, 40px)}
+  .medium .device-records {gap: 10px}
+  .medium .device-records > li {grid-template-columns: 92px 1fr; gap: 14px; padding-top: 10px}
+  .medium .device-records h3 {font-size: 15.5px}
+  .medium .device-records .record-total {font-size: 27px}
+  .medium .device-records .library-generations, .medium .device-records .record-basis {font-size: 12px; line-height: 1.45}
+  .medium .record-footnotes {margin-top: 8px}
+  /* 영화 기록: 왓챠 프로필과 감상 기록을 한 줄에 */
+  .medium .cinema-record-body {grid-column: auto; grid-template-columns: minmax(0, 40%) minmax(0, 1fr)}
+  .medium .cinema-overview {padding: 20px clamp(18px, 2vw, 30px); gap: 14px}
+  .medium .cinema-stats dd {font-size: clamp(36px, 3vw, 48px)}
+  .medium .cinema-record-head h3 {font-size: clamp(17px, 1.4vw, 21px)}
+}
+
+/* 영향을 준 작품을 작게 (2026-11-26 17:57 형락 님): 표지는 왼쪽에 작게, 글은 오른쪽. 두 개씩 두 줄 */
+.picks {grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px clamp(24px, 3vw, 44px)}
+.pick, .pick:nth-child(-n+2) {display: grid; grid-template-columns: clamp(92px, 10vw, 128px) minmax(0, 1fr); grid-template-rows: auto auto auto 1fr; grid-row: auto; column-gap: clamp(14px, 1.5vw, 20px); align-items: start}
+.pick-top {display: contents}
+.pick-cover {grid-column: 1; grid-row: 1 / span 4; aspect-ratio: auto; align-items: flex-start}
+.pick h5, .pick-note, .pick-to, .pick-case {grid-column: 2}
+.pick h5 {margin: 0; padding-top: 8px}
+.pick-note {font-size: 14px; line-height: 1.62}
+.pick-to {margin-top: 9px}
+.pick:nth-child(-n+2) .pick-case {padding-bottom: 0}
+.cover-slot {aspect-ratio: 2 / 3; height: auto; padding: 9px}
+.cover-slot b {font-size: 15px}
+.cover-slot small {font-size: 10.5px}
+.cover-slot i {padding: 1px 4px; font-size: 9.5px}
+@media (max-width: 760px) {.picks {grid-template-columns: 1fr}}
+
+/* 넓은 화면에서는 작품 네 개를 한 줄에 (2026-11-26 18:00 형락 님). 표지는 작게 위, 글은 아래 */
+@media (min-width: 1100px) {
+  .picks {grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(18px, 2vw, 30px)}
+  .pick, .pick:nth-child(-n+2) {grid-template-columns: 1fr; grid-template-rows: subgrid; grid-row: span 5}
+  .pick-cover {grid-column: 1; grid-row: auto; justify-self: center; width: 164px; height: 232px; align-items: center; justify-content: center; margin-bottom: 14px}
+  .pick-cover img {width: auto; max-width: 100%; max-height: 100%}
+  .cover-slot {height: 100%; aspect-ratio: auto}
+  .pick h5, .pick-note, .pick-to, .pick-case {grid-column: 1}
+}
+
+/* 주요 역량 5개 시안 (2026-11-26 18:16 형락 님): 윗줄 3개, 아랫줄 2개가 같은 전체 폭을 채운다 */
+@media (min-width: 1001px) {
+  .folio .practice-five {grid-template-columns: repeat(6, minmax(0, 1fr))}
+  .folio .practice-five > li {grid-column: span 2}
+  .folio .practice-five > li:nth-child(n+4) {grid-column: span 3}
+}
+
+/* 주요 역량 카드형: 짧은 이름 + 한 줄 설명 + 사례 (11/26 20:44 형락 님 선택) */
+.folio .skill-cards {gap: 14px}
+.folio .skill-cards .skill-card {
+  grid-template-columns: 34px minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  align-content: start;
+  gap: 0 12px;
+  padding: 22px 24px 20px;
+  background: #fff;
+  border: 1px solid #d9e0dd;
+  border-radius: 3px;
+}
+.folio .skill-cards .practice-mark {grid-column: 1; grid-row: 1; width: 34px; height: 34px; align-self: center}
+.folio .skill-cards h4 {
+  grid-column: 2; grid-row: 1; align-self: center; margin: 0;
+  font-size: clamp(22px, 1.75vw, 27px); letter-spacing: -.04em; line-height: 1.2;
+}
+.folio .skill-cards .skill-line {
+  grid-column: 1 / -1; grid-row: 2; margin: 14px 0 0; padding-bottom: 14px;
+  border-bottom: 1px solid #e4e9e7;
+  color: #23302b; font-size: 16px; font-weight: 600; line-height: 1.5; letter-spacing: -.02em; word-break: keep-all;
+}
+.folio .skill-cards .work-points {grid-column: 1 / -1; grid-row: 3; margin-top: 12px; color: #55605b; font-size: 14px}
+@media (max-width: 620px) {
+  .folio .skill-cards .skill-card {padding: 18px}
+  .folio .skill-cards h4 {font-size: 21px}
+}
+@media print {.folio .skill-cards .skill-line {display: block; font-size: 9pt; margin: 2pt 0 0; border: 0; padding: 0}}
+@media (min-width: 1001px) {.folio .skill-cards > li:nth-child(-n+3) .skill-line {min-height: calc(3em + 14px)}}
+
+/* 주요 역량 카드 본문: 굵은 주장 + 그 아래 사례 (11/26 22:41 형락 님 승인) */
+.folio .skill-cards .skill-claims {
+  grid-column: 1 / -1; grid-row: 3; align-self: start;
+  display: grid; gap: 15px; margin: 15px 0 0; padding: 0; list-style: none;
+}
+.folio .skill-claims > li {margin: 0}
+.folio .skill-claims b {
+  display: block; color: #1d2925; font-size: 15px; font-weight: 700;
+  line-height: 1.5; letter-spacing: -.02em; word-break: keep-all;
+}
+.folio .skill-claims span {
+  display: block; margin-top: 5px; padding-left: 11px; border-left: 2px solid #d9e0dd;
+  color: #55605b; font-size: 14px; line-height: 1.6; word-break: keep-all;
+}
+@media print {.folio .skill-claims {display: none}}
+
+/* 구역 제목 크기 통일 (11/26 23:45 형락 님): 주요 역량·플레이한 게임·영화·책 = 개인 이력·프로젝트와 같은 크기 */
+@media screen {
+  .folio .practice > h3, .folio .medium-title {
+    font-size: clamp(29px, 3.1vw, 46px);
+    line-height: 1.15;
+    letter-spacing: -.065em;
+    color: var(--ink);
+  }
+}
+
+/* 주요 역량 카드: 그림 한 장 + 사례 접기 (11/26 23:50 형락 님 "진행") */
+.folio .skill-cards .skill-card {grid-template-rows: auto auto auto auto 1fr}
+.folio .skill-cards .skill-figure {grid-column: 1 / -1; grid-row: 3; margin: 16px 0 0}
+.folio .skill-cards .skill-claims {grid-row: 4}
+.folio .skill-figure img {display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 2px; background: #1c2421}
+.folio .skill-figure-pair > span {display: grid; grid-template-columns: 1fr 1fr; gap: 4px}
+.folio .skill-figure-pair img {aspect-ratio: 8 / 9}
+.folio .skill-figure figcaption {margin-top: 7px; color: #6b7570; font-size: 12.5px; line-height: 1.45; word-break: keep-all}
+.folio .skill-stat {display: grid; align-content: center; gap: 12px; aspect-ratio: auto}
+.folio .skill-stat-row {display: grid; grid-template-columns: 5.2em minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 14px 16px; background: #f3f6f4; border-radius: 2px}
+.folio .skill-stat-row span {display: block; margin: 0; padding: 0; border: 0; color: #55605b; font-size: 13.5px}
+.folio .skill-stat-row i {position: relative; display: block; height: 10px; background: #dfe6e2; border-radius: 5px; overflow: hidden}
+.folio .skill-stat-row i::after {content: ""; position: absolute; inset: 0; width: calc(var(--v) * 100%); background: #2f6b55; border-radius: 5px}
+.folio .skill-stat-row b {display: block; color: #1d2925; font-size: 19px; font-weight: 700; letter-spacing: -.03em; white-space: nowrap}
+.folio .skill-stat figcaption {margin-top: 0}
+.folio .skill-cards .skill-more {
+  grid-column: 1 / -1; grid-row: 5; align-self: end; justify-self: start;
+  margin-top: 16px; padding: 7px 14px; background: #fff; border: 1px solid #c9d2ce; border-radius: 3px;
+  color: #23302b; font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer;
+}
+.folio .skill-cards .skill-more:hover {border-color: #23302b}
+.folio .skill-cards .skill-more span::after {content: " ↓"}
+.folio .skill-cards .skill-more[aria-expanded="true"] span::after {content: " ↑"}
+.folio .skill-card.is-folded .skill-claims > li > span {display: none}
+.folio .skill-card.is-folded .skill-claims {gap: 9px}
+@media (min-width: 1001px) {.folio .skill-cards > li:nth-child(n+4) .skill-figure img {aspect-ratio: 21 / 9}}
+@media print {.folio .skill-figure, .folio .skill-more {display: none}}
+.folio .skill-stat-row {padding-block: 34px}
+@media (max-width: 620px) {.folio .skill-stat-row {padding-block: 20px}}
+
+/* 카드 그림 숨김 (11/27 00:00 형락 님 "사진 없애줘봐"). 되돌리려면 이 한 줄만 지운다 */
+.folio .skill-cards .skill-figure {display: none}
+
+/* 주장 줄에 글머리 기호 (11/27 00:03 형락 님) */
+.folio .skill-claims > li {position: relative; padding-left: 15px}
+.folio .skill-claims > li::before {content: ""; position: absolute; left: 1px; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: #2f6b55}
+.folio .skill-claims > li > span {position: relative; margin-top: 6px; padding-left: 13px; border-left: 0}
+.folio .skill-claims > li > span::before {content: "–"; position: absolute; left: 0; top: 0; color: #8a948f}
+
+/* 주요 역량 3단: 이름 + 설명 문장 + 사례 두세 줄 (11/27 00:10 형락 님 A안) */
+.folio .skill-cards .skill-cases {grid-column: 1 / -1; grid-row: 4; align-self: start; display: grid; gap: 11px; margin: 15px 0 0; padding: 0; list-style: none}
+.folio .skill-cases > li {position: relative; margin: 0; padding-left: 15px; color: #3d4944; font-size: 14.5px; line-height: 1.62; word-break: keep-all}
+.folio .skill-cases > li::before {content: ""; position: absolute; left: 1px; top: .66em; width: 5px; height: 5px; border-radius: 50%; background: #2f6b55}
+@media print {.folio .skill-cases > li {font-size: 9pt}}
+
+/* 카드 그림 다시 표시, 낮고 작게 (11/27 00:29 형락 님 "시각자료 넣자") */
+.folio .skill-cards .skill-figure {display: block; margin: 14px 0 0}
+.folio .skill-cards .skill-figure img {aspect-ratio: 5 / 2}
+.folio .skill-cards .skill-figure-pair img {aspect-ratio: 5 / 4}
+.folio .skill-cards .skill-stat {display: grid; gap: 6px}
+.folio .skill-cards .skill-stat-row {padding: 11px 14px}
+.folio .skill-cards .skill-stat-row b {font-size: 16px}
+.folio .skill-cards .skill-figure figcaption {margin-top: 6px; font-size: 12px}
+.folio .skill-cards .skill-cases {margin-top: 13px}
+@media (min-width: 1001px) {
+  .folio .skill-cards > li:nth-child(n+4) .skill-card {grid-template-columns: 34px minmax(0, 1fr) minmax(0, 36%); column-gap: 12px}
+  .folio .skill-cards > li:nth-child(n+4) .skill-cases {grid-column: 1 / 3; grid-row: 3; padding-right: 14px}
+  .folio .skill-cards > li:nth-child(n+4) .skill-figure {grid-column: 3; grid-row: 3; margin-top: 15px}
+  .folio .skill-cards > li:nth-child(n+4) .skill-figure img {aspect-ratio: 16 / 9}
+}
+@media (min-width: 1001px) {.folio .skill-cards > li:nth-child(n+4) .skill-figure {align-self: start}}
+
+#skill-lead .skill-figure img {object-position: center 30%}
+#skill-listen .skill-stat-row {grid-template-columns: 4.2em minmax(0, 1fr) 7em}
+#skill-listen .skill-stat-row b {text-align: right; font-variant-numeric: tabular-nums}
+@media (min-width: 1001px) {
+  #skill-reference .skill-figure-pair > span {aspect-ratio: 16 / 9; grid-template-rows: minmax(0, 1fr)}
+  #skill-reference .skill-figure-pair img {height: 100%; min-height: 0}
+}
+
+/* 사진 세 장 배치·크기 재조정 (11/27 00:58 형락 님 "배치랑 사이즈 재조정") */
+.folio #skill-listen .skill-stat-row {padding: 22px 16px}
+.folio #skill-lead .skill-figure img {aspect-ratio: 3 / 2; object-position: 50% 34%}
+.folio #skill-reference .skill-figure-pair > span {aspect-ratio: auto; grid-template-rows: none}
+.folio #skill-reference .skill-figure-pair img {height: auto; aspect-ratio: 3 / 4}
+.folio #skill-reference .skill-figure-pair img:first-child {object-position: 50% 50%}
+@media (min-width: 1001px) {
+  .folio .skill-cards > li:nth-child(n+4) .skill-card {grid-template-columns: 34px minmax(0, 1fr) minmax(0, 44%)}
+  .folio .skill-cards > li:nth-child(n+4) .skill-figure {margin-top: 4px}
+}
+@media (max-width: 1000px) {.folio #skill-listen .skill-stat-row {padding: 14px}}
+
+/* 두 응답 캡처를 기존 비교표의 두 행과 같은 높이로 표시한다. */
+#skill-listen .survey-captures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  height: calc(2lh + 94px);
+  font-size: 16px;
+  font-weight: 700;
+}
+#skill-listen .survey-captures a {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 3px;
+  min-height: 0;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+  cursor: zoom-in;
+}
+#skill-listen .survey-captures img {width: 100%; height: 100%; object-fit: contain; background: white}
+#skill-listen .survey-captures b {font-size: 13px; line-height: 1.25}
+@media (max-width: 1000px) {
+  #skill-listen .survey-captures {height: calc(2lh + 62px)}
+}
+
+/* 피드백 수용: 설문 막대 + 플레이어 원문 (11/27 02:34 형락 님 "추천대로", 응답 원문 대비) */
+.folio #skill-listen .skill-voice {display: grid; gap: 6px}
+.folio #skill-listen .skill-voice-row {padding: 10px 14px 11px; background: #f3f6f4; border-radius: 2px}
+.folio #skill-listen .skill-voice .skill-stat-row {grid-template-columns: 8.4em minmax(0, 1fr) 3.6em; gap: 10px; padding: 0; background: none}
+.folio #skill-listen .skill-voice .skill-stat-row span {font-size: 13px; white-space: nowrap}
+.folio #skill-listen .skill-voice .skill-stat-row b {font-size: 15px}
+.folio #skill-listen .skill-voice q {display: block; margin-top: 6px; color: #55605b; font-size: 12.5px; line-height: 1.45; word-break: keep-all; quotes: "“" "”"}
+.folio #skill-listen .skill-voice figcaption {margin-top: 2px}
+@media (max-width: 1000px) {.folio #skill-listen .skill-voice .skill-stat-row {padding: 0}}
+
+/* 피드백 수용: 구글 폼 응답 화면 비교 캡처 (11/27 02:39 형락 님 "캡처해서 비교 사진을") */
+.folio #skill-listen .skill-survey-pair {display: grid; grid-template-columns: 1fr 1fr; gap: 10px}
+.folio #skill-listen .skill-survey-col {display: grid; align-content: start; gap: 5px; min-width: 0}
+.folio #skill-listen .skill-survey-tag {font-size: 12.5px; font-weight: 700; color: #1d2925}
+.folio #skill-listen .skill-zoom {display: block; cursor: zoom-in}
+.folio #skill-listen .skill-zoom img {display: block; width: 100%; height: auto; aspect-ratio: 626 / 364; object-fit: contain; background: #fff; border: 1px solid #dfe5e1; border-radius: 2px}
+.folio #skill-listen .skill-survey-num {font-size: 13px; font-weight: 700; color: #2f6b55}
+.folio #skill-listen .skill-survey q {display: block; color: #55605b; font-size: 12px; line-height: 1.45; word-break: keep-all; quotes: "“" "”"}
+.folio #skill-listen .skill-survey figcaption {margin-top: 8px}
+.skill-zoom-dialog {max-width: min(1080px, 94vw); padding: 0; border: 0; background: #fff; box-shadow: 0 12px 40px rgba(0,0,0,.25); cursor: zoom-out}
+.skill-zoom-dialog::backdrop {background: rgba(20, 26, 23, .6)}
+.skill-zoom-dialog img {display: block; width: 100%; height: auto}
+
+/* 다섯 카드의 그림 칸 통일 (11/27 03:00 형락 님 "사진 크기·레이아웃·위치 통일")
+   모든 카드를 같은 폭으로, 그림은 설명 문장 바로 아래 같은 비율(16:7) 칸에. 두 장 비교는 같은 칸을 반으로 나눔. */
+@media (min-width: 1001px) {
+  .folio .practice-five.skill-cards > li {grid-column: span 2}
+  .folio .practice-five.skill-cards > li:nth-child(4) {grid-column: 2 / span 2}
+  .folio .practice-five.skill-cards > li:nth-child(5) {grid-column: 4 / span 2}
+  .folio #capabilities .skill-cards > li .skill-card {grid-template-columns: 34px minmax(0, 1fr); column-gap: 12px}
+  .folio #capabilities .skill-cards > li .skill-figure {grid-column: 1 / -1; grid-row: 3; margin-top: 14px; align-self: start}
+  .folio #capabilities .skill-cards > li .skill-cases {grid-column: 1 / -1; grid-row: 4; padding-right: 0}
+  .folio #capabilities .skill-cards > li .skill-line {min-height: calc(3em + 14px)}
+}
+.folio #capabilities .skill-cards .skill-figure > img,
+.folio #capabilities .skill-cards .skill-figure-pair > span,
+.folio #capabilities .skill-cards .skill-survey-pair {aspect-ratio: 16 / 7; width: 100%; height: auto}
+.folio #capabilities .skill-cards .skill-figure > img {object-fit: cover}
+.folio #capabilities .skill-cards .skill-figure-pair > span,
+.folio #capabilities .skill-cards .skill-survey-pair {display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 4px}
+.folio #capabilities .skill-cards .skill-figure-pair img {width: 100%; height: 100%; min-height: 0; aspect-ratio: auto; object-fit: cover}
+.folio #capabilities #skill-lead .skill-figure > img {object-position: 50% 30%}
+.folio #capabilities #skill-reference .skill-figure-pair img:first-child {object-position: 50% 60%}
+/* 피드백 수용: 폼 캡처는 글씨가 잘리지 않게 칸 안에 통째로 */
+.folio #capabilities #skill-listen .skill-survey-pair a {position: relative; display: block; min-height: 0; background: #fff; border: 1px solid #dfe5e1; border-radius: 2px; cursor: zoom-in}
+.folio #capabilities #skill-listen .skill-survey-pair img {display: block; width: 100%; height: 100%; aspect-ratio: auto; object-fit: contain; object-position: 50% 100%; border: 0; padding: 22px 2px 2px; box-sizing: border-box; background: none}
+.folio #capabilities #skill-listen .skill-survey-tag {position: absolute; top: 4px; left: 6px; font-size: 11.5px; font-weight: 700; color: #1d2925; line-height: 1.3}
+.folio #capabilities #skill-listen .skill-survey-notes {display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px}
+.folio #capabilities #skill-listen .skill-survey-notes > div {display: grid; align-content: start; gap: 3px}
+.folio #capabilities #skill-listen .skill-survey-num {font-size: 13px; font-weight: 700; color: #2f6b55}
+.folio #capabilities #skill-listen .skill-survey-notes q {display: block; color: #55605b; font-size: 12px; line-height: 1.45; word-break: keep-all; quotes: "“" "”"}
+.folio #capabilities #skill-listen .skill-survey figcaption {margin-top: 6px}
+
+/* ---------- 휴대폰 화면(11/27 새벽): 데스크톱용 3단 격자가 좁은 화면에서도 걸려 글자가 한두 글자씩 끊기던 문제 ---------- */
+@media (max-width: 800px) {
+  .folio .resume-project {grid-template-columns: minmax(0, 1fr)}
+}
+@media (max-width: 560px) {
+  .folio .project-work dl {grid-template-columns: minmax(0, 1fr)}
+}
+@media (max-width: 760px) {
+  html.cp-cc .shell {width: calc(100% - 32px)}
+  html.cp-cc .chapter {padding-block: 36px}
+  html.cp-cc .cover {grid-template-columns: minmax(0, 1fr) !important; gap: 18px !important; padding-block: 24px 18px}
+  html.cp-cc .cover h1 {font-size: 64px !important}
+  html.cp-cc main h2 {font-size: 34px}
+  html.cp-cc :is(#case-tightrope, #case-cannon, #case-route > .shell) > .heading h2 {font-size: 40px}
+  html.cp-cc main .final-test h2 {font-size: 24px !important}
+  html.cp-cc main :is(p, li, dd, td, th, .annotation) {font-size: 15.5px}
+  html.cp-cc .heading > p {font-size: 16px !important}
+  html.cp-cc .profile dl {grid-template-columns: minmax(0, 1fr) !important; gap: 10px !important}
+  html.cp-cc .profile dl > div {display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: .6rem}
+  html.cp-cc .heading > ul.design-notes,
+  html.cp-cc :is(.reel-grid, .case-feature, .two-col, .production-grid, .chase-review, .route-gallery, .two-col.test, .spatial-intent, .other-findings) {grid-template-columns: minmax(0, 1fr) !important; gap: 20px !important}
+  html.cp-cc :is(.reel-grid, .case-feature, .two-col, .production-grid, .chase-review, .route-gallery, .two-col.test) > *,
+  html.cp-cc #case-cannon .two-col > * {grid-column: auto !important}
+  html.cp-cc :is(.sequence, .process, .archive-grid) {grid-template-columns: minmax(0, 1fr) !important; gap: 18px !important}
+  html.cp-cc .production-grid .documents {position: static}
+  html.cp-cc .chase-findings dd {font-size: 32px !important}
+  html.cp-cc .response-plots figcaption b {font-size: 22px !important}
+  html.cp-cc main table {width: 100%}
+  html.cp-cc main :is(table, .compare) {max-width: 100%}
+}
+@media (max-width: 560px) {
+  .folio .career-entry {grid-template-columns: minmax(0, 1fr) !important; row-gap: 12px}
+  .folio .career-entry .career-card {justify-self: start; width: min(100%, 260px)}
+}
+
+/* ---------- 커튼콜 탈출로: 전체 동선도와 레벨 설계 원칙을 접지 않고 보이게 (11/27 새벽) ---------- */
+.level-plan {margin: 6px 0 44px; padding-top: 18px; border-top: 2px solid var(--ink, #352323)}
+.level-plan-head h3 {margin: 0 0 6px}
+.level-plan-head p {margin: 0 0 20px; max-width: 62em}
+.level-plan-body {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g, 32px); align-items: start}
+.level-map {grid-column: span 2; margin: 0; min-width: 0}
+.level-map a {display: block}
+.level-map img {display: block; width: 100%; height: auto; background: #0f151b; cursor: zoom-in}
+.level-map figcaption {display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 8px}
+.level-rules {list-style: none; margin: 0; padding: 0; counter-reset: level-rule}
+.level-rules > li {position: relative; counter-increment: level-rule; margin: 0 0 14px; padding: 0 0 14px 34px; border-bottom: 1px solid var(--line, #d5d6cf)}
+.level-rules > li:last-child {margin-bottom: 0}
+.level-rules > li::before {content: counter(level-rule, decimal-leading-zero); position: absolute; left: 0; top: 3px; font-size: 14px; font-weight: 700; color: var(--acc, #9d382a)}
+.level-rules b {display: block; margin-bottom: 4px; font-size: 17px; line-height: 1.45; color: var(--ink, #352323)}
+html.cp-cc main .level-rules span {display: block; font-size: 15px; line-height: 1.65; color: var(--ink, #352323)}
+.level-rules .doc-link {min-height: 0; margin-top: 6px}
+html.cp-cc main .level-source {margin: 14px 0 0; font-size: 14px; color: var(--sub, #695552)}
+.level-source a {font-weight: 700; color: var(--ink, #352323); text-underline-offset: 3px}
+@media (max-width: 760px) {
+  .level-plan-body {grid-template-columns: minmax(0, 1fr); gap: 20px}
+  .level-map {grid-column: auto}
+}
+
+/* 외줄타기: 첫 테스트 뒤 바꾼 것(문제 → 바꾼 것 → 결과) */
+.rope-finding {margin: 1.6rem 0 0}
+.rope-finding p + p {margin-top: .5rem}
+.rope-finding strong {color: var(--accent, #a83224); margin-right: .35rem}
+
+/* ---------- 주요 역량 (형락 님 11/27: 크게 키운 2단은 되돌려 3단 유지) ---------- */
+/* 리더십: 형락 님만 보이게 자른 세로 사진을 칸 높이에 맞춰 가운데, 양옆은 무대 배경색 */
+.folio #capabilities .skill-figure-portrait > span {display: block; aspect-ratio: 16 / 7; overflow: hidden; background: #e8ecea; border-radius: 2px}
+.folio #capabilities .skill-cards .skill-figure-portrait img {display: block; width: auto; height: 100%; margin: 0 auto; aspect-ratio: auto; object-fit: contain; border-radius: 0}
+/* 피드백 수용: 첫 테스트 의견 → 마지막 테스트 폼 응답 두 장 */
+
+/* ---------- 커튼콜 탈출로: 최종 기획서의 여덟 구간 (컨셉아트 · Unity · 구상도) ---------- */
+.route-zones {margin: 44px 0 8px; padding-top: 18px; border-top: 2px solid var(--ink, #352323)}
+.route-zones-head {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g, 32px); align-items: start; margin-bottom: 30px}
+.route-zones figure {margin: 0; min-width: 0}
+.route-zones figure a {display: block; cursor: zoom-in}
+.route-zones figure img {display: block; width: 100%; height: auto; background: #151a1f}
+.route-zones figcaption {display: flex; flex-wrap: wrap; gap: 2px 10px; margin-top: 8px}
+.route-zones figcaption b {color: var(--ink, #352323)}
+.route-zones figcaption span {color: var(--sub, #695552)}
+.route-zones-cover {grid-column: span 2}
+.route-zones-intro h3 {margin: 0 0 6px}
+.route-zones-intro > p {margin: 0 0 16px}
+.route-zones .region-buttons[hidden] {display: none !important}
+html.cp-cc main .route-zones .region-buttons {display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; margin: 0; border-top: 1px solid var(--line, #d5d6cf)}
+html.cp-cc main .route-zones .region-buttons button {display: flex; align-items: baseline; gap: 12px; width: 100%; min-height: 42px; margin: 0; padding: 8px 10px; text-align: left; border: 0; border-bottom: 1px solid var(--line, #d5d6cf); border-radius: 0; background: transparent; color: var(--ink, #352323); font-size: 15px !important; line-height: 1.4; cursor: pointer}
+html.cp-cc main .route-zones .region-buttons button:not([aria-pressed=true]):hover {background: #ebe8e1}
+html.cp-cc main .route-zones .region-buttons button span {font-size: 13px; font-weight: 700; color: var(--acc, #9d382a)}
+html.cp-cc main .route-zones .region-buttons [aria-pressed=true] {background: var(--ink, #352323); color: #fff}
+html.cp-cc main .route-zones .region-buttons [aria-pressed=true] span {color: #f1c8ae}
+.zone {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-areas: "concept unity text" "plan plan text"; gap: 22px var(--g, 32px); align-items: start}
+.zone[hidden] {display: none}
+.zone-concept {grid-area: concept}
+.zone-unity {grid-area: unity}
+.zone-text {grid-area: text}
+.zone-plan {grid-area: plan}
+.route-zones :is(.zone-concept, .zone-unity) img {aspect-ratio: 16 / 9; object-fit: cover}
+.zone-text h4 {display: flex; align-items: baseline; gap: 10px; margin: 0 0 12px; font-size: 20px; line-height: 1.4; letter-spacing: -.03em}
+.zone-text h4 span {font-size: 14px; color: var(--acc, #9d382a)}
+.zone-text ul {margin: 0; padding: 0; list-style: none}
+html.cp-cc main .zone-text li {position: relative; margin: 0 0 12px; padding: 0 0 12px 15px; border-bottom: 1px solid var(--line, #d5d6cf); font-size: 15px; line-height: 1.7; color: var(--ink, #352323)}
+.zone-text li:last-child {margin-bottom: 0}
+.zone-text li::before {content: ""; position: absolute; left: 0; top: .72em; width: 5px; height: 5px; background: var(--acc, #9d382a)}
+@media (max-width: 760px) {
+  .route-zones-head {grid-template-columns: minmax(0, 1fr); gap: 18px}
+  .route-zones-cover {grid-column: auto}
+  html.cp-cc main .route-zones .region-buttons {grid-template-columns: repeat(2, minmax(0, 1fr))}
+  html.cp-cc main .route-zones .region-buttons button {gap: 8px; padding: 8px 6px; font-size: 14px !important}
+  .zone {grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "concept" "unity" "plan"; gap: 18px}
+}
+
+/* ---------- 커튼콜 탈출로: 거구 추격자 기획 (형락 님 11/27 "추격자 기획서 없어?") ---------- */
+.pursuer-plan {margin: 44px 0 8px; padding-top: 18px; border-top: 2px solid var(--ink, #352323)}
+.pursuer-plan .level-map img {background: #111}
+.pursuer-shots {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px var(--g, 32px); margin-top: 26px}
+.pursuer-shots figure {margin: 0; min-width: 0}
+.pursuer-shots a {display: block; cursor: zoom-in}
+.pursuer-shots img {display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #0b0d0f}
+.pursuer-shots figcaption {display: flex; flex-wrap: wrap; gap: 2px 10px; margin-top: 8px}
+.pursuer-shots figcaption b {color: var(--ink, #352323)}
+.pursuer-shots figcaption span {color: var(--sub, #695552)}
+html.cp-cc main .pursuer-refs {display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin-top: 22px}
+.pursuer-refs a {font-weight: 600}
+@media (max-width: 760px) {
+  .pursuer-shots {grid-template-columns: minmax(0, 1fr); gap: 18px}
+}
