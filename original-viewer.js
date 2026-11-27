@@ -23,6 +23,7 @@
   };
   const close = () => dlg.close();
   dlg.addEventListener('close', () => {
+    if (dlg.open) return; // 닫자마자 다른 원본을 연 경우 새 원본을 지우지 않는다
     frame.src = 'about:blank';
     document.documentElement.classList.remove('ov-lock');
     opener?.focus({ preventScroll: true });
