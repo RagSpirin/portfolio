@@ -11,8 +11,8 @@ html[data-cp-motion=on] .folio .featured-project img {transition: transform .45s
 html.cp-on .scene-arrival {animation: none !important}
 
 /* toggle: small text, page colours */
-.cp-toggle {position: fixed; right: 14px; bottom: 12px; z-index: 60; font-family: inherit; font-size: 12px; font-weight: 500; line-height: 1; color: inherit; background: transparent; border: 0; padding: 6px 4px; opacity: .55; cursor: pointer; text-decoration: underline; text-underline-offset: 3px}
-.cp-toggle:hover, .cp-toggle:focus-visible {opacity: 1}
+.cp-toggle {position: fixed; right: 14px; bottom: 12px; z-index: 60; font-family: inherit; font-size: 12px; font-weight: 500; line-height: 1; color: #57524d; background: #fffdfaeb; border: 1px solid #0000001a; border-radius: 3px; padding: 6px 8px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px}
+.cp-toggle:hover, .cp-toggle:focus-visible {color: #1d1b19}
 
 /* ---------- d. home: larger game video (text left, video right kept) ---------- */
 .folio .resume-project {grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr)}
@@ -183,3 +183,9 @@ html.cp-home3 .cp-more {margin-top: 6px; font: inherit; font-size: 14px; font-we
 
 /* h4: hide the print button on the resume home */
 .folio .section-top .print {display: none !important}
+
+/* 줄바꿈 정리(11/27): 단어 중간에서 끊기거나 마지막 줄에 한 글자만 남는 것 방지 */
+:is(h1, h2, h3, h4, h5, h6) {word-break: keep-all; overflow-wrap: break-word; text-wrap: balance}
+:is(p, li, dd, dt, figcaption, td, th, summary, blockquote) {word-break: keep-all; overflow-wrap: break-word; text-wrap: pretty}
+figcaption :is(b, span, small, strong), .cover-slot b {word-break: keep-all; overflow-wrap: break-word; text-wrap: balance}
+.nowrap {white-space: nowrap}
