@@ -52,7 +52,7 @@
   const fronts = items.map((it, i) => {
     const li = el('li');
     const b = el('button', 'deck-card'); b.type = 'button'; b.setAttribute('aria-haspopup', 'dialog');
-    const top = el('span', 'deck-top'); top.append(el('b', 'deck-no', it.no), mark(it.icon));
+    const top = el('span', 'deck-top'); top.append(el('b', 'deck-no', it.no));
     const art = el('span', 'deck-art');
     const a = ART[it.id] || {};
     if (a.pies) {
@@ -62,7 +62,8 @@
       const im = img(a.src); if (a.pos) im.style.objectPosition = a.pos; art.append(im);
     }
     const open = el('span', 'deck-plus'); open.setAttribute('aria-hidden', 'true');
-    b.append(top, art, el('span', 'deck-name', it.name), el('span', 'deck-line', it.line), open);
+    const name = el('span', 'deck-name'); name.append(mark(it.icon), el('span', null, it.name));
+    b.append(top, art, name, el('span', 'deck-line', it.line), open);
     b.addEventListener('click', () => openDeck(i));
     b.addEventListener('pointermove', e => {
       if (e.pointerType !== 'mouse' || !motion()) return;
