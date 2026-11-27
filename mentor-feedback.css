@@ -476,3 +476,19 @@ html.cp-cc main .zone-text li {position: relative; margin: 0 0 12px; padding: 0 
   html.cp-cc main .route-zones .region-buttons button {gap: 8px; padding: 8px 6px; font-size: 14px !important}
   .zone {grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "concept" "unity" "plan"; gap: 18px}
 }
+
+/* ---------- 커튼콜 탈출로: 거구 추격자 기획 (형락 님 11/27 "추격자 기획서 없어?") ---------- */
+.pursuer-plan {margin: 44px 0 8px; padding-top: 18px; border-top: 2px solid var(--ink, #352323)}
+.pursuer-plan .level-map img {background: #111}
+.pursuer-shots {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px var(--g, 32px); margin-top: 26px}
+.pursuer-shots figure {margin: 0; min-width: 0}
+.pursuer-shots a {display: block; cursor: zoom-in}
+.pursuer-shots img {display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #0b0d0f}
+.pursuer-shots figcaption {display: flex; flex-wrap: wrap; gap: 2px 10px; margin-top: 8px}
+.pursuer-shots figcaption b {color: var(--ink, #352323)}
+.pursuer-shots figcaption span {color: var(--sub, #695552)}
+html.cp-cc main .pursuer-refs {display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin-top: 22px}
+.pursuer-refs a {font-weight: 600}
+@media (max-width: 760px) {
+  .pursuer-shots {grid-template-columns: minmax(0, 1fr); gap: 18px}
+}
