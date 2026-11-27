@@ -446,3 +446,43 @@ html.cp-cc main .level-source {margin: 14px 0 0; font-size: 14px; color: var(--s
 .folio #capabilities #skill-listen .skill-survey-legend i {display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: -2px}
 .folio #capabilities #skill-listen .skill-survey-legend .dot-very {background: #109618}
 .folio #capabilities #skill-listen .skill-survey-legend .dot-yes {background: #ff9900}
+
+/* ---------- 커튼콜 탈출로: 최종 기획서의 여덟 구간 (컨셉아트 · Unity · 구상도) ---------- */
+.route-zones {margin: 44px 0 8px; padding-top: 18px; border-top: 2px solid var(--ink, #352323)}
+.route-zones-head {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g, 32px); align-items: start; margin-bottom: 30px}
+.route-zones figure {margin: 0; min-width: 0}
+.route-zones figure a {display: block; cursor: zoom-in}
+.route-zones figure img {display: block; width: 100%; height: auto; background: #151a1f}
+.route-zones figcaption {display: flex; flex-wrap: wrap; gap: 2px 10px; margin-top: 8px}
+.route-zones figcaption b {color: var(--ink, #352323)}
+.route-zones figcaption span {color: var(--sub, #695552)}
+.route-zones-cover {grid-column: span 2}
+.route-zones-intro h3 {margin: 0 0 6px}
+.route-zones-intro > p {margin: 0 0 16px}
+.route-zones .region-buttons[hidden] {display: none !important}
+html.cp-cc main .route-zones .region-buttons {display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; margin: 0; border-top: 1px solid var(--line, #d5d6cf)}
+html.cp-cc main .route-zones .region-buttons button {display: flex; align-items: baseline; gap: 12px; width: 100%; min-height: 42px; margin: 0; padding: 8px 10px; text-align: left; border: 0; border-bottom: 1px solid var(--line, #d5d6cf); border-radius: 0; background: transparent; color: var(--ink, #352323); font-size: 15px !important; line-height: 1.4; cursor: pointer}
+html.cp-cc main .route-zones .region-buttons button:not([aria-pressed=true]):hover {background: #ebe8e1}
+html.cp-cc main .route-zones .region-buttons button span {font-size: 13px; font-weight: 700; color: var(--acc, #9d382a)}
+html.cp-cc main .route-zones .region-buttons [aria-pressed=true] {background: var(--ink, #352323); color: #fff}
+html.cp-cc main .route-zones .region-buttons [aria-pressed=true] span {color: #f1c8ae}
+.zone {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-areas: "concept unity text" "plan plan text"; gap: 22px var(--g, 32px); align-items: start}
+.zone[hidden] {display: none}
+.zone-concept {grid-area: concept}
+.zone-unity {grid-area: unity}
+.zone-text {grid-area: text}
+.zone-plan {grid-area: plan}
+.route-zones :is(.zone-concept, .zone-unity) img {aspect-ratio: 16 / 9; object-fit: cover}
+.zone-text h4 {display: flex; align-items: baseline; gap: 10px; margin: 0 0 12px; font-size: 20px; line-height: 1.4; letter-spacing: -.03em}
+.zone-text h4 span {font-size: 14px; color: var(--acc, #9d382a)}
+.zone-text ul {margin: 0; padding: 0; list-style: none}
+html.cp-cc main .zone-text li {position: relative; margin: 0 0 12px; padding: 0 0 12px 15px; border-bottom: 1px solid var(--line, #d5d6cf); font-size: 15px; line-height: 1.7; color: var(--ink, #352323)}
+.zone-text li:last-child {margin-bottom: 0}
+.zone-text li::before {content: ""; position: absolute; left: 0; top: .72em; width: 5px; height: 5px; background: var(--acc, #9d382a)}
+@media (max-width: 760px) {
+  .route-zones-head {grid-template-columns: minmax(0, 1fr); gap: 18px}
+  .route-zones-cover {grid-column: auto}
+  html.cp-cc main .route-zones .region-buttons {grid-template-columns: repeat(2, minmax(0, 1fr))}
+  html.cp-cc main .route-zones .region-buttons button {gap: 8px; padding: 8px 6px; font-size: 14px !important}
+  .zone {grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "concept" "unity" "plan"; gap: 18px}
+}
