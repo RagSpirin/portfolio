@@ -62,10 +62,10 @@
       const im = img(a.src); if (a.pos) im.style.objectPosition = a.pos; art.append(im);
     }
     const open = el('span', 'deck-plus'); open.setAttribute('aria-hidden', 'true');
-    /* 번호 옆에 아이콘과 제목, 사진 아래에는 설명 (11/27 17:15 형락 님) */
-    const name = el('span', 'deck-name'); name.append(mark(it.icon), el('span', null, it.name));
-    top.append(el('b', 'deck-no', it.no), name);
-    b.append(top, art, el('span', 'deck-line', it.line), open);
+    /* 번호 옆에 제목, 사진과 설명 사이 가운데에 아이콘, 그 아래 설명 (11/27 17:15·17:25 형락 님) */
+    top.append(el('b', 'deck-no', it.no), el('span', 'deck-name', it.name));
+    const sign = mark(it.icon); sign.classList.add('deck-sign');
+    b.append(top, art, sign, el('span', 'deck-line', it.line), open);
     b.addEventListener('click', () => openDeck(i));
     b.addEventListener('pointermove', e => {
       if (e.pointerType !== 'mouse' || !motion()) return;
@@ -78,8 +78,26 @@
     li.append(b); row.append(li);
     return b;
   });
-  list.before(row);
+  /* 화면이 좁아 다섯 장이 한 줄에 안 들어가면 스크롤바 대신 좌우 화살표로 넘긴다 */
+  const rail = el('div', 'deck-rail');
+  const back = el('button', 'deck-shift deck-shift-prev'); back.type = 'button'; back.setAttribute('aria-label', '앞 카드 보기');
+  const fwd = el('button', 'deck-shift deck-shift-next'); fwd.type = 'button'; fwd.setAttribute('aria-label', '뒤 카드 보기');
+  rail.append(row, back, fwd);
+  list.before(rail);
   sec.classList.add('deck-on');
+  const step = () => (row.firstElementChild ? row.firstElementChild.offsetWidth : 240) + (parseFloat(getComputedStyle(row).columnGap) || 14);
+  const shiftBy = dir => row.scrollBy({ left: dir * step(), behavior: motion() ? 'smooth' : 'auto' });
+  back.addEventListener('click', () => shiftBy(-1));
+  fwd.addEventListener('click', () => shiftBy(1));
+  const edges = () => {
+    const max = row.scrollWidth - row.clientWidth;
+    back.hidden = !(max > 2 && row.scrollLeft > 2);
+    fwd.hidden = !(max > 2 && row.scrollLeft < max - 2);
+  };
+  row.addEventListener('scroll', edges, { passive: true });
+  addEventListener('resize', edges);
+  if ('ResizeObserver' in window) new ResizeObserver(edges).observe(row);
+  edges();
 
   /* 처음 보일 때 다섯 장을 차례로 내려놓는다 */
   if (motion() && 'IntersectionObserver' in window) {

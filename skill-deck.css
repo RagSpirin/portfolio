@@ -43,8 +43,8 @@
 /* 번호 옆에 아이콘+제목, 사진 아래 설명은 가운데 정렬 (11/27 17:08·17:15 형락 님) */
 .folio .deck-no {flex: none}
 .folio .deck-name {display: flex; align-items: center; gap: 6px; min-width: 0; font-size: 19px; font-weight: 700; letter-spacing: -.04em; line-height: 1.2; text-align: left; white-space: nowrap}
-.folio .deck-name .deck-mark {flex: none; width: 26px; height: 26px}
-.folio .deck-name .deck-mark img {width: 20px; height: 20px}
+.folio .deck-sign {display: grid; align-self: center; width: 28px; height: 28px; margin: 0 0 8px}
+.folio .deck-sign img {width: 20px; height: 20px}
 .folio .deck-line {display: block; margin: 0 0 14px; font-size: 14px; text-align: center; font-weight: 500; color: #3d4944; line-height: 1.55; letter-spacing: -.02em; word-break: keep-all}
 .deck-plus {
   position: relative; flex: none; align-self: center; margin-top: auto; width: 22px; height: 22px;
@@ -59,13 +59,36 @@
 @media (min-width: 1700px) {
   .folio .deck-line {font-size: 15px}
 }
+/* 사이트 공통 버튼 hover(밝기 낮춤)가 카드에 걸리지 않게 */
+.folio .deck-card:hover, .folio .deck-shift:hover {filter: none}
+/* 좁은 화면 좌우 화살표: 넘칠 때만 보인다 */
+.deck-rail {position: relative}
+.folio .deck-shift {
+  position: absolute; z-index: 4; top: calc(50% - 24px); width: 48px; height: 48px; padding: 0;
+  color: #1d2925; background: #fff; border: 1px solid #23302b; border-radius: 3px;
+  box-shadow: 0 6px 18px rgba(29, 41, 37, .18); cursor: pointer;
+  transition: background-color .2s ease, color .2s ease;
+}
+.folio .deck-shift[hidden] {display: none}
+.folio .deck-shift:hover {background: #1d2925; color: #fff}
+.folio .deck-shift:focus-visible {outline: 2px solid #2f6b55; outline-offset: 3px}
+.deck-shift-prev {left: -8px}
+.deck-shift-next {right: -8px}
+.deck-shift::before {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 11px; height: 11px;
+  border: solid currentColor; border-width: 0 0 2px 2px;
+}
+.deck-shift-prev::before {transform: translate(-30%, -50%) rotate(45deg)}
+.deck-shift-next::before {transform: translate(-70%, -50%) rotate(-135deg)}
+@media print {.deck-shift {display: none !important}}
 /* 좁은 화면: 한 줄로 두고 옆으로 밀어 본다 */
 @media (max-width: 1000px) {
   .deck-row {
     grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(62vw, 250px);
     overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
-    margin-inline: -16px; padding: 10px 16px 14px; scroll-padding-inline: 16px; scrollbar-width: thin;
+    margin-inline: -16px; padding: 10px 16px 12px; scroll-padding-inline: 16px; scrollbar-width: none;
   }
+  .deck-row::-webkit-scrollbar {display: none}
   .deck-row > li {scroll-snap-align: start}
 }
 
